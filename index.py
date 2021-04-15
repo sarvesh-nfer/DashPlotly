@@ -67,24 +67,7 @@ for i in [2]:
     )(toggle_navbar_collapse)
 
 # embedding the navigation bar
-app.layout = html.Div([
-    dcc.Location(id='url', refresh=False),
-    navbar,
-    html.Div(id='page-content')
-])
 
-
-@app.callback(Output('page-content', 'children'),
-              [Input('url', 'pathname')])
-def display_page(pathname):
-    if pathname == '/daily':
-        return daily.app.layout
-    elif pathname == '/health':
-        return health.app.layout
-    elif pathname == '/gif':
-        return gif.app.layout
-    else:
-        return home.app.layout
 
 if __name__ == '__main__':
     app.run_server(port=8080,debug=True)
