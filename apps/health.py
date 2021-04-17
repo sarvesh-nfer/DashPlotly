@@ -635,18 +635,18 @@ offset=pd.read_csv("apps/angleoffset.csv")
 
 offset['row_col']=offset['row_index'].map(str)+','+offset['col_index'].map(str)
 
-o1_2=offset[offset['scanner_name']=='H01CBA01P']
-o2_2=offset[offset['scanner_name']=='H01CBA05P']
+o1_2=offset[offset['scanner_name']=='H01CBA02P']
+o2_2=offset[offset['scanner_name']=='H01CBA03P']
 o3_2=offset[offset['scanner_name']=='H01CBA06P']
-o4_2=offset[offset['scanner_name']=='H01CBA02P']
+o4_2=offset[offset['scanner_name']=='H01CBA05P']
 o1_3=offset[offset['scanner_name']=='S1']
 
 
 #o1_3=o1_3[o1_3['load_identifier']==np.sort(o1_3['load_identifier'])[-1]]
-#o1_2=o1_2[o1_2['load_identifier']==np.sort(o1_2['load_identifier'])[-1]]
+o1_2=o1_2[o1_2['load_identifier']==np.sort(o1_2['load_identifier'])[-1]]
 o2_2=o2_2[o2_2['load_identifier']==np.sort(o2_2['load_identifier'])[-1]]
 o3_2=o3_2[o3_2['load_identifier']==np.sort(o3_2['load_identifier'])[-1]]
-o4_2=o4_2[o4_2['load_identifier']==np.sort(o4_2['load_identifier'])[-1]]
+#o4_2=o4_2[o4_2['load_identifier']==np.sort(o4_2['load_identifier'])[-1]]
 
 o1_2=o1_2.reset_index(drop=True)
 o2_2=o2_2.reset_index(drop=True)
@@ -654,7 +654,7 @@ o3_2=o3_2.reset_index(drop=True)
 o4_2=o4_2.reset_index(drop=True)
 o1_3=o1_3.reset_index(drop=True)
 
-'''
+
 figo1 = px.scatter(o1_2, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",hover_name="row_col",
                  labels={
                      "x_offset_um": "X- offset (um)",
@@ -678,7 +678,7 @@ figo1.update_layout(width=1000,height=1100,
                  )
 figo1.update_xaxes(range=[-6000, 6000])
 #figo1.show()
-'''
+
 
 #######################################################
 
@@ -732,7 +732,7 @@ figo3.update_xaxes(range=[-6000, 6000])
 #figo3.show()
 
 ###########################################################
-
+'''
 figo4 = px.scatter(o4_2, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",hover_name="row_col",
                  labels={
                      "offset_pos_x_um": "X- offset (um)",
@@ -756,7 +756,7 @@ figo4.update_layout(width=1000,height=1100,
                  )
 figo4.update_xaxes(range=[-6000, 6000])
 #figo4.show()
-
+'''
 ###########################################################
 """
 figo5 = px.scatter(o1_3, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",hover_name="row_col",
@@ -784,7 +784,7 @@ figo5.update_xaxes(range=[-6000, 6000])
 #figo5.show()
 """
 
-'''
+
 figo11 = px.scatter(o1_2, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
@@ -807,7 +807,7 @@ figo11.update_layout(width=1200,height=600,
 #figo11.update_layout(hovermode="y")
 figo11.update_yaxes(range=[-5000, 6000])
 #fig.show()
-'''
+
 ###################################################################
 figo22 = px.scatter(o2_2, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
                 labels={
@@ -857,6 +857,7 @@ figo33.update_yaxes(range=[-5000, 6000])
 #fig.show()
 
 ###################################################################
+'''
 figo44 = px.scatter(o4_2, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
@@ -881,7 +882,7 @@ figo44.update_yaxes(range=[-5000, 6000])
 #fig.show()
 
 ###################################################################
-"""
+
 figo55 = px.scatter(o1_3, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
@@ -904,7 +905,7 @@ figo55.update_layout(width=1200,height=600,
 #figo55.update_layout(hovermode="y")
 figo55.update_yaxes(range=[-5000, 6000])
 #figo55.show()
-"""
+'''
 #_________________________________________________________________________________________________________________________________________________________________________________
 #_____________________________________________________________Centering and intensity_______________________________________________________________________________________________________
 
@@ -1156,12 +1157,12 @@ app.layout = html.Div([
                     html.Br(),
         html.H1(children='X-offset deviation'),
         dcc.Graph(
-            figure=figo4
+            figure=figo1
         ),
                     html.Br(),
         html.H1(children='Y-offset deviation'),
         dcc.Graph(
-            figure=figo44
+            figure=figo11
         ),
                     html.Br(),
         html.H1(children='RGB intensity'),

@@ -266,13 +266,13 @@ postf=postf[postf['_source.data.centering_info'].map(lambda d: len(d)) > 0]
 postf=postf.reset_index(drop=True)
 
 p1_3=post[post['_source.data.scanner_name']=='S1']
-p1_2=post[post['_source.data.scanner_name']=='H01CBA01P']
-p2_2=post[post['_source.data.scanner_name']=='H01CBA05P']
+p1_2=post[post['_source.data.scanner_name']=='H01CBA02P']
+p2_2=post[post['_source.data.scanner_name']=='H01CBA03P']
 p3_2=post[post['_source.data.scanner_name']=='H01CBA06P']
-p4_2=post[post['_source.data.scanner_name']=='H01CBA02P']
+p4_2=post[post['_source.data.scanner_name']=='H01CBA05P']
 
-#new1=p1_2.groupby('_source.data.time_stamp', as_index=False).max()
-#new1=new1['_source.data.time_stamp'].iloc[-1]
+new1=p1_2.groupby('_source.data.time_stamp', as_index=False).max()
+new1=new1['_source.data.time_stamp'].iloc[-1]
 
 new2=p2_2.groupby('_source.data.time_stamp', as_index=False).max()
 new2=new2['_source.data.time_stamp'].iloc[-1]
@@ -281,36 +281,36 @@ new2=new2['_source.data.time_stamp'].iloc[-1]
 new3=p3_2.groupby('_source.data.time_stamp', as_index=False).max()
 new3=new3['_source.data.time_stamp'].iloc[-1]
 
-new4=p4_2.groupby('_source.data.time_stamp', as_index=False).max()
-new4=new4['_source.data.time_stamp'].iloc[-1]
+#new4=p4_2.groupby('_source.data.time_stamp', as_index=False).max()
+#new4=new4['_source.data.time_stamp'].iloc[-1]
 
 
 #new5=p1_3.groupby('_source.data.time_stamp', as_index=False).max()
 #new5=new5['_source.data.time_stamp'].iloc[-1]
 
 
-#p1_2=p1_2[p1_2['_source.data.time_stamp']==new1]
+p1_2=p1_2[p1_2['_source.data.time_stamp']==new1]
 
 p2_2=p2_2[p2_2['_source.data.time_stamp']==new2]
 
 p3_2=p3_2[p3_2['_source.data.time_stamp']==new3]
 
-p4_2=p4_2[p4_2['_source.data.time_stamp']==new4]
+#p4_2=p4_2[p4_2['_source.data.time_stamp']==new4]
 
 #p1_3=p1_3[p1_3['_source.data.time_stamp']==new5]
 
-#p1_2=p1_2.reset_index(drop=True)
+p1_2=p1_2.reset_index(drop=True)
 p2_2=p2_2.reset_index(drop=True)
 p3_2=p3_2.reset_index(drop=True)
-p4_2=p4_2.reset_index(drop=True)
+#p4_2=p4_2.reset_index(drop=True)
 #p1_3=p1_3.reset_index(drop=True)
 
 
 d=0
-for j in p2_2['_source.data.centering_info']:
+for j in p1_2['_source.data.centering_info']:
     df2=pd.DataFrame.from_dict(j)
-    df2['_source.data.scanner_name']=p2_2['_source.data.scanner_name'][d]
-    df2['_source.data.time_stamp']=p2_2['_source.data.time_stamp'][d]
+    df2['_source.data.scanner_name']=p1_2['_source.data.scanner_name'][d]
+    df2['_source.data.time_stamp']=p1_2['_source.data.time_stamp'][d]
     df2['centring_coordinate_y'] = df2['centring_coordinate_y'].values[::-1]
     if d!=len(p2_2)-1:
         d=d+1
@@ -322,10 +322,10 @@ df2.to_csv('/home/adminspin/Music/dash-report/apps/post2.csv',index=False)
 
 
 d=0
-for j in p3_2['_source.data.centering_info']:
+for j in p2_2['_source.data.centering_info']:
     df3=pd.DataFrame.from_dict(j)
-    df3['_source.data.scanner_name']=p3_2['_source.data.scanner_name'][d]
-    df3['_source.data.time_stamp']=p3_2['_source.data.time_stamp'][d]
+    df3['_source.data.scanner_name']=p2_2['_source.data.scanner_name'][d]
+    df3['_source.data.time_stamp']=p2_2['_source.data.time_stamp'][d]
     df3['centring_coordinate_y'] = df3['centring_coordinate_y'].values[::-1]
     if d!=len(p3_2)-1:
         d=d+1
@@ -334,10 +334,10 @@ for j in p3_2['_source.data.centering_info']:
 df3.to_csv('/home/adminspin/Music/dash-report/apps/post3.csv',index=False)
 
 d=0
-for j in p4_2['_source.data.centering_info']:
+for j in p3_2['_source.data.centering_info']:
     df4=pd.DataFrame.from_dict(j)
-    df4['_source.data.scanner_name']=p4_2['_source.data.scanner_name'][d]
-    df4['_source.data.time_stamp']=p4_2['_source.data.time_stamp'][d]
+    df4['_source.data.scanner_name']=p3_2['_source.data.scanner_name'][d]
+    df4['_source.data.time_stamp']=p3_2['_source.data.time_stamp'][d]
     df4['centring_coordinate_y'] = df4['centring_coordinate_y'].values[::-1]
     if d!=len(p4_2)-1:
         d=d+1
