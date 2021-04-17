@@ -199,7 +199,7 @@ s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
 #S1_3=S1_3[S1_3['load_identifier']==np.sort(S1_3['load_identifier'])[-1]]
 S1_2=S1_2[S1_2['load_identifier']==np.sort(S1_2['load_identifier'])[-1]]
 S2_2=S2_2[S2_2['load_identifier']==np.sort(S2_2['load_identifier'])[-1]]
-S3_2=S3_2[S3_2['load_identifier']==np.sort(S3_2['load_identifier'])[-1]]
+#S3_2=S3_2[S3_2['load_identifier']==np.sort(S3_2['load_identifier'])[-1]]
 #S4_2=S4_2[S4_2['load_identifier']==np.sort(S4_2['load_identifier'])[-1]]
 
 S1_2=S1_2.reset_index(drop=True)
