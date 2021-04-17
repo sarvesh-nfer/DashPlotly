@@ -23,11 +23,11 @@ __________________________________________________
 merged=pd.read_csv("apps/merged.csv")
 #diving scanner wise
 #s11=merged[merged['scanner_name']=='S1']
-#s1=merged[merged['scanner_name']=='H01CBA01P']
-s2=merged[merged['scanner_name']=='H01CBA05P']
+s1=merged[merged['scanner_name']=='H01CBA02P']
+s2=merged[merged['scanner_name']=='H01CBA03P']
 s3=merged[merged['scanner_name']=='H01CBA06P']
-s4=merged[merged['scanner_name']=='H01CBA02P']
-'''
+s4=merged[merged['scanner_name']=='H01CBA05P']
+
 # Create figure with secondary y-axis
 fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -44,21 +44,21 @@ fig1.add_trace(
 
 # Add figure title
 fig1.update_layout(
-    title_text="Multi-Axis plot with Best-Z and slide thickness for S3-CS002",width=1800,height=1000
+    title_text="Multi-Axis plot with Best-Z and slide thickness",width=1800,height=1000
 )
 
 # Set x-axis title
-fig1.update_xaxes(title_text="Multi-Axis plot with Best-Z and slide thickness")
+#fig1.update_xaxes(title_text="Multi-Axis plot with Best-Z and slide thickness")
 
 # Set y-axes titles
 fig1.update_yaxes(title_text="<b>primary</b> Best-Z Values", secondary_y=False)
 fig1.update_yaxes(title_text="<b>secondary</b> Slide Thickness values", secondary_y=True)
 fig1.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 fig1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
-fig1.update_layout(hovermode="x")
 
-#fig33.show()
-'''
+
+#fig1.show()
+
 # Create figure with secondary y-axis
 fig2 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -75,18 +75,18 @@ fig2.add_trace(
 
 # Add figure title
 fig2.update_layout(
-    title_text="Multi-Axis plot with Best-Z and slide thickness for S3-CS002",width=1800,height=1000
+    title_text="Multi-Axis plot with Best-Z and slide thickness",width=1800,height=1000
 )
 
 # Set x-axis title
-fig2.update_xaxes(title_text="Multi-Axis plot with Best-Z and slide thickness")
+#fig2.update_xaxes(title_text="Multi-Axis plot with Best-Z and slide thickness")
 
 # Set y-axes titles
 fig2.update_yaxes(title_text="<b>primary</b> Best-Z Values", secondary_y=False)
 fig2.update_yaxes(title_text="<b>secondary</b> Slide Thickness values", secondary_y=True)
 fig2.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 fig2.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
-#fig2.update_layout(hovermode="x")
+
 
 #fig33.show()# Create figure with secondary y-axis
 fig3 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -104,11 +104,11 @@ fig3.add_trace(
 
 # Add figure title
 fig3.update_layout(
-    title_text="Multi-Axis plot with Best-Z and slide thickness for S3-CS002",width=1800,height=1000
+    title_text="Multi-Axis plot with Best-Z and slide thickness",width=1800,height=1000
 )
 
 # Set x-axis title
-fig3.update_xaxes(title_text="Multi-Axis plot with Best-Z and slide thickness")
+#fig3.update_xaxes(title_text="Multi-Axis plot with Best-Z and slide thickness")
 
 # Set y-axes titles
 fig3.update_yaxes(title_text="<b>primary</b> Best-Z Values", secondary_y=False)
@@ -116,7 +116,7 @@ fig3.update_yaxes(title_text="<b>secondary</b> Slide Thickness values", secondar
 fig3.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 fig3.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 #fig3.update_layout(hovermode="x")
-
+'''
 #fig33.show()# Create figure with secondary y-axis
 fig4 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -147,7 +147,7 @@ fig4.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 #fig4.update_layout(hovermode="x")
 
 #fig33.show()
-'''
+
 # Create figure with secondary y-axis
 fig5 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -184,10 +184,10 @@ fig5.update_layout(hovermode="x")
 
 current=pd.read_csv("apps/current.csv")
 
-S1_2=current[current['scanner_name']=='H01CBA01P']
-S2_2=current[current['scanner_name']=='H01CBA05P']
+S1_2=current[current['scanner_name']=='H01CBA02P']
+S2_2=current[current['scanner_name']=='H01CBA03P']
 S3_2=current[current['scanner_name']=='H01CBA06P']
-S4_2=current[current['scanner_name']=='H01CBA02P']
+S4_2=current[current['scanner_name']=='H01CBA05P']
 S1_3=current[current['scanner_name']=='S1']
 
 '''
@@ -197,10 +197,10 @@ s2=s2[s2['load_identifier']==np.sort(s2['load_identifier'])[-1]]
 s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
 '''
 #S1_3=S1_3[S1_3['load_identifier']==np.sort(S1_3['load_identifier'])[-1]]
-#S1_2=S1_2[S1_2['load_identifier']==np.sort(S1_2['load_identifier'])[-1]]
+S1_2=S1_2[S1_2['load_identifier']==np.sort(S1_2['load_identifier'])[-1]]
 S2_2=S2_2[S2_2['load_identifier']==np.sort(S2_2['load_identifier'])[-1]]
 S3_2=S3_2[S3_2['load_identifier']==np.sort(S3_2['load_identifier'])[-1]]
-S4_2=S4_2[S4_2['load_identifier']==np.sort(S4_2['load_identifier'])[-1]]
+#S4_2=S4_2[S4_2['load_identifier']==np.sort(S4_2['load_identifier'])[-1]]
 
 S1_2=S1_2.reset_index(drop=True)
 S2_2=S2_2.reset_index(drop=True)
@@ -211,7 +211,7 @@ S1_3=S1_3.reset_index(drop=True)
 ################
 #plot
 ##############
-'''
+
 
 fig11 = px.scatter(S1_2, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
 labels={
@@ -229,7 +229,7 @@ line=dict(width=1,
 color='DarkSlateGrey')),
 selector=dict(mode='markers'))
 fig11.update_layout(
-title="Overall first Iteration Current Reading for scanner H01CBA01P ",
+title="Overall first Iteration Current Reading",
 font=dict(
 family="Courier New, monospace",
 size=16,
@@ -252,7 +252,7 @@ fig11.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",s
 fig11.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 fig11.update_layout(hovermode="x")
 #fig11.show()
-'''
+
 #######################################################################################################
 
 fig22 = px.scatter(S2_2, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
@@ -271,7 +271,7 @@ line=dict(width=1,
 color='DarkSlateGrey')),
 selector=dict(mode='markers'))
 fig22.update_layout(
-title="Overall first Iteration Current Reading for scanner H01CBA05P ",
+title="Overall first Iteration Current Reading",
 font=dict(
 family="Courier New, monospace",
 size=16,
@@ -313,7 +313,7 @@ line=dict(width=1,
 color='DarkSlateGrey')),
 selector=dict(mode='markers'))
 fig33.update_layout(
-title="Overall first Iteration Current Reading for scanner H01CBA06P ",
+title="Overall first Iteration Current Reading",
 font=dict(
 family="Courier New, monospace",
 size=16,
@@ -338,6 +338,7 @@ fig33.update_layout(hovermode="x")
 #fig33.show()
 
 #########################################################################################################################################
+'''
 fig44 = px.scatter(S4_2, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
 labels={
 "first_initial_current": "Current Readings",
@@ -354,7 +355,7 @@ line=dict(width=1,
 color='DarkSlateGrey')),
 selector=dict(mode='markers'))
 fig44.update_layout(
-title="Overall first Iteration Current Reading for scanner H01CBA02P ",
+title="Overall first Iteration Current Reading",
 font=dict(
 family="Courier New, monospace",
 size=16,
@@ -379,7 +380,7 @@ fig44.update_layout(hovermode="x")
 #fig44.show()
 
 ####################################################################################################
-'''
+
 
 fig55 = px.scatter(S1_3, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
 labels={
@@ -397,7 +398,7 @@ line=dict(width=1,
 color='DarkSlateGrey')),
 selector=dict(mode='markers'))
 fig55.update_layout(
-title="Overall first Iteration Current Reading for scanner S1 ",
+title="Overall first Iteration Current Reading",
 font=dict(
 family="Courier New, monospace",
 size=16,
@@ -430,18 +431,18 @@ fig55.update_layout(hovermode="x")
 #_____________________________________________________________angle permissible plots_______________________________________________________________________________________________________
 
 angle=pd.read_csv("apps/angleoffset.csv")
-
-a1_2=angle[angle['scanner_name']=='H01CBA01P']
-a2_2=angle[angle['scanner_name']=='H01CBA05P']
+angle=angle.dropna(subset=['load_identifier'])
+a1_2=angle[angle['scanner_name']=='H01CBA02P']
+a2_2=angle[angle['scanner_name']=='H01CBA03P']
 a3_2=angle[angle['scanner_name']=='H01CBA06P']
-a4_2=angle[angle['scanner_name']=='H01CBA02P']
+a4_2=angle[angle['scanner_name']=='H01CBA05P']
 a1_3=angle[angle['scanner_name']=='S1']
 
 #a1_3=a1_3[a1_3['load_identifier']==np.sort(a1_3['load_identifier'])[-1]]
-#a1_2=a1_2[a1_2['load_identifier']==np.sort(a1_2['load_identifier'])[-1]]
+a1_2=a1_2[a1_2['load_identifier']==np.sort(a1_2['load_identifier'])[-1]]
 a2_2=a2_2[a2_2['load_identifier']==np.sort(a2_2['load_identifier'])[-1]]
 a3_2=a3_2[a3_2['load_identifier']==np.sort(a3_2['load_identifier'])[-1]]
-a4_2=a4_2[a4_2['load_identifier']==np.sort(a4_2['load_identifier'])[-1]]
+#a4_2=a4_2[a4_2['load_identifier']==np.sort(a4_2['load_identifier'])[-1]]
 
 a1_2=a1_2.reset_index(drop=True)
 a2_2=a2_2.reset_index(drop=True)
@@ -449,7 +450,7 @@ a3_2=a3_2.reset_index(drop=True)
 a4_2=a4_2.reset_index(drop=True)
 a1_3=a1_3.reset_index(drop=True)
 #######################################################################
-'''
+
 
 # Create figure with secondary y-axis
 figa1 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -469,7 +470,7 @@ figa1.add_trace(
 
 # Add figure title
 figa1.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1200,height=1400,
+    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -485,7 +486,7 @@ figa1.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",s
 figa1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 figa1.update_layout(hovermode="x")
 #figa1.show()
-'''
+
 
 # Create figure with secondary y-axis
 figa2 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -505,7 +506,7 @@ figa2.add_trace(
 
 # Add figure title
 figa2.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1900,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -540,7 +541,7 @@ figa3.add_trace(
 
 # Add figure title
 figa3.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1900,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -575,7 +576,7 @@ figa4.add_trace(
 
 # Add figure title
 figa4.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1900,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -610,7 +611,7 @@ figa5.add_trace(
 
 # Add figure title
 figa5.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1900,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -632,7 +633,7 @@ figa5.update_layout(hovermode="x")
 #_____________________________________________________________Offset plots_______________________________________________________________________________________________________
 
 offset=pd.read_csv("apps/angleoffset.csv")
-
+offset=offset.dropna(subset=['load_identifier'])
 offset['row_col']=offset['row_index'].map(str)+','+offset['col_index'].map(str)
 
 o1_2=offset[offset['scanner_name']=='H01CBA02P']
@@ -676,7 +677,7 @@ figo1.update_layout(width=1000,height=1100,
                       color="RebeccaPurple"
                   ),
                  )
-figo1.update_xaxes(range=[-6000, 6000])
+figo1.update_xaxes(range=[-4000, 4000])
 #figo1.show()
 
 
@@ -703,7 +704,7 @@ figo2.update_layout(width=1000,height=1100,
                       color="RebeccaPurple"
                   ),
                  )
-figo2.update_xaxes(range=[-6000, 6000])
+figo2.update_xaxes(range=[-4000, 4000])
 #figo2.show()
 ###########################################################
 
@@ -728,7 +729,7 @@ figo3.update_layout(width=1000,height=1100,
                       color="RebeccaPurple"
                   ),
                  )
-figo3.update_xaxes(range=[-6000, 6000])
+figo3.update_xaxes(range=[-4000, 4000])
 #figo3.show()
 
 ###########################################################
@@ -754,7 +755,7 @@ figo4.update_layout(width=1000,height=1100,
                       color="RebeccaPurple"
                   ),
                  )
-figo4.update_xaxes(range=[-6000, 6000])
+figo4.update_xaxes(range=[-4000, 4000])
 #figo4.show()
 '''
 ###########################################################
@@ -780,7 +781,7 @@ figo5.update_layout(width=1000,height=1100,
                       color="RebeccaPurple"
                   ),
                  )
-figo5.update_xaxes(range=[-6000, 6000])
+figo5.update_xaxes(range=[-4000, 4000])
 #figo5.show()
 """
 
@@ -805,7 +806,7 @@ figo11.update_layout(width=1200,height=600,
                       color="RebeccaPurple"
                   ),)
 #figo11.update_layout(hovermode="y")
-figo11.update_yaxes(range=[-5000, 6000])
+figo11.update_yaxes(range=[-500, 6000])
 #fig.show()
 
 ###################################################################
@@ -829,7 +830,7 @@ figo22.update_layout(width=1200,height=600,
                       color="RebeccaPurple"
                   ),)
 #figo22.update_layout(hovermode="y")
-figo22.update_yaxes(range=[-5000, 6000])
+figo22.update_yaxes(range=[-500, 6000])
 #fig.show()
 
 ###################################################################
@@ -853,7 +854,7 @@ figo33.update_layout(width=1200,height=600,
                       color="RebeccaPurple"
                   ),)
 #figo33.update_layout(hovermode="y")
-figo33.update_yaxes(range=[-5000, 6000])
+figo33.update_yaxes(range=[-500, 6000])
 #fig.show()
 
 ###################################################################
@@ -878,7 +879,7 @@ figo44.update_layout(width=1200,height=600,
                       color="RebeccaPurple"
                   ),)
 #figo44.update_layout(hovermode="y")
-figo44.update_yaxes(range=[-5000, 6000])
+figo44.update_yaxes(range=[-500, 6000])
 #fig.show()
 
 ###################################################################
@@ -903,7 +904,7 @@ figo55.update_layout(width=1200,height=600,
                       color="RebeccaPurple"
                   ),)
 #figo55.update_layout(hovermode="y")
-figo55.update_yaxes(range=[-5000, 6000])
+figo55.update_yaxes(range=[-500, 6000])
 #figo55.show()
 '''
 #_________________________________________________________________________________________________________________________________________________________________________________
@@ -924,7 +925,7 @@ figp1.add_trace(go.Scatter(y=post2['mean_blue_intensity'],
 figp1.add_trace(go.Scatter(y=post2['mean_green_intensity'],
                             mode='lines', name='mean_green_intensity',line=dict(color='green')))
 figp1.update_yaxes(range=[150, 260])
-figp1.update_layout(title="Average Intensity across the z stack for scanner"+" "+post2['_source.data.scanner_name'][1]+" "+post2['_source.data.time_stamp'][1],
+figp1.update_layout(title="Average Intensity across the z stack"+" "+post2['_source.data.time_stamp'][1],
                     xaxis_title="Z Steps",
                     yaxis_title="Average Intensity",
                     legend_title="Intensity",
@@ -977,7 +978,7 @@ figp2.add_trace(go.Scatter(y=post3['mean_blue_intensity'],
 figp2.add_trace(go.Scatter(y=post3['mean_green_intensity'],
                             mode='lines', name='mean_green_intensity',line=dict(color='green')))
 figp2.update_yaxes(range=[150, 260])
-figp2.update_layout(title="Average Intensity across the z stack for scanner"+" "+post3['_source.data.scanner_name'][1]+" "+post3['_source.data.time_stamp'][1],
+figp2.update_layout(title="Average Intensity across the z stack"+" "+post3['_source.data.time_stamp'][1],
                     xaxis_title="Z Steps",
                     yaxis_title="Average Intensity",
                     legend_title="Intensity",
@@ -1030,7 +1031,7 @@ figp3.add_trace(go.Scatter(y=post4['mean_blue_intensity'],
 figp3.add_trace(go.Scatter(y=post4['mean_green_intensity'],
                             mode='lines', name='mean_green_intensity',line=dict(color='green')))
 figp3.update_yaxes(range=[150, 260])
-figp3.update_layout(title="Average Intensity across the z stack for scanner"+" "+post4['_source.data.scanner_name'][1]+" "+post4['_source.data.time_stamp'][1],
+figp3.update_layout(title="Average Intensity across the z stack"+" "+post4['_source.data.time_stamp'][1],
                     xaxis_title="Z Steps",
                     yaxis_title="Average Intensity",
                     legend_title="Intensity",
@@ -1147,12 +1148,12 @@ app.layout = html.Div([
         html.Br(),
         html.H1(children='Current Difference'),
         dcc.Graph(
-            figure=fig44
+            figure=fig11
         ),
         html.Br(),
         html.H1(children='Angle permissible'),
         dcc.Graph(
-            figure=figa4
+            figure=figa1
         ),
                     html.Br(),
         html.H1(children='X-offset deviation'),
@@ -1167,17 +1168,17 @@ app.layout = html.Div([
                     html.Br(),
         html.H1(children='RGB intensity'),
         dcc.Graph(
-            figure=figp3
+            figure=figp1
         ),
                     html.Br(),
         html.H1(children='Centering Info'),
         dcc.Graph(
-            figure=figp33
+            figure=figp11
         ),
                     html.Br(),
         html.H1(children='Best Z Vs Slide Thickness'),
         dcc.Graph(
-            figure=fig4
+            figure=fig1
         ),
     ]),
     dcc.Tab(label='Station 2',style=tab_style, selected_style=tab_selected_style, children=[
@@ -1204,12 +1205,12 @@ app.layout = html.Div([
                     html.Br(),
         html.H1(children='RGB intensity'),
         dcc.Graph(
-            figure=figp1
+            figure=figp2
         ),
                     html.Br(),
         html.H1(children='Centering Info'),
         dcc.Graph(
-            figure=figp11
+            figure=figp22
         ),
         html.Br(),
         html.H1(children='Best Z Vs Slide Thickness'),
@@ -1241,12 +1242,12 @@ app.layout = html.Div([
                     html.Br(),
         html.H1(children='RGB intensity'),
         dcc.Graph(
-            figure=figp2
+            figure=figp3
         ),
                     html.Br(),
         html.H1(children='Centering Info'),
         dcc.Graph(
-            figure=figp22
+            figure=figp33
         ),
                     html.Br(),
         html.H1(children='Best Z Vs Slide Thickness'),
