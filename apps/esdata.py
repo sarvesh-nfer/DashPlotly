@@ -332,7 +332,7 @@ for j in p2_2['_source.data.centering_info']:
     else:
         break
 df3.to_csv('/home/adminspin/Music/dash-report/apps/post3.csv',index=False)
-
+'''
 d=0
 for j in p3_2['_source.data.centering_info']:
     df4=pd.DataFrame.from_dict(j)
@@ -344,3 +344,4 @@ for j in p3_2['_source.data.centering_info']:
     else:
         break
 df4.to_csv('/home/adminspin/Music/dash-report/apps/post4.csv',index=False)
+'''
