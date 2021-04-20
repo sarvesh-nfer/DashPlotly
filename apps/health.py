@@ -464,13 +464,13 @@ figa1.add_trace(
     secondary_y=False,
 )
 figa1.add_trace(
-    go.Scatter(x=a1_2['slide_name'], y=a1_2['slide_width_um'], name="slide_width",mode = 'lines+markers'),
+    go.Scatter(x=a1_2['slide_name'], y=a1_2['slide_height_um'], name="slide_height",mode = 'lines+markers'),
     secondary_y=True,
 )
 
 # Add figure title
 figa1.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_height(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -480,7 +480,7 @@ figa1.update_layout(
 # Set x-axis title
 figa1.update_xaxes(title_text="Slide_name")
 # Set y-axes titles
-figa1.update_yaxes(title_text="<b>secondary</b> Slide_width(um) ", secondary_y=True)
+figa1.update_yaxes(title_text="<b>secondary</b> slide_height(um) ", secondary_y=True)
 figa1.update_yaxes(title_text="<b>primary</b> Permissible_angle & Actual_angle", secondary_y=False)
 figa1.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 figa1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
@@ -500,13 +500,13 @@ figa2.add_trace(
     secondary_y=False,
 )
 figa2.add_trace(
-    go.Scatter(x=a2_2['slide_name'], y=a2_2['slide_width_um'], name="slide_width",mode = 'lines+markers'),
+    go.Scatter(x=a2_2['slide_name'], y=a2_2['slide_height_um'], name="slide_height",mode = 'lines+markers'),
     secondary_y=True,
 )
 
 # Add figure title
 figa2.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_height(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -516,7 +516,7 @@ figa2.update_layout(
 # Set x-axis title
 figa2.update_xaxes(title_text="Slide_name")
 # Set y-axes titles
-figa2.update_yaxes(title_text="<b>secondary</b> Slide_width(um) ", secondary_y=True)
+figa2.update_yaxes(title_text="<b>secondary</b> slide_height(um) ", secondary_y=True)
 figa2.update_yaxes(title_text="<b>primary</b> Permissible_angle & Actual_angle", secondary_y=False)
 figa2.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 figa2.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
@@ -535,13 +535,13 @@ figa3.add_trace(
     secondary_y=False,
 )
 figa3.add_trace(
-    go.Scatter(x=a3_2['slide_name'], y=a3_2['slide_width_um'], name="slide_width",mode = 'lines+markers'),
+    go.Scatter(x=a3_2['slide_name'], y=a3_2['slide_height_um'], name="slide_height",mode = 'lines+markers'),
     secondary_y=True,
 )
 
 # Add figure title
 figa3.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_height(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -551,7 +551,7 @@ figa3.update_layout(
 # Set x-axis title
 figa3.update_xaxes(title_text="Slide_name")
 # Set y-axes titles
-figa3.update_yaxes(title_text="<b>secondary</b> Slide_width(um) ", secondary_y=True)
+figa3.update_yaxes(title_text="<b>secondary</b> slide_height(um) ", secondary_y=True)
 figa3.update_yaxes(title_text="<b>primary</b> Permissible_angle & Actual_angle", secondary_y=False)
 figa3.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 figa3.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
@@ -570,13 +570,13 @@ figa4.add_trace(
     secondary_y=False,
 )
 figa4.add_trace(
-    go.Scatter(x=a4_2['slide_name'], y=a4_2['slide_width_um'], name="slide_width",mode = 'lines+markers'),
+    go.Scatter(x=a4_2['slide_name'], y=a4_2['slide_height_um'], name="slide_height",mode = 'lines+markers'),
     secondary_y=True,
 )
 
 # Add figure title
 figa4.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_height(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -586,7 +586,7 @@ figa4.update_layout(
 # Set x-axis title
 figa4.update_xaxes(title_text="Slide_name")
 # Set y-axes titles
-figa4.update_yaxes(title_text="<b>secondary</b> Slide_width(um) ", secondary_y=True)
+figa4.update_yaxes(title_text="<b>secondary</b> slide_height(um) ", secondary_y=True)
 figa4.update_yaxes(title_text="<b>primary</b> Permissible_angle & Actual_angle", secondary_y=False)
 figa4.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 figa4.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
@@ -605,13 +605,13 @@ figa5.add_trace(
     secondary_y=False,
 )
 figa5.add_trace(
-    go.Scatter(x=a1_3['slide_name'], y=a1_3['slide_width_um'], name="slide_width",mode = 'lines+markers'),
+    go.Scatter(x=a1_3['slide_name'], y=a1_3['slide_height_um'], name="slide_height",mode = 'lines+markers'),
     secondary_y=True,
 )
 
 # Add figure title
 figa5.update_layout(
-    title_text="Multi-Axis plot for Permissible_angle & slide_width(um)",width=1600,height=800,
+    title_text="Multi-Axis plot for Permissible_angle & slide_height(um)",width=1600,height=800,
         font=dict(
         family="Courier New, monospace",
         size=16,
@@ -621,7 +621,7 @@ figa5.update_layout(
 # Set x-axis title
 figa5.update_xaxes(title_text="Slide_name")
 # Set y-axes titles
-figa5.update_yaxes(title_text="<b>secondary</b> Slide_width(um) ", secondary_y=True)
+figa5.update_yaxes(title_text="<b>secondary</b> slide_height(um) ", secondary_y=True)
 figa5.update_yaxes(title_text="<b>primary</b> Permissible_angle & Actual_angle", secondary_y=False)
 figa5.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 figa5.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
