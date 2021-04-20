@@ -25,7 +25,7 @@ merged=pd.read_csv("apps/merged.csv")
 #s11=merged[merged['scanner_name']=='S1']
 s1=merged[merged['scanner_name']=='H01CBA02P']
 s2=merged[merged['scanner_name']=='H01CBA03P']
-s3=merged[merged['scanner_name']=='H01CBA06P']
+s3=merged[merged['scanner_name']=='H01CBA01P']
 s4=merged[merged['scanner_name']=='H01CBA05P']
 
 # Create figure with secondary y-axis
@@ -186,7 +186,7 @@ current=pd.read_csv("apps/current.csv")
 
 S1_2=current[current['scanner_name']=='H01CBA02P']
 S2_2=current[current['scanner_name']=='H01CBA03P']
-S3_2=current[current['scanner_name']=='H01CBA06P']
+S3_2=current[current['scanner_name']=='H01CBA01P']
 S4_2=current[current['scanner_name']=='H01CBA05P']
 S1_3=current[current['scanner_name']=='S1']
 
@@ -199,7 +199,7 @@ s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
 #S1_3=S1_3[S1_3['load_identifier']==np.sort(S1_3['load_identifier'])[-1]]
 S1_2=S1_2[S1_2['load_identifier']==np.sort(S1_2['load_identifier'])[-1]]
 S2_2=S2_2[S2_2['load_identifier']==np.sort(S2_2['load_identifier'])[-1]]
-#S3_2=S3_2[S3_2['load_identifier']==np.sort(S3_2['load_identifier'])[-1]]
+S3_2=S3_2[S3_2['load_identifier']==np.sort(S3_2['load_identifier'])[-1]]
 #S4_2=S4_2[S4_2['load_identifier']==np.sort(S4_2['load_identifier'])[-1]]
 
 S1_2=S1_2.reset_index(drop=True)
@@ -434,14 +434,14 @@ angle=pd.read_csv("apps/angleoffset.csv")
 angle=angle.dropna(subset=['load_identifier'])
 a1_2=angle[angle['scanner_name']=='H01CBA02P']
 a2_2=angle[angle['scanner_name']=='H01CBA03P']
-a3_2=angle[angle['scanner_name']=='H01CBA06P']
+a3_2=angle[angle['scanner_name']=='H01CBA01P']
 a4_2=angle[angle['scanner_name']=='H01CBA05P']
 a1_3=angle[angle['scanner_name']=='S1']
 
 #a1_3=a1_3[a1_3['load_identifier']==np.sort(a1_3['load_identifier'])[-1]]
 a1_2=a1_2[a1_2['load_identifier']==np.sort(a1_2['load_identifier'])[-1]]
 a2_2=a2_2[a2_2['load_identifier']==np.sort(a2_2['load_identifier'])[-1]]
-#a3_2=a3_2[a3_2['load_identifier']==np.sort(a3_2['load_identifier'])[-1]]
+a3_2=a3_2[a3_2['load_identifier']==np.sort(a3_2['load_identifier'])[-1]]
 #a4_2=a4_2[a4_2['load_identifier']==np.sort(a4_2['load_identifier'])[-1]]
 
 a1_2=a1_2.reset_index(drop=True)
@@ -638,7 +638,7 @@ offset['row_col']=offset['row_index'].map(str)+','+offset['col_index'].map(str)
 
 o1_2=offset[offset['scanner_name']=='H01CBA02P']
 o2_2=offset[offset['scanner_name']=='H01CBA03P']
-o3_2=offset[offset['scanner_name']=='H01CBA06P']
+o3_2=offset[offset['scanner_name']=='H01CBA01P']
 o4_2=offset[offset['scanner_name']=='H01CBA05P']
 o1_3=offset[offset['scanner_name']=='S1']
 
@@ -646,7 +646,7 @@ o1_3=offset[offset['scanner_name']=='S1']
 #o1_3=o1_3[o1_3['load_identifier']==np.sort(o1_3['load_identifier'])[-1]]
 o1_2=o1_2[o1_2['load_identifier']==np.sort(o1_2['load_identifier'])[-1]]
 o2_2=o2_2[o2_2['load_identifier']==np.sort(o2_2['load_identifier'])[-1]]
-#o3_2=o3_2[o3_2['load_identifier']==np.sort(o3_2['load_identifier'])[-1]]
+o3_2=o3_2[o3_2['load_identifier']==np.sort(o3_2['load_identifier'])[-1]]
 #o4_2=o4_2[o4_2['load_identifier']==np.sort(o4_2['load_identifier'])[-1]]
 
 o1_2=o1_2.reset_index(drop=True)
@@ -914,7 +914,10 @@ post2=pd.read_csv("apps/post2.csv")
 post3=pd.read_csv("apps/post3.csv")
 post4=pd.read_csv("apps/post4.csv")
 
-
+post22=pd.read_csv("apps/post22.csv")
+post33=pd.read_csv("apps/post33.csv")
+post44=pd.read_csv("apps/post44.csv")
+#____________________________________________________________________________________________________________________________________________________________________
 figp1 = go.Figure()
 figp1.add_trace(go.Scatter(y=post2['mean_red_intensity'],
                             mode='lines',
@@ -925,7 +928,8 @@ figp1.add_trace(go.Scatter(y=post2['mean_blue_intensity'],
 figp1.add_trace(go.Scatter(y=post2['mean_green_intensity'],
                             mode='lines', name='mean_green_intensity',line=dict(color='green')))
 figp1.update_yaxes(range=[150, 260])
-figp1.update_layout(title="Average Intensity across the z stack"+" "+post2['_source.data.time_stamp'][1],
+figp1.update_layout(title="Average Intensity across the z stack"+" "+post2['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
                     xaxis_title="Z Steps",
                     yaxis_title="Average Intensity",
                     legend_title="Intensity",
@@ -949,11 +953,12 @@ figp11.add_trace(go.Scatter(x=x,y=y,
                           mode='markers',
                           name='Centre',
                          ))
-figp11.update_yaxes(range=[0,1216])
+figp11.update_yaxes(range=[1200,0])
 figp11.update_xaxes(range=[0,1936])
 figp11.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
 figp11.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
-figp11.update_layout(title="Centering for scanner"+" " +post2['_source.data.scanner_name'][1]+" "+post2['_source.data.time_stamp'][1],
+figp11.update_layout(title="Centering for scanner"+" " +post2['_source.data.scanner_name'][1]+" "+post2['_source.data.time_stamp'][1],width=900,height=500,
+                   margin=dict(l=120),
                    xaxis_title="Width of the AOI",
                    yaxis_title="Height of the AOI",
                    font=dict(
@@ -966,8 +971,62 @@ figp11.add_shape(type="rect",
     x0=768, y0=408, x1=1168, y1=808,
     line_color="red",
 )
+#____________________________________________________________________________________________________________________________________________________________________
+figbp1 = go.Figure()
+figbp1.add_trace(go.Scatter(y=post22['mean_red_intensity'],
+                            mode='lines',
+                            name='mean_red_intensity',line=dict(color='red')))
+figbp1.add_trace(go.Scatter(y=post22['mean_blue_intensity'],
+                            mode='lines',
+                            name='mean_blue_intensity',line=dict(color='blue')))
+figbp1.add_trace(go.Scatter(y=post22['mean_green_intensity'],
+                            mode='lines', name='mean_green_intensity',line=dict(color='green')))
+figbp1.update_yaxes(range=[150, 260])
+figbp1.update_layout(title="Average Intensity across the z stack"+" "+post2['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
+                    xaxis_title="Z Steps",
+                    yaxis_title="Average Intensity",
+                    legend_title="Intensity",
+                    font=dict(
+                        family="Courier New, monospace",
+                        size=16,
+                        color="RebeccaPurple")
+                    )
+#fig.update_xaxes()
+figbp1.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp1.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+
+figbp11 = go.Figure()
+x=[968]
+y=[608]
+figbp11.add_trace(go.Scatter(x=post22['centring_coordinate_x'],y=post22['centring_coordinate_y'],
+                          mode='markers',
+                          name='Dispersion',
+                         ))
+figbp11.add_trace(go.Scatter(x=x,y=y,
+                          mode='markers',
+                          name='Centre',
+                         ))
+figbp11.update_yaxes(range=[1200,0])
+figbp11.update_xaxes(range=[0,1936])
+figbp11.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp11.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp11.update_layout(title="Centering for scanner"+" " +post22['_source.data.scanner_name'][1]+" "+post22['_source.data.time_stamp'][1],width=900,height=500,
+                   margin=dict(l=120),
+                   xaxis_title="Width of the AOI",
+                   yaxis_title="Height of the AOI",
+                   font=dict(
+                       family="Courier New, monospace",
+                       size=16,
+                       color="RebeccaPurple")
+                  )
+figbp11.add_shape(type="rect",
+    xref="x", yref="y",
+    x0=768, y0=408, x1=1168, y1=808,
+    line_color="red",
+)
   
-                  
+#____________________________________________________________________________________________________________________________________________________________________                  
 figp2 = go.Figure()
 figp2.add_trace(go.Scatter(y=post3['mean_red_intensity'],
                             mode='lines',
@@ -978,7 +1037,8 @@ figp2.add_trace(go.Scatter(y=post3['mean_blue_intensity'],
 figp2.add_trace(go.Scatter(y=post3['mean_green_intensity'],
                             mode='lines', name='mean_green_intensity',line=dict(color='green')))
 figp2.update_yaxes(range=[150, 260])
-figp2.update_layout(title="Average Intensity across the z stack"+" "+post3['_source.data.time_stamp'][1],
+figp2.update_layout(title="Average Intensity across the z stack"+" "+post3['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
                     xaxis_title="Z Steps",
                     yaxis_title="Average Intensity",
                     legend_title="Intensity",
@@ -1003,11 +1063,12 @@ figp22.add_trace(go.Scatter(x=x,y=y,
                           mode='markers',
                           name='Centre',
                          ))
-figp22.update_yaxes(range=[0,1216])
+figp22.update_yaxes(range=[1200,0])
 figp22.update_xaxes(range=[0,1936])
 figp22.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
 figp22.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
-figp22.update_layout(title="Centering for scanner"+" " +post3['_source.data.scanner_name'][1]+" "+post3['_source.data.time_stamp'][1],
+figp22.update_layout(title="Centering for scanner"+" " +post3['_source.data.scanner_name'][1]+" "+post3['_source.data.time_stamp'][1],width=900,height=500,
+                   margin=dict(l=120),
                    xaxis_title="Width of the AOI",
                    yaxis_title="Height of the AOI",
                    font=dict(
@@ -1020,18 +1081,74 @@ figp22.add_shape(type="rect",
     x0=768, y0=408, x1=1168, y1=808,
     line_color="red",
 )
-                    
+#____________________________________________________________________________________________________________________________________________________________________
+figbp2 = go.Figure()
+figbp2.add_trace(go.Scatter(y=post33['mean_red_intensity'],
+                            mode='lines',
+                            name='mean_red_intensity',line=dict(color='red')))
+figbp2.add_trace(go.Scatter(y=post33['mean_blue_intensity'],
+                            mode='lines',
+                            name='mean_blue_intensity',line=dict(color='blue')))
+figbp2.add_trace(go.Scatter(y=post33['mean_green_intensity'],
+                            mode='lines', name='mean_green_intensity',line=dict(color='green')))
+figbp2.update_yaxes(range=[150, 260])
+figbp2.update_layout(title="Average Intensity across the z stack"+" "+post33['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
+                    xaxis_title="Z Steps",
+                    yaxis_title="Average Intensity",
+                    legend_title="Intensity",
+                    font=dict(
+                        family="Courier New, monospace",
+                        size=16,
+                        color="RebeccaPurple")
+                    )
+#fig.update_xaxes()
+figbp2.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp2.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+
+
+figbp22 = go.Figure()
+x=[968]
+y=[608]
+figbp22.add_trace(go.Scatter(x=post33['centring_coordinate_x'],y=post33['centring_coordinate_y'],
+                          mode='markers',
+                          name='Dispersion',
+                         ))
+figbp22.add_trace(go.Scatter(x=x,y=y,
+                          mode='markers',
+                          name='Centre',
+                         ))
+figbp22.update_yaxes(range=[1200,0])
+figbp22.update_xaxes(range=[0,1936])
+figbp22.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp22.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp22.update_layout(title="Centering for scanner"+" " +post33['_source.data.scanner_name'][1]+" "+post33['_source.data.time_stamp'][1],width=900,height=500,
+                   margin=dict(l=120),
+                   xaxis_title="Width of the AOI",
+                   yaxis_title="Height of the AOI",
+                   font=dict(
+                       family="Courier New, monospace",
+                       size=16,
+                       color="RebeccaPurple")
+                  )
+figbp22.add_shape(type="rect",
+    xref="x", yref="y",
+    x0=768, y0=408, x1=1168, y1=808,
+    line_color="red",
+)
+#____________________________________________________________________________________________________________________________________________________________________                    
 figp3 = go.Figure()
 figp3.add_trace(go.Scatter(y=post4['mean_red_intensity'],
                             mode='lines',
-                            name='mean_red_intensity',line=dict(color='red')))
+                            name='mean red intensity',line=dict(color='red')))
 figp3.add_trace(go.Scatter(y=post4['mean_blue_intensity'],
                             mode='lines',
-                            name='mean_blue_intensity',line=dict(color='blue')))
+                            name='mean blue intensity',line=dict(color='blue')))
 figp3.add_trace(go.Scatter(y=post4['mean_green_intensity'],
-                            mode='lines', name='mean_green_intensity',line=dict(color='green')))
+                            mode='lines', name='mean green intensity',line=dict(color='green')))
 figp3.update_yaxes(range=[150, 260])
-figp3.update_layout(title="Average Intensity across the z stack"+" "+post4['_source.data.time_stamp'][1],
+figp3.update_layout(title="Average Intensity across the z stack"+" "+post4['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
                     xaxis_title="Z Steps",
                     yaxis_title="Average Intensity",
                     legend_title="Intensity",
@@ -1056,11 +1173,12 @@ figp33.add_trace(go.Scatter(x=x,y=y,
                           mode='markers',
                           name='Centre',
                          ))
-figp33.update_yaxes(range=[0,1216])
+figp33.update_yaxes(range=[1200,0])
 figp33.update_xaxes(range=[0,1936])
 figp33.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
 figp33.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
-figp33.update_layout(title="Centering for scanner"+" " +post4['_source.data.scanner_name'][1]+" "+post4['_source.data.time_stamp'][1],
+figp33.update_layout(title="Centering for scanner"+" " +post4['_source.data.scanner_name'][1]+" "+post4['_source.data.time_stamp'][1],width=850,height=500,
+                   margin=dict(l=120),
                    xaxis_title="Width of the AOI",
                    yaxis_title="Height of the AOI",
                    font=dict(
@@ -1073,7 +1191,63 @@ figp33.add_shape(type="rect",
     x0=768, y0=408, x1=1168, y1=808,
     line_color="red",
 )
-                    
+#____________________________________________________________________________________________________________________________________________________________________
+
+figbp3 = go.Figure()
+figbp3.add_trace(go.Scatter(y=post44['mean_red_intensity'],
+                            mode='lines',
+                            name='mean red intensity',line=dict(color='red')))
+figbp3.add_trace(go.Scatter(y=post44['mean_blue_intensity'],
+                            mode='lines',
+                            name='mean blue intensity',line=dict(color='blue')))
+figbp3.add_trace(go.Scatter(y=post44['mean_green_intensity'],
+                            mode='lines', name='mean green intensity',line=dict(color='green')))
+figbp3.update_yaxes(range=[150, 260])
+figbp3.update_layout(title="Average Intensity across the z stack"+" "+post44['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
+                    xaxis_title="Z Steps",
+                    yaxis_title="Average Intensity",
+                    legend_title="Intensity",
+                    font=dict(
+                        family="Courier New, monospace",
+                        size=16,
+                        color="RebeccaPurple")
+                    )
+#fig.update_xaxes()
+figbp3.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp3.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+
+
+figbp33 = go.Figure()
+x=[968]
+y=[608]
+figbp33.add_trace(go.Scatter(x=post44['centring_coordinate_x'],y=post44['centring_coordinate_y'],
+                          mode='markers',
+                          name='Dispersion',
+                         ))
+figbp33.add_trace(go.Scatter(x=x,y=y,
+                          mode='markers',
+                          name='Centre',
+                         ))
+figbp33.update_yaxes(range=[1200,0])
+figbp33.update_xaxes(range=[0,1936])
+figbp33.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp33.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp33.update_layout(title="Centering for scanner"+" " +post44['_source.data.scanner_name'][1]+" "+post44['_source.data.time_stamp'][1],width=850,height=500,
+                   margin=dict(l=120),
+                   xaxis_title="Width of the AOI",
+                   yaxis_title="Height of the AOI",
+                   font=dict(
+                       family="Courier New, monospace",
+                       size=16,
+                       color="RebeccaPurple")
+                  )
+figbp33.add_shape(type="rect",
+    xref="x", yref="y",
+    x0=768, y0=408, x1=1168, y1=808,
+    line_color="red",
+)
+                
 #____________________________________________________________________________________________________________________________________________________________
 #_____________________________________________________________AOI'_______________________________________________________________________________________________________
 
@@ -1165,16 +1339,21 @@ app.layout = html.Div([
         dcc.Graph(
             figure=figo11
         ),
-                    html.Br(),
-        html.H1(children='RGB intensity'),
-        dcc.Graph(
-            figure=figp1
-        ),
-                    html.Br(),
-        html.H1(children='Centering Info'),
-        dcc.Graph(
-            figure=figp11
-        ),
+        html.Div([
+            html.Div([
+                html.Br(),
+                html.H1(children='_Before Scan'),
+                dcc.Graph(figure=figbp1),], className='six columns'),
+            html.Div([
+                html.Br(),
+                html.H1(children='after Scan'),
+                dcc.Graph(figure=figp1),], className='six columns'),], className='row'),
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    figure=figbp11),], className='six columns'),
+            html.Div([
+                dcc.Graph(figure=figp11),], className='six columns'),], className='row'),
                     html.Br(),
         html.H1(children='Best Z Vs Slide Thickness'),
         dcc.Graph(
@@ -1202,16 +1381,21 @@ app.layout = html.Div([
         dcc.Graph(
             figure=figo22
         ),
-                    html.Br(),
-        html.H1(children='RGB intensity'),
-        dcc.Graph(
-            figure=figp2
-        ),
-                    html.Br(),
-        html.H1(children='Centering Info'),
-        dcc.Graph(
-            figure=figp22
-        ),
+        html.Div([
+            html.Div([
+                html.Br(),
+                html.H1(children='_Before Scan'),
+                dcc.Graph(figure=figbp2),], className='six columns'),
+            html.Div([
+                html.Br(),
+                html.H1(children='after Scan'),
+                dcc.Graph(figure=figp2),], className='six columns'),], className='row'),
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    figure=figbp22),], className='six columns'),
+            html.Div([
+                dcc.Graph(figure=figp22),], className='six columns'),], className='row'),
         html.Br(),
         html.H1(children='Best Z Vs Slide Thickness'),
         dcc.Graph(
@@ -1239,17 +1423,24 @@ app.layout = html.Div([
         dcc.Graph(
             figure=figo33
         ),
-                    html.Br(),
-        html.H1(children='RGB intensity'),
-        dcc.Graph(
-            figure=figp3
-        ),
-                    html.Br(),
-        html.H1(children='Centering Info'),
-        dcc.Graph(
-            figure=figp33
-        ),
-                    html.Br(),
+        html.Div([
+            html.Div([
+                html.Br(),
+                html.H1(children='_Before Scan'),
+                dcc.Graph(figure=figbp3),], className='six columns'),
+            html.Div([
+                html.Br(),
+                html.H1(children='after Scan'),
+                dcc.Graph(figure=figp3),], className='six columns'),], className='row'),
+        html.Div([
+            html.Div([
+                html.Br(),
+                dcc.Graph(
+                    figure=figbp33),], className='six columns'),
+            html.Div([
+                html.Br(),
+                dcc.Graph(figure=figp33),], className='six columns'),], className='row'),      
+        html.Br(),
         html.H1(children='Best Z Vs Slide Thickness'),
         dcc.Graph(
             figure=fig3

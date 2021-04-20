@@ -237,7 +237,7 @@ __________________________________________________
 CSV for slide angle and offset
 __________________________________________________
 '''
-curr_data=data2[['slide_name','permissible_angle','slide_width_um','scanner_name','actual_angle',
+curr_data=data2[['slide_name','permissible_angle','slide_height_um','slide_width_um','scanner_name','actual_angle',
          'time_stamp','slide_id','load_identifier','offset_pos_x_um','offset_pos_y_um','row_index','col_index']]
 
 curr_data=curr_data[curr_data['slide_width_um'] != 0]
@@ -268,18 +268,21 @@ postf=postf.reset_index(drop=True)
 p1_3=post[post['_source.data.scanner_name']=='S1']
 p1_2=post[post['_source.data.scanner_name']=='H01CBA02P']
 p2_2=post[post['_source.data.scanner_name']=='H01CBA03P']
-p3_2=post[post['_source.data.scanner_name']=='H01CBA06P']
+p3_2=post[post['_source.data.scanner_name']=='H01CBA01P']
 p4_2=post[post['_source.data.scanner_name']=='H01CBA05P']
 
+#__________________________________________________________________________ after scan
 new1=p1_2.groupby('_source.data.time_stamp', as_index=False).max()
 new1=new1['_source.data.time_stamp'].iloc[-1]
+p1=p1_2[p1_2['_source.data.time_stamp']==new1]
 
 new2=p2_2.groupby('_source.data.time_stamp', as_index=False).max()
 new2=new2['_source.data.time_stamp'].iloc[-1]
-
+p2=p2_2[p2_2['_source.data.time_stamp']==new2]
 
 new3=p3_2.groupby('_source.data.time_stamp', as_index=False).max()
 new3=new3['_source.data.time_stamp'].iloc[-1]
+p3=p3_2[p3_2['_source.data.time_stamp']==new3]
 
 #new4=p4_2.groupby('_source.data.time_stamp', as_index=False).max()
 #new4=new4['_source.data.time_stamp'].iloc[-1]
@@ -288,60 +291,110 @@ new3=new3['_source.data.time_stamp'].iloc[-1]
 #new5=p1_3.groupby('_source.data.time_stamp', as_index=False).max()
 #new5=new5['_source.data.time_stamp'].iloc[-1]
 
+#___________________________________________________________________________ before scan
 
-p1_2=p1_2[p1_2['_source.data.time_stamp']==new1]
+new11=p1_2.groupby('_source.data.time_stamp', as_index=False).max()
+new11=new11['_source.data.time_stamp'].iloc[-2]
+p11=p1_2[p1_2['_source.data.time_stamp']==new11]
 
-p2_2=p2_2[p2_2['_source.data.time_stamp']==new2]
+new22=p2_2.groupby('_source.data.time_stamp', as_index=False).max()
+new22=new22['_source.data.time_stamp'].iloc[-2]
+p22=p2_2[p2_2['_source.data.time_stamp']==new22]
 
-p3_2=p3_2[p3_2['_source.data.time_stamp']==new3]
+new33=p3_2.groupby('_source.data.time_stamp', as_index=False).max()
+new33=new33['_source.data.time_stamp'].iloc[-2]
+p33=p3_2[p3_2['_source.data.time_stamp']==new33]
+
+
+
+
 
 #p4_2=p4_2[p4_2['_source.data.time_stamp']==new4]
 
 #p1_3=p1_3[p1_3['_source.data.time_stamp']==new5]
 
-p1_2=p1_2.reset_index(drop=True)
-p2_2=p2_2.reset_index(drop=True)
-p3_2=p3_2.reset_index(drop=True)
+p1=p1.reset_index(drop=True)
+p2=p2.reset_index(drop=True)
+p3=p3.reset_index(drop=True)
 #p4_2=p4_2.reset_index(drop=True)
 #p1_3=p1_3.reset_index(drop=True)
 
+p11=p11.reset_index(drop=True)
+p22=p22.reset_index(drop=True)
+p33=p33.reset_index(drop=True)
 
 d=0
-for j in p1_2['_source.data.centering_info']:
+for j in p1['_source.data.centering_info']:
     df2=pd.DataFrame.from_dict(j)
-    df2['_source.data.scanner_name']=p1_2['_source.data.scanner_name'][d]
-    df2['_source.data.time_stamp']=p1_2['_source.data.time_stamp'][d]
+    df2['_source.data.scanner_name']=p1['_source.data.scanner_name'][d]
+    df2['_source.data.time_stamp']=p1['_source.data.time_stamp'][d]
     df2['centring_coordinate_y'] = df2['centring_coordinate_y'].values[::-1]
-    if d!=len(p2_2)-1:
+    if d!=len(p1)-1:
         d=d+1
     else:
         break
 
+d=0
+for j in p11['_source.data.centering_info']:
+    df22=pd.DataFrame.from_dict(j)
+    df22['_source.data.scanner_name']=p11['_source.data.scanner_name'][d]
+    df22['_source.data.time_stamp']=p11['_source.data.time_stamp'][d]
+    df22['centring_coordinate_y'] = df22['centring_coordinate_y'].values[::-1]
+    if d!=len(p11)-1:
+        d=d+1
+    else:
+        break
 
 df2.to_csv('/home/adminspin/Music/dash-report/apps/post2.csv',index=False)
-
+df22.to_csv('/home/adminspin/Music/dash-report/apps/post22.csv',index=False)
 
 d=0
-for j in p2_2['_source.data.centering_info']:
+for j in p2['_source.data.centering_info']:
     df3=pd.DataFrame.from_dict(j)
-    df3['_source.data.scanner_name']=p2_2['_source.data.scanner_name'][d]
-    df3['_source.data.time_stamp']=p2_2['_source.data.time_stamp'][d]
+    df3['_source.data.scanner_name']=p2['_source.data.scanner_name'][d]
+    df3['_source.data.time_stamp']=p2['_source.data.time_stamp'][d]
     df3['centring_coordinate_y'] = df3['centring_coordinate_y'].values[::-1]
-    if d!=len(p3_2)-1:
+    if d!=len(p2)-1:
         d=d+1
     else:
         break
-df3.to_csv('/home/adminspin/Music/dash-report/apps/post3.csv',index=False)
-'''
+
 d=0
-for j in p3_2['_source.data.centering_info']:
-    df4=pd.DataFrame.from_dict(j)
-    df4['_source.data.scanner_name']=p3_2['_source.data.scanner_name'][d]
-    df4['_source.data.time_stamp']=p3_2['_source.data.time_stamp'][d]
-    df4['centring_coordinate_y'] = df4['centring_coordinate_y'].values[::-1]
-    if d!=len(p4_2)-1:
+for j in p22['_source.data.centering_info']:
+    df33=pd.DataFrame.from_dict(j)
+    df33['_source.data.scanner_name']=p22['_source.data.scanner_name'][d]
+    df33['_source.data.time_stamp']=p22['_source.data.time_stamp'][d]
+    df33['centring_coordinate_y'] = df33['centring_coordinate_y'].values[::-1]
+    if d!=len(p22)-1:
         d=d+1
     else:
         break
+
+df3.to_csv('/home/adminspin/Music/dash-report/apps/post3.csv',index=False)
+df33.to_csv('/home/adminspin/Music/dash-report/apps/post33.csv',index=False)
+
+d=0
+for j in p3['_source.data.centering_info']:
+    df4=pd.DataFrame.from_dict(j)
+    df4['_source.data.scanner_name']=p3['_source.data.scanner_name'][d]
+    df4['_source.data.time_stamp']=p3['_source.data.time_stamp'][d]
+    df4['centring_coordinate_y'] = df4['centring_coordinate_y'].values[::-1]
+    if d!=len(p3)-1:
+        d=d+1
+    else:
+        break
+
+
+d=0
+for j in p33['_source.data.centering_info']:
+    dfp4=pd.DataFrame.from_dict(j)
+    dfp4['_source.data.scanner_name']=p33['_source.data.scanner_name'][d]
+    dfp4['_source.data.time_stamp']=p33['_source.data.time_stamp'][d]
+    dfp4['centring_coordinate_y'] = dfp4['centring_coordinate_y'].values[::-1]
+    if d!=len(p33)-1:
+        d=d+1
+    else:
+        break
+
 df4.to_csv('/home/adminspin/Music/dash-report/apps/post4.csv',index=False)
-'''
+dfp4.to_csv('/home/adminspin/Music/dash-report/apps/post44.csv',index=False)
