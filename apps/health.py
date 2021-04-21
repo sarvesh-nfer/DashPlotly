@@ -197,7 +197,7 @@ s2=s2[s2['load_identifier']==np.sort(s2['load_identifier'])[-1]]
 s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
 '''
 #S1_3=S1_3[S1_3['load_identifier']==np.sort(S1_3['load_identifier'])[-1]]
-#S1_2=S1_2[S1_2['load_identifier']==np.sort(S1_2['load_identifier'])[-1]]
+S1_2=S1_2[S1_2['load_identifier']==np.sort(S1_2['load_identifier'])[-1]]
 S2_2=S2_2[S2_2['load_identifier']==np.sort(S2_2['load_identifier'])[-1]]
 S3_2=S3_2[S3_2['load_identifier']==np.sort(S3_2['load_identifier'])[-1]]
 #S4_2=S4_2[S4_2['load_identifier']==np.sort(S4_2['load_identifier'])[-1]]
@@ -212,7 +212,7 @@ S1_3=S1_3.reset_index(drop=True)
 #plot
 ##############
 
-'''
+
 fig11 = px.scatter(S1_2, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
 labels={
 "first_initial_current": "Current Readings",
@@ -252,7 +252,7 @@ fig11.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",s
 fig11.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 fig11.update_layout(hovermode="x")
 #fig11.show()
-'''
+
 #######################################################################################################
 
 fig22 = px.scatter(S2_2, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
@@ -438,7 +438,7 @@ a4_2=angle[angle['scanner_name']=='H01CBA05P']
 a1_3=angle[angle['scanner_name']=='S1']
 
 #a1_3=a1_3[a1_3['load_identifier']==np.sort(a1_3['load_identifier'])[-1]]
-#a1_2=a1_2[a1_2['load_identifier']==np.sort(a1_2['load_identifier'])[-1]]
+a1_2=a1_2[a1_2['load_identifier']==np.sort(a1_2['load_identifier'])[-1]]
 a2_2=a2_2[a2_2['load_identifier']==np.sort(a2_2['load_identifier'])[-1]]
 a3_2=a3_2[a3_2['load_identifier']==np.sort(a3_2['load_identifier'])[-1]]
 #a4_2=a4_2[a4_2['load_identifier']==np.sort(a4_2['load_identifier'])[-1]]
@@ -449,7 +449,6 @@ a3_2=a3_2.reset_index(drop=True)
 a4_2=a4_2.reset_index(drop=True)
 a1_3=a1_3.reset_index(drop=True)
 #######################################################################
-'''
 
 # Create figure with secondary y-axis
 figa1 = make_subplots(specs=[[{"secondary_y": True}]])
