@@ -387,14 +387,18 @@ for j in p3['_source.data.centering_info']:
 
 d=0
 for j in p33['_source.data.centering_info']:
-    dfp4=pd.DataFrame.from_dict(j)
-    dfp4['_source.data.scanner_name']=p33['_source.data.scanner_name'][d]
-    dfp4['_source.data.time_stamp']=p33['_source.data.time_stamp'][d]
-    dfp4['centring_coordinate_y'] = dfp4['centring_coordinate_y'].values[::-1]
+    df44=pd.DataFrame.from_dict(j)
+    df44['_source.data.scanner_name']=p33['_source.data.scanner_name'][d]
+    df44['_source.data.time_stamp']=p33['_source.data.time_stamp'][d]
+    df44['centring_coordinate_y'] = df44['centring_coordinate_y'].values[::-1]
     if d!=len(p33)-1:
         d=d+1
     else:
         break
 
 df4.to_csv('/home/adminspin/Music/dash-report/apps/post4.csv',index=False)
-dfp4.to_csv('/home/adminspin/Music/dash-report/apps/post44.csv',index=False)
+df44.to_csv('/home/adminspin/Music/dash-report/apps/post44.csv',index=False)
+
+print("_"*120)
+print("All csv saved")
+print("_"*120)
