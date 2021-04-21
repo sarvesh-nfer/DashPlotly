@@ -587,8 +587,8 @@ angle['date2']=angle['date']
 angle['date'] = pd.to_datetime(angle['date'])
 a1_2=angle[angle['scanner_name']=='H01CBA02P']
 a2_2=angle[angle['scanner_name']=='H01CBA03P']
-a3_2=angle[angle['scanner_name']=='H01CBA06P']
-a4_2=angle[angle['scanner_name']=='H01CBA05P']
+a3_2=angle[angle['scanner_name']=='H01CBA01P']
+a4_2=angle[angle['scanner_name']=='H01CBA06P']
 a1_3=angle[angle['scanner_name']=='S1']
 
 @app.callback(Output('grapha1', 'figure'),
