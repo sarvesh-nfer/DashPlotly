@@ -154,7 +154,7 @@ For yesterday's date
 __________________________________________________
 '''
 today = date.today()
-yesterday = today - timedelta(days = 1)
+yesterday = today - timedelta(days = 8)
 today=str(today)
 yesterday=str(yesterday)
 #print(yesterday)
@@ -226,8 +226,9 @@ CSV for current difference
 __________________________________________________
 '''
 data3=data3.dropna(subset=['slide_id'])
+data3['row_col']=data3['row_index'].map(str)+','+data3['col_index'].map(str)
 data3['slide_id']=data3['slide_id'].astype(int)
-data3['slide_name']=data3['scanner_name']+data3['slide_id'].map(str)
+data3['slide_name']=data3['scanner_name']+'_'+data3['slide_id'].map(str)
 
 data3.to_csv('/home/adminspin/Music/dash-report/apps/current.csv',index=False)
 
@@ -237,10 +238,11 @@ __________________________________________________
 CSV for slide angle and offset
 __________________________________________________
 '''
-curr_data=data2[['slide_name','permissible_angle','slide_height_um','slide_width_um','scanner_name','actual_angle',
+curr_data=data2[['slide_name','permissible_angle','slide_height_um','slide_width_um','scanner_name','actual_angle','date',
          'time_stamp','slide_id','load_identifier','offset_pos_x_um','offset_pos_y_um','row_index','col_index']]
 
-curr_data=curr_data[curr_data['slide_width_um'] != 0]
+curr_data=curr_data[curr_data['slide_height_um'] != 0]
+curr_data['slide_height_mm']=curr_data['slide_height_um']/1000
 
 curr_data['row_col']=curr_data['row_index'].map(str)+','+curr_data['col_index'].map(str)
 

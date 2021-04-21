@@ -27,7 +27,7 @@ s1=merged[merged['scanner_name']=='H01CBA02P']
 s2=merged[merged['scanner_name']=='H01CBA03P']
 s3=merged[merged['scanner_name']=='H01CBA01P']
 s4=merged[merged['scanner_name']=='H01CBA05P']
-
+'''
 # Create figure with secondary y-axis
 fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -116,7 +116,7 @@ fig3.update_yaxes(title_text="<b>secondary</b> Slide Thickness values", secondar
 fig3.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
 fig3.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 #fig3.update_layout(hovermode="x")
-'''
+
 #fig33.show()# Create figure with secondary y-axis
 fig4 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -195,13 +195,13 @@ s11=s11[s11['.load_identifier']==np.sort(s11['load_identifier'])[-1]]
 s1=s1[s1['load_identifier']==np.sort(s1['load_identifier'])[-1]]
 s2=s2[s2['load_identifier']==np.sort(s2['load_identifier'])[-1]]
 s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
-'''
+
 #S1_3=S1_3[S1_3['load_identifier']==np.sort(S1_3['load_identifier'])[-1]]
 #S1_2=S1_2[S1_2['load_identifier']==np.sort(S1_2['load_identifier'])[-1]]
 S2_2=S2_2[S2_2['load_identifier']==np.sort(S2_2['load_identifier'])[-1]]
 S3_2=S3_2[S3_2['load_identifier']==np.sort(S3_2['load_identifier'])[-1]]
 #S4_2=S4_2[S4_2['load_identifier']==np.sort(S4_2['load_identifier'])[-1]]
-
+'''
 S1_2=S1_2.reset_index(drop=True)
 S2_2=S2_2.reset_index(drop=True)
 S3_2=S3_2.reset_index(drop=True)
@@ -252,7 +252,7 @@ fig11.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",s
 fig11.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 fig11.update_layout(hovermode="x")
 #fig11.show()
-'''
+
 #######################################################################################################
 
 fig22 = px.scatter(S2_2, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
@@ -337,7 +337,7 @@ fig33.update_layout(hovermode="x")
 #fig33.show()
 
 #########################################################################################################################################
-'''
+
 fig44 = px.scatter(S4_2, x="slide_name", y="first_initial_current",hover_name='first_read_angle',hover_data=['first_status'],
 labels={
 "first_initial_current": "Current Readings",
@@ -431,18 +431,22 @@ fig55.update_layout(hovermode="x")
 
 angle=pd.read_csv("apps/angleoffset.csv")
 angle=angle.dropna(subset=['load_identifier'])
+angle['date'] = pd.to_datetime(angle['time_stamp']).dt.date
+angle['date2']=angle['date']
+angle['date'] = pd.to_datetime(angle['date'])
+
 a1_2=angle[angle['scanner_name']=='H01CBA02P']
 a2_2=angle[angle['scanner_name']=='H01CBA03P']
 a3_2=angle[angle['scanner_name']=='H01CBA01P']
 a4_2=angle[angle['scanner_name']=='H01CBA05P']
 a1_3=angle[angle['scanner_name']=='S1']
-
+'''
 #a1_3=a1_3[a1_3['load_identifier']==np.sort(a1_3['load_identifier'])[-1]]
 #a1_2=a1_2[a1_2['load_identifier']==np.sort(a1_2['load_identifier'])[-1]]
 a2_2=a2_2[a2_2['load_identifier']==np.sort(a2_2['load_identifier'])[-1]]
 a3_2=a3_2[a3_2['load_identifier']==np.sort(a3_2['load_identifier'])[-1]]
 #a4_2=a4_2[a4_2['load_identifier']==np.sort(a4_2['load_identifier'])[-1]]
-
+'''
 a1_2=a1_2.reset_index(drop=True)
 a2_2=a2_2.reset_index(drop=True)
 a3_2=a3_2.reset_index(drop=True)
@@ -484,7 +488,7 @@ figa1.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",s
 figa1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 figa1.update_layout(hovermode="x")
 #figa1.show()
-'''
+
 
 # Create figure with secondary y-axis
 figa2 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -625,14 +629,16 @@ figa5.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",s
 figa5.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
 figa5.update_layout(hovermode="x")
 #figa1.show()
-
+'''
 
 #_________________________________________________________________________________________________________________________________________________________________________________
 #_____________________________________________________________Offset plots_______________________________________________________________________________________________________
 
 offset=pd.read_csv("apps/angleoffset.csv")
 offset=offset.dropna(subset=['load_identifier'])
-offset['row_col']=offset['row_index'].map(str)+','+offset['col_index'].map(str)
+offset['date'] = pd.to_datetime(offset['time_stamp']).dt.date
+offset['date2']=offset['date']
+offset['date'] = pd.to_datetime(offset['date'])
 
 o1_2=offset[offset['scanner_name']=='H01CBA02P']
 o2_2=offset[offset['scanner_name']=='H01CBA03P']
@@ -640,13 +646,13 @@ o3_2=offset[offset['scanner_name']=='H01CBA01P']
 o4_2=offset[offset['scanner_name']=='H01CBA05P']
 o1_3=offset[offset['scanner_name']=='S1']
 
-
+'''
 #o1_3=o1_3[o1_3['load_identifier']==np.sort(o1_3['load_identifier'])[-1]]
 #o1_2=o1_2[o1_2['load_identifier']==np.sort(o1_2['load_identifier'])[-1]]
 o2_2=o2_2[o2_2['load_identifier']==np.sort(o2_2['load_identifier'])[-1]]
 o3_2=o3_2[o3_2['load_identifier']==np.sort(o3_2['load_identifier'])[-1]]
 #o4_2=o4_2[o4_2['load_identifier']==np.sort(o4_2['load_identifier'])[-1]]
-
+'''
 o1_2=o1_2.reset_index(drop=True)
 o2_2=o2_2.reset_index(drop=True)
 o3_2=o3_2.reset_index(drop=True)
@@ -677,7 +683,7 @@ figo1.update_layout(width=1000,height=1100,
                  )
 figo1.update_xaxes(range=[-4000, 4000])
 #figo1.show()
-'''
+
 
 #######################################################
 
@@ -731,7 +737,7 @@ figo3.update_xaxes(range=[-4000, 4000])
 #figo3.show()
 
 ###########################################################
-'''
+
 figo4 = px.scatter(o4_2, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",hover_name="row_col",
                  labels={
                      "offset_pos_x_um": "X- offset (um)",
@@ -806,7 +812,7 @@ figo11.update_layout(width=1200,height=600,
 #figo11.update_layout(hovermode="y")
 figo11.update_yaxes(range=[-500, 6000])
 #fig.show()
-'''
+
 ###################################################################
 figo22 = px.scatter(o2_2, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
                 labels={
@@ -856,7 +862,7 @@ figo33.update_yaxes(range=[-500, 6000])
 #fig.show()
 
 ###################################################################
-'''
+
 figo44 = px.scatter(o4_2, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
@@ -1290,6 +1296,54 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
+category1 = []
+for opt in o1_2['date2'].unique():
+    category1.append({'label' : opt, 'value' : opt})
+
+category2 = []
+for opt in o2_2['date2'].unique():
+    category2.append({'label' : opt, 'value' : opt})
+
+category3 = []
+for opt in o2_2['date2'].unique():
+    category3.append({'label' : opt, 'value' : opt})
+
+category4 = []
+for opt in np.sort(S1_2['date'].unique()):
+    category4.append({'label' : opt, 'value' : opt})
+
+category5 = []
+for opt in np.sort(S2_2['date'].unique()):
+    category5.append({'label' : opt, 'value' : opt})
+
+category6 = []
+for opt in np.sort(S3_2['date'].unique()):
+    category6.append({'label' : opt, 'value' : opt})
+
+categorys1 = []
+for opt in np.sort(s1['date'].unique()):
+    categorys1.append({'label' : opt, 'value' : opt})
+
+categorys2 = []
+for opt in np.sort(s2['date'].unique()):
+    categorys2.append({'label' : opt, 'value' : opt})
+
+categorys3 = []
+for opt in np.sort(s3['date'].unique()):
+    categorys3.append({'label' : opt, 'value' : opt})
+
+categorya1 = []
+for opt in np.sort(a1_2['date2'].unique()):
+    categorya1.append({'label' : opt, 'value' : opt})
+
+categorya2 = []
+for opt in np.sort(a2_2['date2'].unique()):
+    categorya2.append({'label' : opt, 'value' : opt})
+
+categorya3 = []
+for opt in np.sort(a3_2['date2'].unique()):
+    categorya3.append({'label' : opt, 'value' : opt})
+
 app.layout = html.Div([
     dcc.Tabs([
         dcc.Tab(label='Scanner Health',style=tab_style, selected_style=tab_selected_style, children=[
@@ -1318,30 +1372,56 @@ app.layout = html.Div([
         ]),
         dcc.Tab(label='Station 1',style=tab_style, selected_style=tab_selected_style, children=[
         html.Br(),
-        html.H1(children='Current Difference'),
-        dcc.Graph(
-            figure=fig1
-        ),
+            html.H1(children='Current Deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'c1', options = category4, value = np.sort(S1_2['date'].unique())[-1]),
+                dcc.Graph(id='graphc1'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
         html.Br(),
-        html.H1(children='Angle permissible'),
-        dcc.Graph(
-            figure=fig1
-        ),
-                    html.Br(),
-        html.H1(children='X-offset deviation'),
-        dcc.Graph(
-            figure=fig1
-        ),
-                    html.Br(),
-        html.H1(children='Y-offset deviation'),
-        dcc.Graph(
-            figure=fig1
-        ),
+            html.H1(children='Angle permissible'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'a1', options = categorya1, value = a1_2['date2'].unique()[-1]),
+                dcc.Graph(id='grapha1'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        html.Div([
+            html.H1(children='X-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x1', options = category1, value = o1_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphx1'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x11', options = category1, value = o1_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphx11')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
+        html.Div([
+            html.H1(children='Y-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y1', options = category1, value = o1_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphy1'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y11', options = category1, value = o1_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphy11')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
         html.Div([
             html.Div([
                 html.Br(),
                 html.H1(children='_Before Scan'),
-                dcc.Graph(figure=figbp1),], className='six columns'),
+                dcc.Graph(figure=figp1),], className='six columns'),
             html.Div([
                 html.Br(),
                 html.H1(children='after Scan'),
@@ -1349,41 +1429,70 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 dcc.Graph(
-                    figure=figbp11),], className='six columns'),
+                    figure=figp11),], className='six columns'),
             html.Div([
                 dcc.Graph(figure=figp11),], className='six columns'),], className='row'),
-                    html.Br(),
-        html.H1(children='Best Z Vs Slide Thickness'),
-        dcc.Graph(
-            figure=fig1
-        ),
+        html.Br(),
+            html.H1(children='Best-Z vs Slide thickness'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 's1', options = categorys1, value = np.sort(s1['date'].unique())[-1]),
+                dcc.Graph(id='graphs1'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
     ]),
     dcc.Tab(label='Station 2',style=tab_style, selected_style=tab_selected_style, children=[
         html.Br(),
-        html.H1(children='Current Difference'),
-        dcc.Graph(
-            figure=fig22
-        ),
+            html.H1(children='Current Deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'c2', options = category5, value = np.sort(S2_2['date'].unique())[-1]),
+                dcc.Graph(id='graphc2'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
         html.Br(),
-        html.H1(children='Angle permissible'),
-        dcc.Graph(
-            figure=figa2
-        ),
-                    html.Br(),
-        html.H1(children='X-offset deviation'),
-        dcc.Graph(
-            figure=figo2
-        ),
-                    html.Br(),
-        html.H1(children='Y-offset deviation'),
-        dcc.Graph(
-            figure=figo22
-        ),
+            html.H1(children='Angle permissible'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'a2', options = categorya2, value = a2_2['date2'].unique()[-1]),
+                dcc.Graph(id='grapha2'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        html.Div([
+            html.H1(children='X-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x2', options = category2, value = o2_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphx2'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x22', options = category2, value = o2_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphx22')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
+        html.Div([
+            html.H1(children='Y-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y2', options = category2, value = o2_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphy2'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y22', options = category2, value = o2_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphy22')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
         html.Div([
             html.Div([
                 html.Br(),
                 html.H1(children='_Before Scan'),
-                dcc.Graph(figure=figbp2),], className='six columns'),
+                dcc.Graph(figure=figp2),], className='six columns'),
             html.Div([
                 html.Br(),
                 html.H1(children='after Scan'),
@@ -1391,58 +1500,88 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 dcc.Graph(
-                    figure=figbp22),], className='six columns'),
+                    figure=figp22),], className='six columns'),
             html.Div([
                 dcc.Graph(figure=figp22),], className='six columns'),], className='row'),
         html.Br(),
-        html.H1(children='Best Z Vs Slide Thickness'),
-        dcc.Graph(
-            figure=fig2
-        ),
+            html.H1(children='Best-Z vs Slide thickness'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 's2', options = categorys2, value = np.sort(s2['date'].unique())[-1]),
+                dcc.Graph(id='graphs2'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
     ]),
     dcc.Tab(label='Station 3',style=tab_style, selected_style=tab_selected_style, children=[
         html.Br(),
-        html.H1(children='Current Difference'),
-        dcc.Graph(
-            figure=fig33
-        ),
+            html.H1(children='Current Deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'c3', options = category6, value = np.sort(S3_2['date'].unique())[-1]),
+                dcc.Graph(id='graphc3'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
         html.Br(),
-        html.H1(children='Angle permissible'),
-        dcc.Graph(
-            figure=figa3
-        ),
-                    html.Br(),
-        html.H1(children='X-offset deviation'),
-        dcc.Graph(
-            figure=figo3
-        ),
-                    html.Br(),
-        html.H1(children='Y-offset deviation'),
-        dcc.Graph(
-            figure=figo33
-        ),
+            html.H1(children='Angle permissible'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'a3', options = categorya3, value = a3_2['date2'].unique()[-1]),
+                dcc.Graph(id='grapha3'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        html.Div([
+            html.H1(children='X-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x3', options = category3, value = o3_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphx3'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x33', options = category3, value = o3_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphx33')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
+        html.Div([
+            html.H1(children='Y-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y3', options = category3, value = o3_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphy3'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y33', options = category3, value = o3_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphy33')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
         html.Div([
             html.Div([
                 html.Br(),
                 html.H1(children='_Before Scan'),
-                dcc.Graph(figure=figbp3),], className='six columns'),
+                dcc.Graph(figure=figp3),], className='six columns'),
             html.Div([
                 html.Br(),
                 html.H1(children='after Scan'),
                 dcc.Graph(figure=figp3),], className='six columns'),], className='row'),
         html.Div([
             html.Div([
-                html.Br(),
                 dcc.Graph(
-                    figure=figbp33),], className='six columns'),
+                    figure=figp33),], className='six columns'),
             html.Div([
-                html.Br(),
                 dcc.Graph(figure=figp33),], className='six columns'),], className='row'),      
         html.Br(),
-        html.H1(children='Best Z Vs Slide Thickness'),
-        dcc.Graph(
-            figure=fig3
-        )
+            html.H1(children='Best-Z vs Slide thickness'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 's3', options = categorys3, value = np.sort(s3['date'].unique())[-1]),
+                dcc.Graph(id='graphs3'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
     ]),
 ]) 
 ])
