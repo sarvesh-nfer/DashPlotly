@@ -925,12 +925,12 @@ post44=pd.read_csv("apps/post44.csv")
 figp1 = go.Figure()
 figp1.add_trace(go.Scatter(y=post2['mean_red_intensity'],
                             mode='lines',
-                            name='mean_red_intensity',line=dict(color='red')))
+                            name='Mean red',line=dict(color='red')))
 figp1.add_trace(go.Scatter(y=post2['mean_blue_intensity'],
                             mode='lines',
-                            name='mean_blue_intensity',line=dict(color='blue')))
+                            name='Mean blue',line=dict(color='blue')))
 figp1.add_trace(go.Scatter(y=post2['mean_green_intensity'],
-                            mode='lines', name='mean_green_intensity',line=dict(color='green')))
+                            mode='lines', name='Mean green',line=dict(color='green')))
 figp1.update_yaxes(range=[150, 260])
 figp1.update_layout(title="Average Intensity across the z stack"+" "+post2['_source.data.time_stamp'][1],width=900,height=500,
                     margin=dict(l=110),
@@ -979,12 +979,12 @@ figp11.add_shape(type="rect",
 figbp1 = go.Figure()
 figbp1.add_trace(go.Scatter(y=post22['mean_red_intensity'],
                             mode='lines',
-                            name='mean_red_intensity',line=dict(color='red')))
+                            name='Mean red',line=dict(color='red')))
 figbp1.add_trace(go.Scatter(y=post22['mean_blue_intensity'],
                             mode='lines',
-                            name='mean_blue_intensity',line=dict(color='blue')))
+                            name='Mean blue',line=dict(color='blue')))
 figbp1.add_trace(go.Scatter(y=post22['mean_green_intensity'],
-                            mode='lines', name='mean_green_intensity',line=dict(color='green')))
+                            mode='lines', name='Mean green',line=dict(color='green')))
 figbp1.update_yaxes(range=[150, 260])
 figbp1.update_layout(title="Average Intensity across the z stack"+" "+post2['_source.data.time_stamp'][1],width=900,height=500,
                     margin=dict(l=110),
@@ -1034,12 +1034,12 @@ figbp11.add_shape(type="rect",
 figp2 = go.Figure()
 figp2.add_trace(go.Scatter(y=post3['mean_red_intensity'],
                             mode='lines',
-                            name='mean_red_intensity',line=dict(color='red')))
+                            name='Mean red',line=dict(color='red')))
 figp2.add_trace(go.Scatter(y=post3['mean_blue_intensity'],
                             mode='lines',
-                            name='mean_blue_intensity',line=dict(color='blue')))
+                            name='Mean blue',line=dict(color='blue')))
 figp2.add_trace(go.Scatter(y=post3['mean_green_intensity'],
-                            mode='lines', name='mean_green_intensity',line=dict(color='green')))
+                            mode='lines', name='Mean green',line=dict(color='green')))
 figp2.update_yaxes(range=[150, 260])
 figp2.update_layout(title="Average Intensity across the z stack"+" "+post3['_source.data.time_stamp'][1],width=900,height=500,
                     margin=dict(l=110),
@@ -1089,12 +1089,12 @@ figp22.add_shape(type="rect",
 figbp2 = go.Figure()
 figbp2.add_trace(go.Scatter(y=post33['mean_red_intensity'],
                             mode='lines',
-                            name='mean_red_intensity',line=dict(color='red')))
+                            name='Mean red',line=dict(color='red')))
 figbp2.add_trace(go.Scatter(y=post33['mean_blue_intensity'],
                             mode='lines',
-                            name='mean_blue_intensity',line=dict(color='blue')))
+                            name='Mean blue',line=dict(color='blue')))
 figbp2.add_trace(go.Scatter(y=post33['mean_green_intensity'],
-                            mode='lines', name='mean_green_intensity',line=dict(color='green')))
+                            mode='lines', name='Mean green',line=dict(color='green')))
 figbp2.update_yaxes(range=[150, 260])
 figbp2.update_layout(title="Average Intensity across the z stack"+" "+post33['_source.data.time_stamp'][1],width=900,height=500,
                     margin=dict(l=110),
@@ -1144,12 +1144,12 @@ figbp22.add_shape(type="rect",
 figp3 = go.Figure()
 figp3.add_trace(go.Scatter(y=post4['mean_red_intensity'],
                             mode='lines',
-                            name='mean red intensity',line=dict(color='red')))
+                            name='Mean red',line=dict(color='red')))
 figp3.add_trace(go.Scatter(y=post4['mean_blue_intensity'],
                             mode='lines',
-                            name='mean blue intensity',line=dict(color='blue')))
+                            name='Mean blue',line=dict(color='blue')))
 figp3.add_trace(go.Scatter(y=post4['mean_green_intensity'],
-                            mode='lines', name='mean green intensity',line=dict(color='green')))
+                            mode='lines', name='Mean green',line=dict(color='green')))
 figp3.update_yaxes(range=[150, 260])
 figp3.update_layout(title="Average Intensity across the z stack"+" "+post4['_source.data.time_stamp'][1],width=900,height=500,
                     margin=dict(l=110),
@@ -1200,12 +1200,12 @@ figp33.add_shape(type="rect",
 figbp3 = go.Figure()
 figbp3.add_trace(go.Scatter(y=post44['mean_red_intensity'],
                             mode='lines',
-                            name='mean red intensity',line=dict(color='red')))
+                            name='Mean red',line=dict(color='red')))
 figbp3.add_trace(go.Scatter(y=post44['mean_blue_intensity'],
                             mode='lines',
-                            name='mean blue intensity',line=dict(color='blue')))
+                            name='Mean blue',line=dict(color='blue')))
 figbp3.add_trace(go.Scatter(y=post44['mean_green_intensity'],
-                            mode='lines', name='mean green intensity',line=dict(color='green')))
+                            mode='lines', name='Mean green',line=dict(color='green')))
 figbp3.update_yaxes(range=[150, 260])
 figbp3.update_layout(title="Average Intensity across the z stack"+" "+post44['_source.data.time_stamp'][1],width=900,height=500,
                     margin=dict(l=110),

@@ -112,7 +112,7 @@ def figure_x1(input_1):
     x1 = o1_2[o1_2['date']==input_1]
     x1=x1[x1['load_identifier']==np.sort(x1['load_identifier'])[-1]]
     # Create a plotly figure
-    figo1 = px.scatter(x1, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",
+    figo1 = px.scatter(x1, y="slide_name", x="offset_pos_x_um",
                      labels={
                          "x_offset_um": "X- offset (um)",
                          "slide_name": "Slide_name",
@@ -123,7 +123,7 @@ def figure_x1(input_1):
                                             color='DarkSlateGrey')),
                       selector=dict(mode='markers'))
 
-    figo1.add_vrect(x0=-3500, x1=3500)
+    figo1.add_vrect(x0=-3500, x1=1200)
     figo1.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
     figo1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
     figo1.update_layout(width=1000,height=1100,
@@ -133,7 +133,7 @@ def figure_x1(input_1):
                           color="RebeccaPurple"
                       ),
                      )
-    figo1.update_xaxes(range=[-4000, 4000])
+    figo1.update_xaxes(range=[-3800, 2800])
     return figo1
 
 @app.callback(Output('graphx11', 'figure'),
@@ -143,29 +143,29 @@ def figure_x11(input_1):
     x11 = o1_2[o1_2['date']==input_1]
     x11=x11[x11['load_identifier']==np.sort(x11['load_identifier'])[-1]]
     # Create a plotly figure
-    figo1 = px.scatter(x11, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",
+    figo11 = px.scatter(x11, y="slide_name", x="offset_pos_x_um",
                      labels={
                          "x_offset_um": "X- offset (um)",
                          "slide_name": "Slide_name",
                      },)
-    figo1.update_traces(mode="markers",                 
+    figo11.update_traces(mode="markers",                 
                       marker=dict(size=5,
                                   line=dict(width=1,
                                             color='DarkSlateGrey')),
                       selector=dict(mode='markers'))
 
-    figo1.add_vrect(x0=-3500, x1=3500)
-    figo1.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
-    figo1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
-    figo1.update_layout(width=1000,height=1100,
+    figo11.add_vrect(x0=-3500, x1=1200)
+    figo11.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figo11.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figo11.update_layout(width=1000,height=1100,
                       font=dict(
                           family="Courier New, monospace",
                           size=16,
                           color="RebeccaPurple"
                       ),
                      )
-    figo1.update_xaxes(range=[-4000, 4000])
-    return figo1
+    figo11.update_xaxes(range=[-3800, 2800])
+    return figo11
 
 @app.callback(Output('graphx2', 'figure'),
               [Input('x2', 'value')])
@@ -175,29 +175,29 @@ def figure_x2(input_1):
     x2 = o2_2[o2_2['date']==input_1]
     x2=x2[x2['load_identifier']==np.sort(x2['load_identifier'])[-1]]
     # Create a plotly figure
-    figo1 = px.scatter(x2, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",
+    figo2 = px.scatter(x2, y="slide_name", x="offset_pos_x_um",
                      labels={
                          "x_offset_um": "X- offset (um)",
                          "slide_name": "Slide_name",
                      },)
-    figo1.update_traces(mode="markers",                 
+    figo2.update_traces(mode="markers",                 
                       marker=dict(size=5,
                                   line=dict(width=1,
                                             color='DarkSlateGrey')),
                       selector=dict(mode='markers'))
 
-    figo1.add_vrect(x0=-3500, x1=3500)
-    figo1.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
-    figo1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
-    figo1.update_layout(width=1000,height=1100,
+    figo2.add_vrect(x0=-3500, x1=1200)
+    figo2.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figo2.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figo2.update_layout(width=1000,height=1100,
                       font=dict(
                           family="Courier New, monospace",
                           size=16,
                           color="RebeccaPurple"
                       ),
                      )
-    figo1.update_xaxes(range=[-4000, 4000])
-    return figo1
+    figo2.update_xaxes(range=[-3800, 2800])
+    return figo2
 
 @app.callback(Output('graphx22', 'figure'),
               [Input('x22', 'value')])
@@ -207,29 +207,29 @@ def figure_x22(input_1):
     x22 = o2_2[o2_2['date']==input_1]
     x22=x22[x22['load_identifier']==np.sort(x22['load_identifier'])[-1]]
     # Create a plotly figure
-    figo1 = px.scatter(x22, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",
+    figo22 = px.scatter(x22, y="slide_name", x="offset_pos_x_um",
                      labels={
                          "x_offset_um": "X- offset (um)",
                          "slide_name": "Slide_name",
                      },)
-    figo1.update_traces(mode="markers",                 
+    figo22.update_traces(mode="markers",                 
                       marker=dict(size=5,
                                   line=dict(width=1,
                                             color='DarkSlateGrey')),
                       selector=dict(mode='markers'))
 
-    figo1.add_vrect(x0=-3500, x1=3500)
-    figo1.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
-    figo1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
-    figo1.update_layout(width=1000,height=1100,
+    figo22.add_vrect(x0=-3500, x1=1200)
+    figo22.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figo22.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figo22.update_layout(width=1000,height=1100,
                       font=dict(
                           family="Courier New, monospace",
                           size=16,
                           color="RebeccaPurple"
                       ),
                      )
-    figo1.update_xaxes(range=[-4000, 4000])
-    return figo1
+    figo22.update_xaxes(range=[-3800, 2800])
+    return figo22
 
 @app.callback(Output('graphx3', 'figure'),
               [Input('x3', 'value')])
@@ -239,29 +239,29 @@ def figure_x3(input_1):
     x3 = o2_2[o2_2['date']==input_1]
     x3=x3[x3['load_identifier']==np.sort(x3['load_identifier'])[-1]]
     # Create a plotly figure
-    figo1 = px.scatter(x3, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",
+    figo3 = px.scatter(x3, y="slide_name", x="offset_pos_x_um",
                      labels={
                          "x_offset_um": "X- offset (um)",
                          "slide_name": "Slide_name",
                      },)
-    figo1.update_traces(mode="markers",                 
+    figo3.update_traces(mode="markers",                 
                       marker=dict(size=5,
                                   line=dict(width=1,
                                             color='DarkSlateGrey')),
                       selector=dict(mode='markers'))
 
-    figo1.add_vrect(x0=-3500, x1=3500)
-    figo1.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
-    figo1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
-    figo1.update_layout(width=1000,height=1100,
+    figo3.add_vrect(x0=-3500, x1=1200)
+    figo3.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figo3.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figo3.update_layout(width=1000,height=1100,
                       font=dict(
                           family="Courier New, monospace",
                           size=16,
                           color="RebeccaPurple"
                       ),
                      )
-    figo1.update_xaxes(range=[-4000, 4000])
-    return figo1
+    figo3.update_xaxes(range=[-3800, 2800])
+    return figo3
 
 @app.callback(Output('graphx33', 'figure'),
               [Input('x33', 'value')])
@@ -271,29 +271,29 @@ def figure_x33(input_1):
     x33 = o3_2[o3_2['date']==input_1]
     x33=x33[x33['load_identifier']==np.sort(x33['load_identifier'])[-1]]
     # Create a plotly figure
-    figo1 = px.scatter(x33, y="slide_name", x="offset_pos_x_um",title="X-Offset Deviation",
+    figo33 = px.scatter(x33, y="slide_name", x="offset_pos_x_um",
                      labels={
                          "x_offset_um": "X- offset (um)",
                          "slide_name": "Slide_name",
                      },)
-    figo1.update_traces(mode="markers",                 
+    figo33.update_traces(mode="markers",                 
                       marker=dict(size=5,
                                   line=dict(width=1,
                                             color='DarkSlateGrey')),
                       selector=dict(mode='markers'))
 
-    figo1.add_vrect(x0=-3500, x1=3500)
-    figo1.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
-    figo1.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
-    figo1.update_layout(width=1000,height=1100,
+    figo33.add_vrect(x0=-3500, x1=1200)
+    figo33.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figo33.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figo33.update_layout(width=1000,height=1100,
                       font=dict(
                           family="Courier New, monospace",
                           size=16,
                           color="RebeccaPurple"
                       ),
                      )
-    figo1.update_xaxes(range=[-4000, 4000])
-    return figo1
+    figo33.update_xaxes(range=[-3800, 2800])
+    return figo33
 
 @app.callback(Output('graphy1', 'figure'),
               [Input('y1', 'value')])
@@ -302,7 +302,7 @@ def figure_y1(input_1):
     y1 = o1_2[o1_2['date']==input_1]
     y1=y1[y1['load_identifier']==np.sort(y1['load_identifier'])[-1]]
     
-    figy1 = px.scatter(y1, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
+    figy1 = px.scatter(y1, x="slide_name", y="offset_pos_y_um",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
                      "slide_name": "Slide_name",
@@ -332,7 +332,7 @@ def figure_y11(input_1):
     y11 = o1_2[o1_2['date']==input_1]
     y11=y11[y11['load_identifier']==np.sort(y11['load_identifier'])[-1]]
     
-    figy11 = px.scatter(y11, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
+    figy11 = px.scatter(y11, x="slide_name", y="offset_pos_y_um",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
                      "slide_name": "Slide_name",
@@ -362,7 +362,7 @@ def figure_y3(input_1):
     y3 = o3_2[o3_2['date']==input_1]
     y3=y3[y3['load_identifier']==np.sort(y3['load_identifier'])[-1]]
     
-    figy3 = px.scatter(y3, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
+    figy3 = px.scatter(y3, x="slide_name", y="offset_pos_y_um",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
                      "slide_name": "Slide_name",
@@ -392,7 +392,7 @@ def figure_y33(input_1):
     y33 = o3_2[o3_2['date']==input_1]
     y33=y33[y33['load_identifier']==np.sort(y33['load_identifier'])[-1]]
     
-    figy33 = px.scatter(y33, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
+    figy33 = px.scatter(y33, x="slide_name", y="offset_pos_y_um",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
                      "slide_name": "Slide_name",
@@ -422,7 +422,7 @@ def figure_y2(input_1):
     y2 = o2_2[o2_2['date']==input_1]
     y2=y2[y2['load_identifier']==np.sort(y2['load_identifier'])[-1]]
     
-    figy2 = px.scatter(y2, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
+    figy2 = px.scatter(y2, x="slide_name", y="offset_pos_y_um",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
                      "slide_name": "Slide_name",
@@ -452,7 +452,7 @@ def figure_y22(input_1):
     y22 = o2_2[o2_2['date']==input_1]
     y22=y22[y22['load_identifier']==np.sort(y22['load_identifier'])[-1]]
     
-    figy22 = px.scatter(y22, x="slide_name", y="offset_pos_y_um",title="Y-Offset Deviation",hover_name="row_col",
+    figy22 = px.scatter(y22, x="slide_name", y="offset_pos_y_um",hover_name="row_col",
                 labels={
                      "y_offset_um": "Y- offset (um)",
                      "slide_name": "Slide_name",
