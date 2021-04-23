@@ -1421,7 +1421,7 @@ app.layout = html.Div([
             html.Div([
                 html.Br(),
                 html.H1(children='_Before Scan'),
-                dcc.Graph(figure=figp1),], className='six columns'),
+                dcc.Graph(figure=figbp1),], className='six columns'),
             html.Div([
                 html.Br(),
                 html.H1(children='after Scan'),
@@ -1429,7 +1429,7 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 dcc.Graph(
-                    figure=figp11),], className='six columns'),
+                    figure=figbp11),], className='six columns'),
             html.Div([
                 dcc.Graph(figure=figp11),], className='six columns'),], className='row'),
         html.Br(),
@@ -1492,7 +1492,7 @@ app.layout = html.Div([
             html.Div([
                 html.Br(),
                 html.H1(children='_Before Scan'),
-                dcc.Graph(figure=figp2),], className='six columns'),
+                dcc.Graph(figure=figbp2),], className='six columns'),
             html.Div([
                 html.Br(),
                 html.H1(children='after Scan'),
@@ -1500,7 +1500,7 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 dcc.Graph(
-                    figure=figp22),], className='six columns'),
+                    figure=figbp22),], className='six columns'),
             html.Div([
                 dcc.Graph(figure=figp22),], className='six columns'),], className='row'),
         html.Br(),
@@ -1563,7 +1563,7 @@ app.layout = html.Div([
             html.Div([
                 html.Br(),
                 html.H1(children='_Before Scan'),
-                dcc.Graph(figure=figp3),], className='six columns'),
+                dcc.Graph(figure=figbp3),], className='six columns'),
             html.Div([
                 html.Br(),
                 html.H1(children='after Scan'),
@@ -1571,7 +1571,7 @@ app.layout = html.Div([
         html.Div([
             html.Div([
                 dcc.Graph(
-                    figure=figp33),], className='six columns'),
+                    figure=figbp33),], className='six columns'),
             html.Div([
                 dcc.Graph(figure=figp33),], className='six columns'),], className='row'),      
         html.Br(),

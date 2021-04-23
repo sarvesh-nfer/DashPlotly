@@ -495,8 +495,8 @@ S1_3=current[current['scanner_name']=='S1']
               [Input('c1', 'value')])
 def figure_c1(input_1):
     c1=S1_2[S1_2['date']==input_1]
-    c1=c1[c1['load_identifier']==np.sort(c1['load_identifier'])[-1]]
-    c1['col_index']=np.sort(c1['col_index'])
+    c1=c1[c1['load_identifier']==c1['load_identifier'].iloc[-1]]
+
     figc1 = px.scatter(c1, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -527,8 +527,7 @@ def figure_c1(input_1):
               [Input('c2', 'value')])
 def figure_c2(input_1):
     c2=S2_2[S2_2['date']==input_1]
-    c2=c2[c2['load_identifier']==np.sort(c2['load_identifier'])[-1]]
-    c2['col_index']=np.sort(c2['col_index'])
+    c2=c2[c2['load_identifier']==c2['load_identifier'].iloc[-1]]
     figc2 = px.scatter(c2, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -559,8 +558,7 @@ def figure_c2(input_1):
               [Input('c3', 'value')])
 def figure_c3(input_1):
     c3=S3_2[S3_2['date']==input_1]
-    c3=c3[c3['load_identifier']==np.sort(c3['load_identifier'])[-1]]
-    c3['col_index']=np.sort(c3['col_index'])
+    c3=c3[c3['load_identifier']==c3['load_identifier'].iloc[-1]]
     figc3 = px.scatter(c3, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -681,7 +679,7 @@ def figure_a2(input_1):
               [Input('a3', 'value')])
 def figure_a3(input_1):
     a3=a3_2[a3_2['date']==input_1]
-    #a3=a3[a3['load_identifier']==np.sort(a3['load_identifier'])[-1]]
+    a3=a3[a3['load_identifier']==np.sort(a3['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     figa3 = make_subplots(specs=[[{"secondary_y": True}]])
     # Add traces
@@ -729,7 +727,7 @@ m4=merged[merged['scanner_name']=='H01CBA06P']
               [Input('s1', 'value')])
 def figure_s1(input_1):
     s1=m1[m1['date_x']==input_1]
-    s1=s1[s1['load_identifier']==np.sort(s1['load_identifier'])[-1]]
+    s1=s1[s1['load_identifier']==s1['load_identifier'].iloc[-1]]
     # Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -763,7 +761,7 @@ def figure_s1(input_1):
               [Input('s2', 'value')])
 def figure_s2(input_1):
     s2=m2[m2['date_x']==input_1]
-    s2=s2[s2['load_identifier']==np.sort(s2['load_identifier'])[-1]]
+    s2=s2[s2['load_identifier']==s2['load_identifier'].iloc[-1]]
     # Create figure with secondary y-axis
     fig2 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -797,7 +795,7 @@ def figure_s2(input_1):
               [Input('s3', 'value')])
 def figure_s3(input_1):
     s3=m3[m3['date_x']==input_1]
-    s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
+    s3=s3[s3['load_identifier']==s3['load_identifier'].iloc[-1]]
     # Create figure with secondary y-axis
     fig3 = make_subplots(specs=[[{"secondary_y": True}]])
 
