@@ -215,9 +215,9 @@ for i in data:
 parse_bb['Biopsy']=np.bitwise_and(parse_bb['focus_metric']  >= 6 , parse_bb['color_metric'] >= 7)
 parse_bb['Debris']=np.bitwise_and(parse_bb['focus_metric'] >= 6 , parse_bb['color_metric'] < 7)
 parse_bb['Background']=np.bitwise_and(parse_bb['focus_metric'] < 6 , parse_bb['color_metric'] < 7)
-parse_bb['color1']=parse_bb['Biopsy'].replace([True,False],['lightgreen','lightyellow'])
-parse_bb['color2']=parse_bb['Debris'].replace([True,False],['lightgreen','lightyellow'])
-parse_bb['color3']=parse_bb['Background'].replace([True,False],['lightgreen','lightyellow'])
+#parse_bb['Biopsy']=parse_bb['Biopsy'].replace([True,False],['true','false'])
+#parse_bb['Debris']=parse_bb['Debris'].replace([True,False],['true','false'])
+#parse_bb['Background']=parse_bb['Background'].replace([True,False],['true','false'])
 parse_bb.to_csv('/home/adminspin/Music/dash-report/apps/parse_bb.csv',index=False)
 parse_bb=parse_bb[parse_bb.best_z != -1]
 
@@ -238,6 +238,8 @@ data3 = data3.sort_values(["row_index", "col_index"], ascending = (True, True))
 data3['row_col']=data3['row_index'].map(str)+','+data3['col_index'].map(str)
 data3['slide_id']=data3['slide_id'].astype(int)
 data3['slide_name']=data3['scanner_name']+'_'+data3['slide_id'].map(str)
+#data3['date2'] = pd.to_datetime(data3['time_stamp']).dt.date
+#data3['drop']=data3['date'].astype(str)+'-'+data3['load_identifier']
 
 data3.to_csv('/home/adminspin/Music/dash-report/apps/current.csv',index=False)
 

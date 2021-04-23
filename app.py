@@ -117,7 +117,7 @@ o1_3=offset[offset['scanner_name']=='S1']
 def figure_x1(input_1):
     # filter the data
 
-    x1 = o1_2[o1_2['date']==input_1]
+    x1 = o1_2[o1_2['date']>=input_1]
     x1=x1[x1['load_identifier']==np.sort(x1['load_identifier'])[-1]]
     # Create a plotly figure
     figo1 = px.scatter(x1, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -148,7 +148,7 @@ def figure_x1(input_1):
               [Input('x11', 'value')])
 def figure_x11(input_1):
     # filter the data
-    x11 = o1_2[o1_2['date']==input_1]
+    x11 = o1_2[o1_2['date']>=input_1]
     x11=x11[x11['load_identifier']==np.sort(x11['load_identifier'])[-1]]
     # Create a plotly figure
     figo11 = px.scatter(x11, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -180,7 +180,7 @@ def figure_x11(input_1):
 def figure_x2(input_1):
     # filter the data
 
-    x2 = o2_2[o2_2['date']==input_1]
+    x2 = o2_2[o2_2['date']>=input_1]
     x2=x2[x2['load_identifier']==np.sort(x2['load_identifier'])[-1]]
     # Create a plotly figure
     figo2 = px.scatter(x2, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -212,7 +212,7 @@ def figure_x2(input_1):
 def figure_x22(input_1):
     # filter the data
 
-    x22 = o2_2[o2_2['date']==input_1]
+    x22 = o2_2[o2_2['date']>=input_1]
     x22=x22[x22['load_identifier']==np.sort(x22['load_identifier'])[-1]]
     # Create a plotly figure
     figo22 = px.scatter(x22, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -244,7 +244,7 @@ def figure_x22(input_1):
 def figure_x3(input_1):
     # filter the data
 
-    x3 = o2_2[o2_2['date']==input_1]
+    x3 = o2_2[o2_2['date']>=input_1]
     x3=x3[x3['load_identifier']==np.sort(x3['load_identifier'])[-1]]
     # Create a plotly figure
     figo3 = px.scatter(x3, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -276,7 +276,7 @@ def figure_x3(input_1):
 def figure_x33(input_1):
     # filter the data
 
-    x33 = o3_2[o3_2['date']==input_1]
+    x33 = o3_2[o3_2['date']>=input_1]
     x33=x33[x33['load_identifier']==np.sort(x33['load_identifier'])[-1]]
     # Create a plotly figure
     figo33 = px.scatter(x33, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -307,7 +307,7 @@ def figure_x33(input_1):
               [Input('y1', 'value')])
 def figure_y1(input_1):
     # filter the data
-    y1 = o1_2[o1_2['date']==input_1]
+    y1 = o1_2[o1_2['date']>=input_1]
     y1=y1[y1['load_identifier']==np.sort(y1['load_identifier'])[-1]]
     
     figy1 = px.scatter(y1, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -337,7 +337,7 @@ def figure_y1(input_1):
               [Input('y11', 'value')])
 def figure_y11(input_1):
     # filter the data
-    y11 = o1_2[o1_2['date']==input_1]
+    y11 = o1_2[o1_2['date']>=input_1]
     y11=y11[y11['load_identifier']==np.sort(y11['load_identifier'])[-1]]
     
     figy11 = px.scatter(y11, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -367,7 +367,7 @@ def figure_y11(input_1):
               [Input('y3', 'value')])
 def figure_y3(input_1):
     # filter the data
-    y3 = o3_2[o3_2['date']==input_1]
+    y3 = o3_2[o3_2['date']>=input_1]
     y3=y3[y3['load_identifier']==np.sort(y3['load_identifier'])[-1]]
     
     figy3 = px.scatter(y3, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -397,7 +397,7 @@ def figure_y3(input_1):
               [Input('y33', 'value')])
 def figure_y33(input_1):
     # filter the data
-    y33 = o3_2[o3_2['date']==input_1]
+    y33 = o3_2[o3_2['date']>=input_1]
     y33=y33[y33['load_identifier']==np.sort(y33['load_identifier'])[-1]]
     
     figy33 = px.scatter(y33, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -427,7 +427,7 @@ def figure_y33(input_1):
               [Input('y2', 'value')])
 def figure_y2(input_1):
     # filter the data
-    y2 = o2_2[o2_2['date']==input_1]
+    y2 = o2_2[o2_2['date']>=input_1]
     y2=y2[y2['load_identifier']==np.sort(y2['load_identifier'])[-1]]
     
     figy2 = px.scatter(y2, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -457,7 +457,7 @@ def figure_y2(input_1):
               [Input('y22', 'value')])
 def figure_y22(input_1):
     # filter the data
-    y22 = o2_2[o2_2['date']==input_1]
+    y22 = o2_2[o2_2['date']>=input_1]
     y22=y22[y22['load_identifier']==np.sort(y22['load_identifier'])[-1]]
     
     figy22 = px.scatter(y22, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -494,11 +494,11 @@ S1_3=current[current['scanner_name']=='S1']
 @app.callback(Output('graphc1', 'figure'),
               [Input('c1', 'value')])
 def figure_c1(input_1):
-    c1=S1_2[S1_2['date']==input_1]
-    c1=c1[c1['load_identifier']==c1['load_identifier'].iloc[-1]]
+    c1=S1_2[S1_2['date']>=input_1]
+    #c1=c1[c1['load_identifier']==np.sort(c1['load_identifier'])[-1]]
 
     figc1 = px.scatter(c1, x="row_col", y="first_initial_current",width=1400,height=800,
-                  hover_name="slide_name", hover_data=["first_initial_current", "row_col"],
+                  hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
                          "row_col": "Row_column_index",
                         })
@@ -526,10 +526,10 @@ def figure_c1(input_1):
 @app.callback(Output('graphc2', 'figure'),
               [Input('c2', 'value')])
 def figure_c2(input_1):
-    c2=S2_2[S2_2['date']==input_1]
-    c2=c2[c2['load_identifier']==c2['load_identifier'].iloc[-1]]
+    c2=S2_2[S2_2['date']>=input_1]
+    #c2=c2[c2['load_identifier']==np.sort(c2['load_identifier'])[-1]]
     figc2 = px.scatter(c2, x="row_col", y="first_initial_current",width=1400,height=800,
-                  hover_name="slide_name", hover_data=["first_initial_current", "row_col"],
+                  hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
                          "row_col": "Row_column_index",
                         })
@@ -557,10 +557,10 @@ def figure_c2(input_1):
 @app.callback(Output('graphc3', 'figure'),
               [Input('c3', 'value')])
 def figure_c3(input_1):
-    c3=S3_2[S3_2['date']==input_1]
-    c3=c3[c3['load_identifier']==c3['load_identifier'].iloc[-1]]
+    c3=S3_2[S3_2['date']>=input_1]
+    c3=c3[c3['load_identifier']==np.sort(c3['load_identifier'])[-1]]
     figc3 = px.scatter(c3, x="row_col", y="first_initial_current",width=1400,height=800,
-                  hover_name="slide_name", hover_data=["first_initial_current", "row_col"],
+                  hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
                          "row_col": "Row_column_index",
                         })
@@ -600,7 +600,7 @@ a1_3=angle[angle['scanner_name']=='S1']
 @app.callback(Output('grapha1', 'figure'),
               [Input('a1', 'value')])
 def figure_a1(input_1):
-    a1=a1_2[a1_2['date']==input_1]
+    a1=a1_2[a1_2['date']<=input_1]
     a1=a1[a1['load_identifier']==np.sort(a1['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     figa1 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -639,7 +639,7 @@ def figure_a1(input_1):
 @app.callback(Output('grapha2', 'figure'),
               [Input('a2', 'value')])
 def figure_a2(input_1):
-    a2=a2_2[a2_2['date']==input_1]
+    a2=a2_2[a2_2['date']<=input_1]
     a2=a2[a2['load_identifier']==np.sort(a2['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     figa2 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -678,7 +678,7 @@ def figure_a2(input_1):
 @app.callback(Output('grapha3', 'figure'),
               [Input('a3', 'value')])
 def figure_a3(input_1):
-    a3=a3_2[a3_2['date']==input_1]
+    a3=a3_2[a3_2['date']<=input_1]
     a3=a3[a3['load_identifier']==np.sort(a3['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     figa3 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -726,7 +726,7 @@ m4=merged[merged['scanner_name']=='H01CBA06P']
 @app.callback(Output('graphs1', 'figure'),
               [Input('s1', 'value')])
 def figure_s1(input_1):
-    s1=m1[m1['date_x']==input_1]
+    s1=m1[m1['date_x']>=input_1]
     s1=s1[s1['load_identifier']==s1['load_identifier'].iloc[-1]]
     # Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -760,7 +760,7 @@ def figure_s1(input_1):
 @app.callback(Output('graphs2', 'figure'),
               [Input('s2', 'value')])
 def figure_s2(input_1):
-    s2=m2[m2['date_x']==input_1]
+    s2=m2[m2['date_x']>=input_1]
     s2=s2[s2['load_identifier']==s2['load_identifier'].iloc[-1]]
     # Create figure with secondary y-axis
     fig2 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -794,7 +794,7 @@ def figure_s2(input_1):
 @app.callback(Output('graphs3', 'figure'),
               [Input('s3', 'value')])
 def figure_s3(input_1):
-    s3=m3[m3['date_x']==input_1]
+    s3=m3[m3['date_x']>=input_1]
     s3=s3[s3['load_identifier']==s3['load_identifier'].iloc[-1]]
     # Create figure with secondary y-axis
     fig3 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -824,13 +824,17 @@ def figure_s3(input_1):
     fig3.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
     fig3.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
     return fig3
-#__________________________________________________________________________________________ Z vs thicc PLOT __________________________________________________________________________________________
+#__________________________________________________________________________________________ acq PLOT __________________________________________________________________________________________
 parse=pd.read_csv("apps/parse_bb.csv")
 
-cols=['slide_name','blob_index','Biopsy','Debris','Background']
+cols=['slide_name','blob_index','Biopsy','Debris','Background','date']
 
 parse[['scanner_name','slide_id','1','2']]=parse["slide_name"].str.split("_",expand=True)
 parse=parse.drop(['1','2'],axis=1)
+
+parse['Biopsy']=parse['Biopsy'].replace([True,False],['true','false'])
+parse['Debris']=parse['Debris'].replace([True,False],['true','false'])
+parse['Background']=parse['Background'].replace([True,False],['true','false'])
 
 par1=parse[parse['scanner_name']=='H01CBA05P']
 par2=parse[parse['scanner_name']=='H01CBA03P']
@@ -838,21 +842,65 @@ par3=parse[parse['scanner_name']=='H01CBA01P']
 par4=parse[parse['scanner_name']=='H01CBA06P']
 
 @app.callback(Output('grapht1', 'figure'),
-              [Input('s1', 'value')])
+              [Input('t1', 'value')])
 def figure_t1(input_1):
-    t1=par1[par1['date']==input_1]
+    t1=par1[par1['date']>=str(input_1)]
+    
+    layout=dash_table.DataTable(
+    id='table',
+    columns=[{"name": i, "id": i} for i in df[['slide_name','blob_index','Biopsy','Debris','Background','date']]],
+    data=df.to_dict('records'),
+    export_format="csv",
+    editable=False,
+    style_data_conditional=[
+        {
+            'if': {
+                'filter_query': '{Debris} = true',
+                'column_id': 'Debris',
+            },
+            'backgroundColor': 'lightgreen'
+        },
+        {
+            'if': {
+                'filter_query': '{Background} = true',
+                'column_id': 'Background',
+            },
+            'backgroundColor': 'lightgreen'
+        },
+        {
+            'if': {
+                'filter_query': '{Biopsy} = true',
+                'column_id': 'Biopsy',
+            },
+            'backgroundColor': 'lightgreen'
+        },
+        {
+            'if': {
+                'state': 'active'  # 'active' | 'selected'
+            },
+           'backgroundColor': 'rgba(0, 116, 217, 0.3)',
+           'border': '1px solid rgb(0, 116, 217)'
+        }
+
+    ]
+)
+
+@app.callback(Output('grapht2', 'figure'),
+              [Input('t2', 'value')])
+def figure_t2(input_1):
+    t2=par2[par2['date']>=input_1]
     fill_color = []
-    n = len(t1)
+    n = len(t2)
     for col in cols:
         if col == 'Debris':
-            fill_color.append(t1["color2"].to_list())
+            fill_color.append(t2["color2"].to_list())
         elif col == 'Biopsy':
-            fill_color.append(t1["color1"].to_list())
+            fill_color.append(t2["color1"].to_list())
         elif col == 'Background':
-            fill_color.append(t1["color3"].to_list())
+            fill_color.append(t2["color3"].to_list())
         else:
             fill_color.append(['#e6f2fd']*n)
-    data=[go.Table(
+    data=[go.Table(columnwidth = [100,50,50,50,50],
     header=dict(values=[f"<b>{col}</b>" for col in cols],
                 # fill_color='#b9e2ff',
                 line_color='red',
@@ -860,15 +908,50 @@ def figure_t1(input_1):
                 font=dict(color='black', family="Lato", size=20),
                 height=30
                 ),
-               cells=dict(values=t1[cols].values.T,
+               cells=dict(values=t2[cols].values.T,
                fill_color=fill_color,
                line_color='black',
                align='center',
                font=dict(color='black', family="Lato", size=20),
                height=30
                ))]
-    figt1 = go.Figure(data=data)
-    return figt1
+    figt2 = go.Figure(data=data)
+    figt2.update_layout(width=1000, height=800)
+    return figt2
 
+@app.callback(Output('grapht3', 'figure'),
+              [Input('t3', 'value')])
+def figure_t2(input_1):
+    t3=par3[par3['date']>=input_1]
+    
+    fill_color = []
+    n = len(t3)
+    for col in cols:
+        if col == 'Debris':
+            fill_color.append(t3["color2"].to_list())
+        elif col == 'Biopsy':
+            fill_color.append(t3["color1"].to_list())
+        elif col == 'Background':
+            fill_color.append(t3["color3"].to_list())
+        else:
+            fill_color.append(['#e6f2fd']*n)
+    data=[go.Table(columnwidth = [100,50,50,50,50],
+    header=dict(values=[f"<b>{col}</b>" for col in cols],
+                # fill_color='#b9e2ff',
+                line_color='red',
+                align='center',
+                font=dict(color='black', family="Lato", size=20),
+                height=30
+                ),
+               cells=dict(values=t3[cols].values.T,
+               fill_color=fill_color,
+               line_color='black',
+               align='center',
+               font=dict(color='black', family="Lato", size=20),
+               height=30
+               ))]
+    figt3 = go.Figure(data=data)
+    figt3.update_layout(width=1000, height=800)
+    return figt3
 if __name__ == '__main__':
     app.run_server(port=8080,debug=True)

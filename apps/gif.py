@@ -5,12 +5,16 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 import numpy as np
+import dash_table
 from datetime import date
 from datetime import timedelta
 #_________________________________________________________________________________________________________________________________________________________________________________
 #_____________________________________________________________code for Dash_______________________________________________________________________________________________________
 
-
+today = date.today()
+yesterday = today - timedelta(days = 1)
+today=str(today)
+yesterday=str(yesterday)
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -47,22 +51,15 @@ server = app.server
 parse=pd.read_csv('apps/parse_bb.csv')
 parse[['scanner_name','slide_id','1','2']]=parse["slide_name"].str.split("_",expand=True)
 parse=parse.drop(['1','2'],axis=1)
-m1=parse[parse['scanner_name']=='H01CBA02P']
+
+parse=parse[parse['date']>=yesterday]
+parse['Biopsy']=parse['Biopsy'].replace([True,False],['true','false'])
+parse['Debris']=parse['Debris'].replace([True,False],['true','false'])
+parse['Background']=parse['Background'].replace([True,False],['true','false'])
+m1=parse[parse['scanner_name']=='H01CBA05P']
 m2=parse[parse['scanner_name']=='H01CBA03P']
 m3=parse[parse['scanner_name']=='H01CBA01P']
-m4=parse[parse['scanner_name']=='H01CBA05P']
-
-category1 = []
-for opt in m1['date'].unique():
-    category1.append({'label' : opt, 'value' : opt})
-
-category2 = []
-for opt in m2['date'].unique():
-    category2.append({'label' : opt, 'value' : opt})
-
-category3 = []
-for opt in m3['date'].unique():
-    category3.append({'label' : opt, 'value' : opt})
+m4=parse[parse['scanner_name']=='H01CBA02P']
 
 app.layout = html.Div([
     dcc.Tabs([
@@ -93,32 +90,139 @@ app.layout = html.Div([
         dcc.Tab(label='Station 1',style=tab_style, selected_style=tab_selected_style, children=[
         html.Br(),
             html.H1(children='Table for grids'),
-            html.Div([
-                html.Label("Choose date"),
-                dcc.Dropdown(id = 't1', options = category1, value = np.sort(m1['date'].unique())[-1]),
-                dcc.Graph(id='grapht1'),
-                ],
-                 style = {'width': '50%', 'display': 'inline-block'}),
+                dash_table.DataTable(
+                        id='table',
+                        columns=[{"name": i, "id": i} for i in m1[['slide_name','blob_index','Biopsy','Debris','Background','date']]],
+                        data=m1.to_dict('records'),
+                        export_format="csv",
+                        editable=False,
+                        style_header={'backgroundColor': 'rgb(30, 30, 30)','border': '1px solid pink'},
+                        style_data={ 'border': '1px solid blue' },
+                        style_cell = {'font_family': 'cursive','font_size': '26px','text_align': 'center'},
+                        style_data_conditional=[
+                            {
+                                'if': {
+                                    'filter_query': '{Debris} = true',
+                                    'column_id': 'Debris',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'filter_query': '{Background} = true',
+                                    'column_id': 'Background',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'filter_query': '{Biopsy} = true',
+                                    'column_id': 'Biopsy',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'state': 'active'  # 'active' | 'selected'
+                                },
+                               'backgroundColor': 'rgba(0, 116, 217, 0.3)',
+                               'border': '1px solid rgb(0, 116, 217)'
+                            }
+
+                        ]
+                    )
+
         ]),
         dcc.Tab(label='Station 2',style=tab_style, selected_style=tab_selected_style, children=[
-        html.Br(),
+                html.Br(),
             html.H1(children='Table for grids'),
-            html.Div([
-                html.Label("Choose date"),
-                dcc.Dropdown(id = 't2', options = category2, value = np.sort(m2['date'].unique())[-1]),
-                dcc.Graph(id='grapht2'),
-                ],
-                 style = {'width': '50%', 'display': 'inline-block'}),
+                dash_table.DataTable(
+                        id='table',
+                        columns=[{"name": i, "id": i} for i in m2[['slide_name','blob_index','Biopsy','Debris','Background','date']]],
+                        data=m2.to_dict('records'),
+                        export_format="csv",
+                        editable=False,
+                        style_header={'backgroundColor': 'rgb(30, 30, 30)','border': '1px solid pink'},
+                        style_data={ 'border': '1px solid blue' },
+                        style_cell = {'font_family': 'cursive','font_size': '26px','text_align': 'center'},
+                        style_data_conditional=[
+                            {
+                                'if': {
+                                    'filter_query': '{Debris} = true',
+                                    'column_id': 'Debris',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'filter_query': '{Background} = true',
+                                    'column_id': 'Background',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'filter_query': '{Biopsy} = true',
+                                    'column_id': 'Biopsy',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'state': 'active'  # 'active' | 'selected'
+                                },
+                               'backgroundColor': 'rgba(0, 116, 217, 0.3)',
+                               'border': '1px solid rgb(0, 116, 217)'
+                            }
+
+                        ]
+                    )
+
         ]),
         dcc.Tab(label='Station 3',style=tab_style, selected_style=tab_selected_style, children=[
-        html.Br(),
+                html.Br(),
             html.H1(children='Table for grids'),
-            html.Div([
-                html.Label("Choose date"),
-                dcc.Dropdown(id = 't3', options = category3, value = np.sort(m3['date'].unique())[-1]),
-                dcc.Graph(id='grapht3'),
-                ],
-                 style = {'width': '50%', 'display': 'inline-block'}),
+                dash_table.DataTable(
+                        id='table',
+                        columns=[{"name": i, "id": i} for i in m3[['slide_name','blob_index','Biopsy','Debris','Background','date']]],
+                        data=m3.to_dict('records'),
+                        export_format="csv",
+                        editable=False,
+                        style_header={'backgroundColor': 'rgb(30, 30, 30)','border': '1px solid pink'},
+                        style_data={ 'border': '1px solid blue' },
+                        style_cell = {'font_family': 'cursive','font_size': '26px','text_align': 'center'},
+                        style_data_conditional=[
+                            {
+                                'if': {
+                                    'filter_query': '{Debris} = true',
+                                    'column_id': 'Debris',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'filter_query': '{Background} = true',
+                                    'column_id': 'Background',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'filter_query': '{Biopsy} = true',
+                                    'column_id': 'Biopsy',
+                                },
+                                'backgroundColor': 'lightgreen'
+                            },
+                            {
+                                'if': {
+                                    'state': 'active'  # 'active' | 'selected'
+                                },
+                               'backgroundColor': 'rgba(0, 116, 217, 0.3)',
+                               'border': '1px solid rgb(0, 116, 217)'
+                            }
+
+                        ]
+                    )
         ])
     ])
 ])

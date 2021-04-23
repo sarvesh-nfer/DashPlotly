@@ -1297,15 +1297,15 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 category1 = []
-for opt in o1_2['date2'].unique():
+for opt in np.sort(o1_2['date2'].unique()[:-2]):
     category1.append({'label' : opt, 'value' : opt})
 
 category2 = []
-for opt in o2_2['date2'].unique():
+for opt in np.sort(o2_2['date2'].unique()[:-2]):
     category2.append({'label' : opt, 'value' : opt})
 
 category3 = []
-for opt in o2_2['date2'].unique():
+for opt in np.sort(o2_2['date2'].unique()[:-2]):
     category3.append({'label' : opt, 'value' : opt})
 
 category4 = []
@@ -1321,27 +1321,27 @@ for opt in np.sort(S3_2['date'].unique()):
     category6.append({'label' : opt, 'value' : opt})
 
 categorys1 = []
-for opt in np.sort(s1['date_x'].unique()):
+for opt in np.sort(s1['date_x'].unique()[:-2]):
     categorys1.append({'label' : opt, 'value' : opt})
 
 categorys2 = []
-for opt in np.sort(s2['date_x'].unique()):
+for opt in np.sort(s2['date_x'].unique()[:-2]):
     categorys2.append({'label' : opt, 'value' : opt})
 
 categorys3 = []
-for opt in np.sort(s3['date_x'].unique()):
+for opt in np.sort(s3['date_x'].unique()[:-2]):
     categorys3.append({'label' : opt, 'value' : opt})
 
 categorya1 = []
-for opt in np.sort(a1_2['date2'].unique()):
+for opt in np.sort(a1_2['date2'].unique()[:-2]):
     categorya1.append({'label' : opt, 'value' : opt})
 
 categorya2 = []
-for opt in np.sort(a2_2['date2'].unique()):
+for opt in np.sort(a2_2['date2'].unique()[:-2]):
     categorya2.append({'label' : opt, 'value' : opt})
 
 categorya3 = []
-for opt in np.sort(a3_2['date2'].unique()):
+for opt in np.sort(a3_2['date2'].unique()[:-2]):
     categorya3.append({'label' : opt, 'value' : opt})
 
 app.layout = html.Div([
@@ -1383,7 +1383,7 @@ app.layout = html.Div([
             html.H1(children='Angle permissible'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'a1', options = categorya1, value = a1_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'a1', options = categorya1, value = a1_2['date2'].unique()[-2]),
                 dcc.Graph(id='grapha1'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1391,13 +1391,13 @@ app.layout = html.Div([
             html.H1(children='X-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x1', options = category1, value = o1_2['date2'].unique()[-2]),
+                dcc.Dropdown(id = 'x1', options = category1, value = o1_2['date2'].unique()[-3]),
                 dcc.Graph(id='graphx1'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x11', options = category1, value = o1_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'x11', options = category1, value = o1_2['date2'].unique()[-2]),
                 dcc.Graph(id='graphx11')
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1406,7 +1406,7 @@ app.layout = html.Div([
             html.H1(children='Y-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'y1', options = category1, value = o1_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'y1', options = category1, value = o1_2['date2'].unique()[-3]),
                 dcc.Graph(id='graphy1'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1436,7 +1436,7 @@ app.layout = html.Div([
             html.H1(children='Best-Z vs Slide thickness'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 's1', options = categorys1, value = np.sort(s1['date_x'].unique())[-1]),
+                dcc.Dropdown(id = 's1', options = categorys1, value = np.sort(s1['date_x'].unique())[-2]),
                 dcc.Graph(id='graphs1'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1454,7 +1454,7 @@ app.layout = html.Div([
             html.H1(children='Angle permissible'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'a2', options = categorya2, value = a2_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'a2', options = categorya2, value = a2_2['date2'].unique()[-2]),
                 dcc.Graph(id='grapha2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1462,7 +1462,7 @@ app.layout = html.Div([
             html.H1(children='X-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x2', options = category2, value = o2_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'x2', options = category2, value = o2_2['date2'].unique()[-3]),
                 dcc.Graph(id='graphx2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1477,7 +1477,7 @@ app.layout = html.Div([
             html.H1(children='Y-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'y2', options = category2, value = o2_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'y2', options = category2, value = o2_2['date2'].unique()[-3]),
                 dcc.Graph(id='graphy2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1507,7 +1507,7 @@ app.layout = html.Div([
             html.H1(children='Best-Z vs Slide thickness'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 's2', options = categorys2, value = np.sort(s2['date_x'].unique())[-1]),
+                dcc.Dropdown(id = 's2', options = categorys2, value = np.sort(s2['date_x'].unique())[-2]),
                 dcc.Graph(id='graphs2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1525,7 +1525,7 @@ app.layout = html.Div([
             html.H1(children='Angle permissible'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'a3', options = categorya3, value = a3_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'a3', options = categorya3, value = a3_2['date2'].unique()[-2]),
                 dcc.Graph(id='grapha3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1533,7 +1533,7 @@ app.layout = html.Div([
             html.H1(children='X-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x3', options = category3, value = o3_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'x3', options = category3, value = o3_2['date2'].unique()[-3]),
                 dcc.Graph(id='graphx3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1548,7 +1548,7 @@ app.layout = html.Div([
             html.H1(children='Y-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'y3', options = category3, value = o3_2['date2'].unique()[-1]),
+                dcc.Dropdown(id = 'y3', options = category3, value = o3_2['date2'].unique()[-3]),
                 dcc.Graph(id='graphy3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1578,7 +1578,7 @@ app.layout = html.Div([
             html.H1(children='Best-Z vs Slide thickness'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 's3', options = categorys3, value = np.sort(s3['date_x'].unique())[-1]),
+                dcc.Dropdown(id = 's3', options = categorys3, value = np.sort(s3['date_x'].unique())[-2]),
                 dcc.Graph(id='graphs3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
