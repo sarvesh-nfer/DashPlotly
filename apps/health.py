@@ -23,10 +23,10 @@ __________________________________________________
 merged=pd.read_csv("apps/merged.csv")
 #diving scanner wise
 #s11=merged[merged['scanner_name']=='S1']
-s1=merged[merged['scanner_name']=='H01CBA02P']
+s1=merged[merged['scanner_name']=='H01CBA05P']
 s2=merged[merged['scanner_name']=='H01CBA03P']
 s3=merged[merged['scanner_name']=='H01CBA01P']
-s4=merged[merged['scanner_name']=='H01CBA05P']
+s4=merged[merged['scanner_name']=='H01CBA06P']
 '''
 # Create figure with secondary y-axis
 fig1 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -184,10 +184,10 @@ fig5.update_layout(hovermode="x")
 
 current=pd.read_csv("apps/current.csv")
 
-S1_2=current[current['scanner_name']=='H01CBA02P']
+S1_2=current[current['scanner_name']=='H01CBA05P']
 S2_2=current[current['scanner_name']=='H01CBA03P']
 S3_2=current[current['scanner_name']=='H01CBA01P']
-S4_2=current[current['scanner_name']=='H01CBA05P']
+S4_2=current[current['scanner_name']=='H01CBA06P']
 S1_3=current[current['scanner_name']=='S1']
 
 '''
@@ -435,10 +435,10 @@ angle['date'] = pd.to_datetime(angle['time_stamp']).dt.date
 angle['date2']=angle['date']
 angle['date'] = pd.to_datetime(angle['date'])
 
-a1_2=angle[angle['scanner_name']=='H01CBA02P']
+a1_2=angle[angle['scanner_name']=='H01CBA05P']
 a2_2=angle[angle['scanner_name']=='H01CBA03P']
 a3_2=angle[angle['scanner_name']=='H01CBA01P']
-a4_2=angle[angle['scanner_name']=='H01CBA05P']
+a4_2=angle[angle['scanner_name']=='H01CBA06P']
 a1_3=angle[angle['scanner_name']=='S1']
 '''
 #a1_3=a1_3[a1_3['load_identifier']==np.sort(a1_3['load_identifier'])[-1]]
@@ -640,10 +640,10 @@ offset['date'] = pd.to_datetime(offset['time_stamp']).dt.date
 offset['date2']=offset['date']
 offset['date'] = pd.to_datetime(offset['date'])
 
-o1_2=offset[offset['scanner_name']=='H01CBA02P']
+o1_2=offset[offset['scanner_name']=='H01CBA05P']
 o2_2=offset[offset['scanner_name']=='H01CBA03P']
 o3_2=offset[offset['scanner_name']=='H01CBA01P']
-o4_2=offset[offset['scanner_name']=='H01CBA05P']
+o4_2=offset[offset['scanner_name']=='H01CBA06P']
 o1_3=offset[offset['scanner_name']=='S1']
 
 '''
@@ -1321,15 +1321,15 @@ for opt in np.sort(S3_2['date'].unique()):
     category6.append({'label' : opt, 'value' : opt})
 
 categorys1 = []
-for opt in np.sort(s1['date'].unique()):
+for opt in np.sort(s1['date_x'].unique()):
     categorys1.append({'label' : opt, 'value' : opt})
 
 categorys2 = []
-for opt in np.sort(s2['date'].unique()):
+for opt in np.sort(s2['date_x'].unique()):
     categorys2.append({'label' : opt, 'value' : opt})
 
 categorys3 = []
-for opt in np.sort(s3['date'].unique()):
+for opt in np.sort(s3['date_x'].unique()):
     categorys3.append({'label' : opt, 'value' : opt})
 
 categorya1 = []
@@ -1436,7 +1436,7 @@ app.layout = html.Div([
             html.H1(children='Best-Z vs Slide thickness'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 's1', options = categorys1, value = np.sort(s1['date'].unique())[-1]),
+                dcc.Dropdown(id = 's1', options = categorys1, value = np.sort(s1['date_x'].unique())[-1]),
                 dcc.Graph(id='graphs1'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1507,7 +1507,7 @@ app.layout = html.Div([
             html.H1(children='Best-Z vs Slide thickness'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 's2', options = categorys2, value = np.sort(s2['date'].unique())[-1]),
+                dcc.Dropdown(id = 's2', options = categorys2, value = np.sort(s2['date_x'].unique())[-1]),
                 dcc.Graph(id='graphs2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1578,7 +1578,7 @@ app.layout = html.Div([
             html.H1(children='Best-Z vs Slide thickness'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 's3', options = categorys3, value = np.sort(s3['date'].unique())[-1]),
+                dcc.Dropdown(id = 's3', options = categorys3, value = np.sort(s3['date_x'].unique())[-1]),
                 dcc.Graph(id='graphs3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),

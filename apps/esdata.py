@@ -186,6 +186,7 @@ focus_metric=[]
 color_metric=[]
 process_time=[]
 capture_status=[]
+date=[]
 p=0
 for i in data:
     for j in data['validation_info']:
@@ -203,14 +204,21 @@ for i in data:
             color_metric.append(k['color_metric'])
             process_time.append(k['process_time'])
             capture_status.append(k['capture_status'])
+            date.append(data['date'][p])
 
-            parse_bb = pd.DataFrame(list(zip(slide_name,blob_index,x_position,y_position,stack_size,reference_z,best_z,z_difference,best_index,focus_metric,color_metric,process_time,capture_status))
-                               ,columns =['slide_name','blob_index','x_position','y_position','stack_size','reference_z','best_z','z_difference','best_index','focus_metric','color_metric','process_time','capture_status'])
+            parse_bb =pd.DataFrame(list(zip(date,slide_name,blob_index,x_position,y_position,stack_size,reference_z,best_z,z_difference,best_index,focus_metric,color_metric,process_time,capture_status))
+                               ,columns =['date','slide_name','blob_index','x_position','y_position','stack_size','reference_z','best_z','z_difference','best_index','focus_metric','color_metric','process_time','capture_status'])
         if p!=len(data['scanner_name'])-1:
             p=p+1
         else:
             break
-
+parse_bb['Biopsy']=np.bitwise_and(parse_bb['focus_metric']  >= 6 , parse_bb['color_metric'] >= 7)
+parse_bb['Debris']=np.bitwise_and(parse_bb['focus_metric'] >= 6 , parse_bb['color_metric'] < 7)
+parse_bb['Background']=np.bitwise_and(parse_bb['focus_metric'] < 6 , parse_bb['color_metric'] < 7)
+parse_bb['color1']=parse_bb['Biopsy'].replace([True,False],['lightgreen','lightyellow'])
+parse_bb['color2']=parse_bb['Debris'].replace([True,False],['lightgreen','lightyellow'])
+parse_bb['color3']=parse_bb['Background'].replace([True,False],['lightgreen','lightyellow'])
+parse_bb.to_csv('/home/adminspin/Music/dash-report/apps/parse_bb.csv',index=False)
 parse_bb=parse_bb[parse_bb.best_z != -1]
 
 merge_bs=pd.merge(parse_bb,data2,on='slide_name',how='inner',indicator=True)
@@ -226,6 +234,7 @@ CSV for current difference
 __________________________________________________
 '''
 data3=data3.dropna(subset=['slide_id'])
+data3 = data3.sort_values(["row_index", "col_index"], ascending = (True, True))
 data3['row_col']=data3['row_index'].map(str)+','+data3['col_index'].map(str)
 data3['slide_id']=data3['slide_id'].astype(int)
 data3['slide_name']=data3['scanner_name']+'_'+data3['slide_id'].map(str)
@@ -243,7 +252,7 @@ curr_data=data2[['slide_name','permissible_angle','slide_height_um','slide_width
 
 curr_data=curr_data[curr_data['slide_height_um'] != 0]
 curr_data['slide_height_mm']=curr_data['slide_height_um']/1000
-
+curr_data = curr_data.sort_values(["row_index", "col_index"], ascending = (True, True))
 curr_data['row_col']=curr_data['row_index'].map(str)+','+curr_data['col_index'].map(str)
 
 curr_data.to_csv('/home/adminspin/Music/dash-report/apps/angleoffset.csv',index=False)
@@ -268,10 +277,10 @@ postf=postf[postf['_source.data.centering_info'].map(lambda d: len(d)) > 0]
 postf=postf.reset_index(drop=True)
 
 p1_3=post[post['_source.data.scanner_name']=='S1']
-p1_2=post[post['_source.data.scanner_name']=='H01CBA02P']
+p1_2=post[post['_source.data.scanner_name']=='H01CBA05P']
 p2_2=post[post['_source.data.scanner_name']=='H01CBA03P']
 p3_2=post[post['_source.data.scanner_name']=='H01CBA01P']
-p4_2=post[post['_source.data.scanner_name']=='H01CBA05P']
+p4_2=post[post['_source.data.scanner_name']=='H01CBA06P']
 
 #__________________________________________________________________________ after scan
 new1=p1_2.groupby('_source.data.time_stamp', as_index=False).max()
