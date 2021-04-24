@@ -281,8 +281,8 @@ postf=postf.reset_index(drop=True)
 p1_3=post[post['_source.data.scanner_name']=='S1']
 p1_2=post[post['_source.data.scanner_name']=='H01CBA05P']
 p2_2=post[post['_source.data.scanner_name']=='H01CBA03P']
-p3_2=post[post['_source.data.scanner_name']=='H01CBA01P']
-p4_2=post[post['_source.data.scanner_name']=='H01CBA06P']
+p3_2=post[post['_source.data.scanner_name']=='H01CBA06P']
+p4_2=post[post['_source.data.scanner_name']=='H01CBA01P']
 
 #__________________________________________________________________________ after scan
 new1=p1_2.groupby('_source.data.time_stamp', as_index=False).max()
