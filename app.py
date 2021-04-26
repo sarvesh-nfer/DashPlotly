@@ -107,9 +107,9 @@ offset['date'] = pd.to_datetime(offset['date'])
 offset['row_col']=offset['row_index'].map(str)+','+offset['col_index'].map(str)
 
 o1_2=offset[offset['scanner_name']=='H01CBA05P']
-o2_2=offset[offset['scanner_name']=='H01CBA03P']
-o3_2=offset[offset['scanner_name']=='H01CBA01P']
-o4_2=offset[offset['scanner_name']=='H01CBA06P']
+o2_2=offset[offset['scanner_name']=='H01CBA02P']
+o3_2=offset[offset['scanner_name']=='H01CBA06P']
+o4_2=offset[offset['scanner_name']=='H01CBA03P']
 o1_3=offset[offset['scanner_name']=='S1']
 
 @app.callback(Output('graphx1', 'figure'),
@@ -117,7 +117,7 @@ o1_3=offset[offset['scanner_name']=='S1']
 def figure_x1(input_1):
     # filter the data
 
-    x1 = o1_2[o1_2['date']>=input_1]
+    x1 = o1_2[o1_2['date']==input_1]
     x1=x1[x1['load_identifier']==np.sort(x1['load_identifier'])[-1]]
     # Create a plotly figure
     figo1 = px.scatter(x1, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -148,7 +148,7 @@ def figure_x1(input_1):
               [Input('x11', 'value')])
 def figure_x11(input_1):
     # filter the data
-    x11 = o1_2[o1_2['date']>=input_1]
+    x11 = o1_2[o1_2['date']==input_1]
     x11=x11[x11['load_identifier']==np.sort(x11['load_identifier'])[-1]]
     # Create a plotly figure
     figo11 = px.scatter(x11, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -180,7 +180,7 @@ def figure_x11(input_1):
 def figure_x2(input_1):
     # filter the data
 
-    x2 = o2_2[o2_2['date']>=input_1]
+    x2 = o2_2[o2_2['date']==input_1]
     x2=x2[x2['load_identifier']==np.sort(x2['load_identifier'])[-1]]
     # Create a plotly figure
     figo2 = px.scatter(x2, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -212,7 +212,7 @@ def figure_x2(input_1):
 def figure_x22(input_1):
     # filter the data
 
-    x22 = o2_2[o2_2['date']>=input_1]
+    x22 = o2_2[o2_2['date']==input_1]
     x22=x22[x22['load_identifier']==np.sort(x22['load_identifier'])[-1]]
     # Create a plotly figure
     figo22 = px.scatter(x22, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -244,7 +244,7 @@ def figure_x22(input_1):
 def figure_x3(input_1):
     # filter the data
 
-    x3 = o2_2[o2_2['date']>=input_1]
+    x3 = o3_2[o3_2['date']==input_1]
     x3=x3[x3['load_identifier']==np.sort(x3['load_identifier'])[-1]]
     # Create a plotly figure
     figo3 = px.scatter(x3, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -276,7 +276,7 @@ def figure_x3(input_1):
 def figure_x33(input_1):
     # filter the data
 
-    x33 = o3_2[o3_2['date']>=input_1]
+    x33 = o3_2[o3_2['date']==input_1]
     x33=x33[x33['load_identifier']==np.sort(x33['load_identifier'])[-1]]
     # Create a plotly figure
     figo33 = px.scatter(x33, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
@@ -303,11 +303,75 @@ def figure_x33(input_1):
     figo33.update_xaxes(range=[-3800, 2800])
     return figo33
 
+@app.callback(Output('graphx4', 'figure'),
+              [Input('x4', 'value')])
+def figure_x4(input_1):
+    # filter the data
+
+    x4 = o4_2[o4_2['date']==input_1]
+    x4=x4[x4['load_identifier']==np.sort(x4['load_identifier'])[-1]]
+    # Create a plotly figure
+    figo4 = px.scatter(x4, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
+                     labels={
+                         "x_offset_um": "X- offset (um)",
+                         "row_col": "Row_column_Index",
+                     },)
+    figo4.update_traces(mode="markers",                 
+                      marker=dict(size=5,
+                                  line=dict(width=1,
+                                            color='DarkSlateGrey')),
+                      selector=dict(mode='markers'))
+
+    figo4.add_vrect(x0=-2500, x1=2000)
+    figo4.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figo4.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figo4.update_layout(width=900,height=1200,
+                      font=dict(
+                          family="Courier New, monospace",
+                          size=16,
+                          color="RebeccaPurple"
+                      ),
+                     )
+    figo4.update_xaxes(range=[-3800, 2800])
+    return figo4
+
+@app.callback(Output('graphx44', 'figure'),
+              [Input('x44', 'value')])
+def figure_x44(input_1):
+    # filter the data
+
+    x44 = o4_2[o4_2['date']==input_1]
+    x44=x44[x44['load_identifier']==np.sort(x44['load_identifier'])[-1]]
+    # Create a plotly figure
+    figo44 = px.scatter(x44, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
+                     labels={
+                         "x_offset_um": "X- offset (um)",
+                         "row_col": "Row_column_Index",
+                     },)
+    figo44.update_traces(mode="markers",                 
+                      marker=dict(size=5,
+                                  line=dict(width=1,
+                                            color='DarkSlateGrey')),
+                      selector=dict(mode='markers'))
+
+    figo44.add_vrect(x0=-2500, x1=2000)
+    figo44.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figo44.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figo44.update_layout(width=900,height=1200,
+                      font=dict(
+                          family="Courier New, monospace",
+                          size=16,
+                          color="RebeccaPurple"
+                      ),
+                     )
+    figo44.update_xaxes(range=[-3800, 2800])
+    return figo44
+
 @app.callback(Output('graphy1', 'figure'),
               [Input('y1', 'value')])
 def figure_y1(input_1):
     # filter the data
-    y1 = o1_2[o1_2['date']>=input_1]
+    y1 = o1_2[o1_2['date']==input_1]
     y1=y1[y1['load_identifier']==np.sort(y1['load_identifier'])[-1]]
     
     figy1 = px.scatter(y1, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -337,7 +401,7 @@ def figure_y1(input_1):
               [Input('y11', 'value')])
 def figure_y11(input_1):
     # filter the data
-    y11 = o1_2[o1_2['date']>=input_1]
+    y11 = o1_2[o1_2['date']==input_1]
     y11=y11[y11['load_identifier']==np.sort(y11['load_identifier'])[-1]]
     
     figy11 = px.scatter(y11, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -367,7 +431,7 @@ def figure_y11(input_1):
               [Input('y3', 'value')])
 def figure_y3(input_1):
     # filter the data
-    y3 = o3_2[o3_2['date']>=input_1]
+    y3 = o3_2[o3_2['date']==input_1]
     y3=y3[y3['load_identifier']==np.sort(y3['load_identifier'])[-1]]
     
     figy3 = px.scatter(y3, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -397,7 +461,7 @@ def figure_y3(input_1):
               [Input('y33', 'value')])
 def figure_y33(input_1):
     # filter the data
-    y33 = o3_2[o3_2['date']>=input_1]
+    y33 = o3_2[o3_2['date']==input_1]
     y33=y33[y33['load_identifier']==np.sort(y33['load_identifier'])[-1]]
     
     figy33 = px.scatter(y33, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -427,7 +491,7 @@ def figure_y33(input_1):
               [Input('y2', 'value')])
 def figure_y2(input_1):
     # filter the data
-    y2 = o2_2[o2_2['date']>=input_1]
+    y2 = o2_2[o2_2['date']==input_1]
     y2=y2[y2['load_identifier']==np.sort(y2['load_identifier'])[-1]]
     
     figy2 = px.scatter(y2, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -457,7 +521,7 @@ def figure_y2(input_1):
               [Input('y22', 'value')])
 def figure_y22(input_1):
     # filter the data
-    y22 = o2_2[o2_2['date']>=input_1]
+    y22 = o2_2[o2_2['date']==input_1]
     y22=y22[y22['load_identifier']==np.sort(y22['load_identifier'])[-1]]
     
     figy22 = px.scatter(y22, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
@@ -482,20 +546,81 @@ def figure_y22(input_1):
     #figo11.update_layout(hovermode="y")
     figy22.update_yaxes(range=[-500, 6000])
     return figy22
+    
+@app.callback(Output('graphy4', 'figure'),
+              [Input('y4', 'value')])
+def figure_y4(input_1):
+    # filter the data
+    y4 = o4_2[o4_2['date']==input_1]
+    y4=y4[y4['load_identifier']==np.sort(y4['load_identifier'])[-1]]
+    
+    figy4 = px.scatter(y4, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
+                labels={
+                     "y_offset_um": "Y- offset (um)",
+                     "row_col": "Row_column_Index",
+                 },)
+    figy4.update_traces(mode="markers",
+                      marker=dict(size=5,
+                                  line=dict(width=1,
+                                            color='DarkSlateGrey')),
+                      selector=dict(mode='markers'))
+    figy4.add_hrect(y0=0, y1=5000)
+    figy4.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figy4.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figy4.update_layout(width=1000,height=500,
+                      font=dict(
+                          family="Courier New, monospace",
+                          size=16,
+                          color="RebeccaPurple"
+                      ),)
+    #figy4.update_layout(hovermode="y")
+    figy4.update_yaxes(range=[-500, 6000])
+    return figy4
+
+@app.callback(Output('graphy44', 'figure'),
+              [Input('y44', 'value')])
+def figure_y44(input_1):
+    # filter the data
+    y44 = o4_2[o4_2['date']==input_1]
+    y44=y44[y44['load_identifier']==np.sort(y44['load_identifier'])[-1]]
+    
+    figy44 = px.scatter(y44, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
+                labels={
+                     "y_offset_um": "Y- offset (um)",
+                     "row_col": "Row_column_Index",
+                 },)
+    figy44.update_traces(mode="markers",
+                      marker=dict(size=5,
+                                  line=dict(width=1,
+                                            color='DarkSlateGrey')),
+                      selector=dict(mode='markers'))
+
+    figy44.add_hrect(y0=0, y1=5000)
+    figy44.update_xaxes(showspikes=True, spikecolor="yellow", spikemode="across",spikethickness=1)
+    figy44.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figy44.update_layout(width=1000,height=500,
+                      font=dict(
+                          family="Courier New, monospace",
+                          size=16,
+                          color="RebeccaPurple"
+                      ),)
+    #figy44.update_layout(hovermode="y")
+    figy44.update_yaxes(range=[-500, 6000])
+    return figy44
 #__________________________________________________________________________________________ CURRENT PLOT __________________________________________________________________________________________
 current=pd.read_csv("apps/current.csv")
 #current['date2'] = pd.to_datetime(offset['time_stamp']).dt.date
 S1_2=current[current['scanner_name']=='H01CBA05P']
-S2_2=current[current['scanner_name']=='H01CBA03P']
-S3_2=current[current['scanner_name']=='H01CBA01P']
-S4_2=current[current['scanner_name']=='H01CBA06P']
+S2_2=current[current['scanner_name']=='H01CBA02P']
+S3_2=current[current['scanner_name']=='H01CBA06P']
+S4_2=current[current['scanner_name']=='H01CBA03P']
 S1_3=current[current['scanner_name']=='S1']
 
 @app.callback(Output('graphc1', 'figure'),
               [Input('c1', 'value')])
 def figure_c1(input_1):
-    c1=S1_2[S1_2['date']>=input_1]
-    #c1=c1[c1['load_identifier']==np.sort(c1['load_identifier'])[-1]]
+    c1=S1_2[S1_2['date']==input_1]
+    c1=c1[c1['load_identifier']==np.sort(c1['load_identifier'])[-1]]
 
     figc1 = px.scatter(c1, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
@@ -526,8 +651,8 @@ def figure_c1(input_1):
 @app.callback(Output('graphc2', 'figure'),
               [Input('c2', 'value')])
 def figure_c2(input_1):
-    c2=S2_2[S2_2['date']>=input_1]
-    #c2=c2[c2['load_identifier']==np.sort(c2['load_identifier'])[-1]]
+    c2=S2_2[S2_2['date']==input_1]
+    c2=c2[c2['load_identifier']==np.sort(c2['load_identifier'])[-1]]
     figc2 = px.scatter(c2, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -557,7 +682,7 @@ def figure_c2(input_1):
 @app.callback(Output('graphc3', 'figure'),
               [Input('c3', 'value')])
 def figure_c3(input_1):
-    c3=S3_2[S3_2['date']>=input_1]
+    c3=S3_2[S3_2['date']==input_1]
     c3=c3[c3['load_identifier']==np.sort(c3['load_identifier'])[-1]]
     figc3 = px.scatter(c3, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
@@ -584,7 +709,36 @@ def figure_c3(input_1):
     figc3.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
     figc3.update_layout(hovermode="x")
     return figc3
-
+@app.callback(Output('graphc4', 'figure'),
+              [Input('c4', 'value')])
+def figure_c4(input_1):
+    c4=S4_2[S4_2['date']==input_1]
+    c4=c4[c4['load_identifier']==np.sort(c4['load_identifier'])[-1]]
+    figc4 = px.scatter(c4, x="row_col", y="first_initial_current",width=1400,height=800,
+                  hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
+                 labels={"first_initial_current": "Current Reading (A)",
+                         "row_col": "Row_column_index",
+                        })
+    figc4.add_scatter(x=c4['row_col'], y=c4['first_final_current'],mode="markers+lines",name="final_current",
+                    text=c4['first_final_current'],hoverinfo='text',)
+    figc4.add_scatter(x=c4['row_col'], y=c4['first_current_diff'],mode="markers+lines",name="Difference_current",
+                    text=c4['first_current_diff'],hoverinfo='text',)
+    figc4.update_traces(mode="markers+lines",showlegend=True,
+    name='initial_current',marker=dict(size=5,line=dict(width=1,color='DarkSlateGrey')),
+    selector=dict(mode='markers'))
+    figc4.update_layout(
+        legend=dict(
+            traceorder="reversed",
+            font=dict(
+                family="Times New Roman,monospace",
+                size=16,
+                color="black"
+            ),
+            bgcolor="LightSteelBlue",bordercolor="Black",borderwidth=1))
+    figc4.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
+    figc4.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figc4.update_layout(hovermode="x")
+    return figc4
 #__________________________________________________________________________________________ angle PLOT __________________________________________________________________________________________
 angle=pd.read_csv("apps/angleoffset.csv")
 angle=angle.dropna(subset=['load_identifier'])
@@ -592,15 +746,15 @@ angle['date'] = pd.to_datetime(angle['time_stamp']).dt.date
 angle['date2']=angle['date']
 angle['date'] = pd.to_datetime(angle['date'])
 a1_2=angle[angle['scanner_name']=='H01CBA05P']
-a2_2=angle[angle['scanner_name']=='H01CBA03P']
-a3_2=angle[angle['scanner_name']=='H01CBA01P']
-a4_2=angle[angle['scanner_name']=='H01CBA06P']
+a2_2=angle[angle['scanner_name']=='H01CBA02P']
+a3_2=angle[angle['scanner_name']=='H01CBA06P']
+a4_2=angle[angle['scanner_name']=='H01CBA03P']
 a1_3=angle[angle['scanner_name']=='S1']
 
 @app.callback(Output('grapha1', 'figure'),
               [Input('a1', 'value')])
 def figure_a1(input_1):
-    a1=a1_2[a1_2['date']<=input_1]
+    a1=a1_2[a1_2['date']==input_1]
     a1=a1[a1['load_identifier']==np.sort(a1['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     figa1 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -639,7 +793,7 @@ def figure_a1(input_1):
 @app.callback(Output('grapha2', 'figure'),
               [Input('a2', 'value')])
 def figure_a2(input_1):
-    a2=a2_2[a2_2['date']<=input_1]
+    a2=a2_2[a2_2['date']==input_1]
     a2=a2[a2['load_identifier']==np.sort(a2['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     figa2 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -678,7 +832,7 @@ def figure_a2(input_1):
 @app.callback(Output('grapha3', 'figure'),
               [Input('a3', 'value')])
 def figure_a3(input_1):
-    a3=a3_2[a3_2['date']<=input_1]
+    a3=a3_2[a3_2['date']==input_1]
     a3=a3[a3['load_identifier']==np.sort(a3['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     figa3 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -714,20 +868,58 @@ def figure_a3(input_1):
     figa3.update_layout(hovermode="x unified")
     return figa3
 
+@app.callback(Output('grapha4', 'figure'),
+              [Input('a4', 'value')])
+def figure_a4(input_1):
+    a4=a4_2[a4_2['date']==input_1]
+    a4=a4[a4['load_identifier']==np.sort(a4['load_identifier'])[-1]]
+    # Create figure with secondary y-axis
+    figa4 = make_subplots(specs=[[{"secondary_y": True}]])
+    # Add traces
+    figa4.add_trace(
+        go.Scatter(x=a4['row_col'], y=a4['permissible_angle'], name="permissible_angle",mode = 'lines+markers',
+                text=a4['slide_name'],hoverinfo='text',)
+    )
+    figa4.add_trace(
+        go.Scatter(x=a4['row_col'], y=a4['actual_angle'], name="Actual_angle",mode = 'lines+markers'),
+        secondary_y=False,
+    )
+    figa4.add_trace(
+        go.Scatter(x=a4['row_col'], y=a4['slide_height_mm'], name="Slide_height (mm)",mode = 'lines+markers'),
+        secondary_y=True,
+    )
+    figa4.update_layout(width=1400,height=800,
+        legend=dict(
+            traceorder="reversed",
+            font=dict(
+                family="Times New Roman,monospace",
+                size=16,
+                color="black"
+            ),
+            bgcolor="LightSteelBlue",bordercolor="Black",borderwidth=1))
+    # Set x-axis title
+    figa4.update_xaxes(title_text="Row_Column_Index")
+    # Set y-axes titles
+    figa4.update_yaxes(title_text="<b>secondary</b> Slide_height(mm) ", secondary_y=True)
+    figa4.update_yaxes(title_text="<b>primary</b> Permissible_angle & Actual_angle", secondary_y=False)
+    figa4.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
+    figa4.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    figa4.update_layout(hovermode="x unified")
+    return figa4
 #__________________________________________________________________________________________ Z vs thicc PLOT __________________________________________________________________________________________
 merged=pd.read_csv("apps/merged.csv")
 #dividing scanner wise
 
 m1=merged[merged['scanner_name']=='H01CBA05P']
-m2=merged[merged['scanner_name']=='H01CBA03P']
-m3=merged[merged['scanner_name']=='H01CBA01P']
-m4=merged[merged['scanner_name']=='H01CBA06P']
+m2=merged[merged['scanner_name']=='H01CBA02P']
+m3=merged[merged['scanner_name']=='H01CBA06P']
+m4=merged[merged['scanner_name']=='H01CBA03P']
 
 @app.callback(Output('graphs1', 'figure'),
               [Input('s1', 'value')])
 def figure_s1(input_1):
-    s1=m1[m1['date_x']>=input_1]
-    s1=s1[s1['load_identifier']==s1['load_identifier'].iloc[-1]]
+    s1=m1[m1['date_x']==input_1]
+    s1=s1[s1['load_identifier']==np.sort(s1['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -760,8 +952,8 @@ def figure_s1(input_1):
 @app.callback(Output('graphs2', 'figure'),
               [Input('s2', 'value')])
 def figure_s2(input_1):
-    s2=m2[m2['date_x']>=input_1]
-    s2=s2[s2['load_identifier']==s2['load_identifier'].iloc[-1]]
+    s2=m2[m2['date_x']==input_1]
+    s2=s2[s2['load_identifier']==np.sort(s2['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     fig2 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -794,8 +986,8 @@ def figure_s2(input_1):
 @app.callback(Output('graphs3', 'figure'),
               [Input('s3', 'value')])
 def figure_s3(input_1):
-    s3=m3[m3['date_x']>=input_1]
-    s3=s3[s3['load_identifier']==s3['load_identifier'].iloc[-1]]
+    s3=m3[m3['date_x']==input_1]
+    s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
     # Create figure with secondary y-axis
     fig3 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -824,6 +1016,40 @@ def figure_s3(input_1):
     fig3.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
     fig3.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
     return fig3
+@app.callback(Output('graphs4', 'figure'),
+              [Input('s4', 'value')])
+def figure_s4(input_1):
+    s4=m4[m4['date_x']==input_1]
+    s4=s4[s4['load_identifier']==np.sort(s4['load_identifier'])[-1]]
+    # Create figure with secondary y-axis
+    fig4 = make_subplots(specs=[[{"secondary_y": True}]])
+
+    # Add traces
+    fig4.add_trace(
+
+        go.Scatter(x=s4['slide_name'], y=s4['best_z'], name="best-Z",mode = 'lines+markers'),
+        secondary_y=False,
+    )
+
+    fig4.add_trace(
+        go.Scatter(x=s4['slide_name'], y=s4['slide_thickness'], name="Slide thickness(mm)",mode = 'lines+markers'),
+        secondary_y=True,
+    )
+    # Add figure title
+    fig4.update_layout(width=1800,height=1000,
+                font=dict(
+                family="Times New Roman,monospace",
+                size=16,
+                color="black"
+            ))
+    # Set x-axis title
+    #fig1.update_xaxes(title_text="Multi-Axis plot with Best-Z and slide thickness")
+    # Set y-axes titles
+    fig4.update_yaxes(title_text="<b>primary</b> Best-Z", secondary_y=False)
+    fig4.update_yaxes(title_text="<b>secondary</b> Slide thickness(mm)", secondary_y=True)
+    fig4.update_xaxes(showspikes=True, spikecolor="royalblue", spikemode="across",spikethickness=1)
+    fig4.update_yaxes(showspikes=True, spikecolor="royalblue", spikethickness=1)
+    return fig4
 #__________________________________________________________________________________________ acq PLOT __________________________________________________________________________________________
 parse=pd.read_csv("apps/parse_bb.csv")
 
@@ -837,9 +1063,9 @@ parse['Debris']=parse['Debris'].replace([True,False],['true','false'])
 parse['Background']=parse['Background'].replace([True,False],['true','false'])
 
 par1=parse[parse['scanner_name']=='H01CBA05P']
-par2=parse[parse['scanner_name']=='H01CBA03P']
-par3=parse[parse['scanner_name']=='H01CBA01P']
-par4=parse[parse['scanner_name']=='H01CBA06P']
+par2=parse[parse['scanner_name']=='H01CBA02P']
+par3=parse[parse['scanner_name']=='H01CBA06P']
+par4=parse[parse['scanner_name']=='H01CBA03P']
 
 @app.callback(Output('grapht1', 'figure'),
               [Input('t1', 'value')])

@@ -24,9 +24,9 @@ merged=pd.read_csv("apps/merged.csv")
 #diving scanner wise
 #s11=merged[merged['scanner_name']=='S1']
 s1=merged[merged['scanner_name']=='H01CBA05P']
-s2=merged[merged['scanner_name']=='H01CBA03P']
-s3=merged[merged['scanner_name']=='H01CBA01P']
-s4=merged[merged['scanner_name']=='H01CBA06P']
+s2=merged[merged['scanner_name']=='H01CBA02P']
+s3=merged[merged['scanner_name']=='H01CBA06P']
+s4=merged[merged['scanner_name']=='H01CBA03P']
 '''
 # Create figure with secondary y-axis
 fig1 = make_subplots(specs=[[{"secondary_y": True}]])
@@ -185,9 +185,9 @@ fig5.update_layout(hovermode="x")
 current=pd.read_csv("apps/current.csv")
 
 S1_2=current[current['scanner_name']=='H01CBA05P']
-S2_2=current[current['scanner_name']=='H01CBA03P']
-S3_2=current[current['scanner_name']=='H01CBA01P']
-S4_2=current[current['scanner_name']=='H01CBA06P']
+S2_2=current[current['scanner_name']=='H01CBA02P']
+S3_2=current[current['scanner_name']=='H01CBA06P']
+S4_2=current[current['scanner_name']=='H01CBA03P']
 S1_3=current[current['scanner_name']=='S1']
 
 '''
@@ -436,9 +436,9 @@ angle['date2']=angle['date']
 angle['date'] = pd.to_datetime(angle['date'])
 
 a1_2=angle[angle['scanner_name']=='H01CBA05P']
-a2_2=angle[angle['scanner_name']=='H01CBA03P']
-a3_2=angle[angle['scanner_name']=='H01CBA01P']
-a4_2=angle[angle['scanner_name']=='H01CBA06P']
+a2_2=angle[angle['scanner_name']=='H01CBA02P']
+a3_2=angle[angle['scanner_name']=='H01CBA06P']
+a4_2=angle[angle['scanner_name']=='H01CBA03P']
 a1_3=angle[angle['scanner_name']=='S1']
 '''
 #a1_3=a1_3[a1_3['load_identifier']==np.sort(a1_3['load_identifier'])[-1]]
@@ -641,9 +641,9 @@ offset['date2']=offset['date']
 offset['date'] = pd.to_datetime(offset['date'])
 
 o1_2=offset[offset['scanner_name']=='H01CBA05P']
-o2_2=offset[offset['scanner_name']=='H01CBA03P']
-o3_2=offset[offset['scanner_name']=='H01CBA01P']
-o4_2=offset[offset['scanner_name']=='H01CBA06P']
+o2_2=offset[offset['scanner_name']=='H01CBA02P']
+o3_2=offset[offset['scanner_name']=='H01CBA06P']
+o4_2=offset[offset['scanner_name']=='H01CBA03P']
 o1_3=offset[offset['scanner_name']=='S1']
 
 '''
@@ -917,10 +917,12 @@ figo55.update_yaxes(range=[-500, 6000])
 post2=pd.read_csv("apps/post2.csv")
 post3=pd.read_csv("apps/post3.csv")
 post4=pd.read_csv("apps/post4.csv")
+post5=pd.read_csv("apps/post5.csv")
 
 post22=pd.read_csv("apps/post22.csv")
 post33=pd.read_csv("apps/post33.csv")
 post44=pd.read_csv("apps/post44.csv")
+post55=pd.read_csv("apps/post55.csv")
 #____________________________________________________________________________________________________________________________________________________________________
 figp1 = go.Figure()
 figp1.add_trace(go.Scatter(y=post2['mean_red_intensity'],
@@ -986,7 +988,7 @@ figbp1.add_trace(go.Scatter(y=post22['mean_blue_intensity'],
 figbp1.add_trace(go.Scatter(y=post22['mean_green_intensity'],
                             mode='lines', name='Mean green',line=dict(color='green')))
 figbp1.update_yaxes(range=[150, 260])
-figbp1.update_layout(title="Average Intensity across the z stack"+" "+post2['_source.data.time_stamp'][1],width=900,height=500,
+figbp1.update_layout(title="Average Intensity across the z stack"+" "+post22['_source.data.time_stamp'][1],width=900,height=500,
                     margin=dict(l=110),
                     xaxis_title="Z Steps",
                     yaxis_title="Average Intensity",
@@ -1251,6 +1253,118 @@ figbp33.add_shape(type="rect",
     x0=768, y0=408, x1=1168, y1=808,
     line_color="red",
 )
+
+#____________________________________________________________________________________________________________________________________________________________________
+figp4 = go.Figure()
+figp4.add_trace(go.Scatter(y=post5['mean_red_intensity'],
+                            mode='lines',
+                            name='Mean red',line=dict(color='red')))
+figp4.add_trace(go.Scatter(y=post5['mean_blue_intensity'],
+                            mode='lines',
+                            name='Mean blue',line=dict(color='blue')))
+figp4.add_trace(go.Scatter(y=post5['mean_green_intensity'],
+                            mode='lines', name='Mean green',line=dict(color='green')))
+figp4.update_yaxes(range=[150, 260])
+figp4.update_layout(title="Average Intensity across the z stack"+" "+post5['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
+                    xaxis_title="Z Steps",
+                    yaxis_title="Average Intensity",
+                    legend_title="Intensity",
+                    font=dict(
+                        family="Courier New, monospace",
+                        size=16,
+                        color="RebeccaPurple")
+                    )
+#fig.update_xaxes()
+figp4.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figp4.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+
+
+figp44 = go.Figure()
+x=[968]
+y=[608]
+figp44.add_trace(go.Scatter(x=post5['centring_coordinate_x'],y=post5['centring_coordinate_y'],
+                          mode='markers',
+                          name='Dispersion',
+                         ))
+figp44.add_trace(go.Scatter(x=x,y=y,
+                          mode='markers',
+                          name='Centre',
+                         ))
+figp44.update_yaxes(range=[1200,0])
+figp44.update_xaxes(range=[0,1936])
+figp44.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figp44.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figp44.update_layout(title="Centering for scanner"+" " +post5['_source.data.scanner_name'][1]+" "+post5['_source.data.time_stamp'][1],width=850,height=500,
+                   margin=dict(l=120),
+                   xaxis_title="Width of the AOI",
+                   yaxis_title="Height of the AOI",
+                   font=dict(
+                       family="Courier New, monospace",
+                       size=16,
+                       color="RebeccaPurple")
+                  )
+figp44.add_shape(type="rect",
+    xref="x", yref="y",
+    x0=768, y0=408, x1=1168, y1=808,
+    line_color="red",
+)
+#____________________________________________________________________________________________________________________________________________________________________
+
+figbp4 = go.Figure()
+figbp4.add_trace(go.Scatter(y=post55['mean_red_intensity'],
+                            mode='lines',
+                            name='Mean red',line=dict(color='red')))
+figbp4.add_trace(go.Scatter(y=post55['mean_blue_intensity'],
+                            mode='lines',
+                            name='Mean blue',line=dict(color='blue')))
+figbp4.add_trace(go.Scatter(y=post55['mean_green_intensity'],
+                            mode='lines', name='Mean green',line=dict(color='green')))
+figbp4.update_yaxes(range=[150, 260])
+figbp4.update_layout(title="Average Intensity across the z stack"+" "+post55['_source.data.time_stamp'][1],width=900,height=500,
+                    margin=dict(l=110),
+                    xaxis_title="Z Steps",
+                    yaxis_title="Average Intensity",
+                    legend_title="Intensity",
+                    font=dict(
+                        family="Courier New, monospace",
+                        size=16,
+                        color="RebeccaPurple")
+                    )
+#fig.update_xaxes()
+figbp4.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp4.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+
+
+figbp44 = go.Figure()
+x=[968]
+y=[608]
+figbp44.add_trace(go.Scatter(x=post55['centring_coordinate_x'],y=post55['centring_coordinate_y'],
+                          mode='markers',
+                          name='Dispersion',
+                         ))
+figbp44.add_trace(go.Scatter(x=x,y=y,
+                          mode='markers',
+                          name='Centre',
+                         ))
+figbp44.update_yaxes(range=[1200,0])
+figbp44.update_xaxes(range=[0,1936])
+figbp44.update_xaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp44.update_yaxes(ticks="outside", tickwidth=2, tickcolor='crimson')
+figbp44.update_layout(title="Centering for scanner"+" " +post55['_source.data.scanner_name'][1]+" "+post55['_source.data.time_stamp'][1],width=850,height=500,
+                   margin=dict(l=120),
+                   xaxis_title="Width of the AOI",
+                   yaxis_title="Height of the AOI",
+                   font=dict(
+                       family="Courier New, monospace",
+                       size=16,
+                       color="RebeccaPurple")
+                  )
+figbp44.add_shape(type="rect",
+    xref="x", yref="y",
+    x0=768, y0=408, x1=1168, y1=808,
+    line_color="red",
+)
                 
 #____________________________________________________________________________________________________________________________________________________________
 #_____________________________________________________________AOI'_______________________________________________________________________________________________________
@@ -1297,52 +1411,68 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
 category1 = []
-for opt in np.sort(o1_2['date2'].unique()[:-2]):
+for opt in np.sort(o1_2['date2'].unique()):
     category1.append({'label' : opt, 'value' : opt})
 
 category2 = []
-for opt in np.sort(o2_2['date2'].unique()[:-2]):
+for opt in np.sort(o2_2['date2'].unique()):
     category2.append({'label' : opt, 'value' : opt})
 
 category3 = []
-for opt in np.sort(o2_2['date2'].unique()[:-2]):
+for opt in np.sort(o3_2['date2'].unique()):
     category3.append({'label' : opt, 'value' : opt})
 
 category4 = []
-for opt in np.sort(S1_2['date'].unique()):
+for opt in np.sort(o4_2['date2'].unique()):
     category4.append({'label' : opt, 'value' : opt})
 
-category5 = []
-for opt in np.sort(S2_2['date'].unique()):
-    category5.append({'label' : opt, 'value' : opt})
+categoryc1 = []
+for opt in np.sort(S1_2['date'].unique()):
+    categoryc1.append({'label' : opt, 'value' : opt})
 
-category6 = []
+categoryc2 = []
+for opt in np.sort(S2_2['date'].unique()):
+    categoryc2.append({'label' : opt, 'value' : opt})
+
+categoryc3 = []
 for opt in np.sort(S3_2['date'].unique()):
-    category6.append({'label' : opt, 'value' : opt})
+    categoryc3.append({'label' : opt, 'value' : opt})
+
+categoryc4 = []
+for opt in np.sort(S4_2['date'].unique()):
+    categoryc4.append({'label' : opt, 'value' : opt})
 
 categorys1 = []
-for opt in np.sort(s1['date_x'].unique()[:-2]):
+for opt in np.sort(s1['date_x'].unique()):
     categorys1.append({'label' : opt, 'value' : opt})
 
 categorys2 = []
-for opt in np.sort(s2['date_x'].unique()[:-2]):
+for opt in np.sort(s2['date_x'].unique()):
     categorys2.append({'label' : opt, 'value' : opt})
 
 categorys3 = []
-for opt in np.sort(s3['date_x'].unique()[:-2]):
+for opt in np.sort(s3['date_x'].unique()):
     categorys3.append({'label' : opt, 'value' : opt})
 
+categorys4 = []
+for opt in np.sort(s4['date_x'].unique()):
+    categorys4.append({'label' : opt, 'value' : opt})
+
 categorya1 = []
-for opt in np.sort(a1_2['date2'].unique()[:-2]):
+for opt in np.sort(a1_2['date2'].unique()):
     categorya1.append({'label' : opt, 'value' : opt})
 
 categorya2 = []
-for opt in np.sort(a2_2['date2'].unique()[:-2]):
+for opt in np.sort(a2_2['date2'].unique()):
     categorya2.append({'label' : opt, 'value' : opt})
 
 categorya3 = []
-for opt in np.sort(a3_2['date2'].unique()[:-2]):
+for opt in np.sort(a3_2['date2'].unique()):
     categorya3.append({'label' : opt, 'value' : opt})
+
+categorya4 = []
+for opt in np.sort(a4_2['date2'].unique()):
+    categorya4.append({'label' : opt, 'value' : opt})
 
 app.layout = html.Div([
     dcc.Tabs([
@@ -1375,7 +1505,7 @@ app.layout = html.Div([
             html.H1(children='Current Deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'c1', options = category4, value = np.sort(S1_2['date'].unique())[-1]),
+                dcc.Dropdown(id = 'c1', options = categoryc1, value = np.sort(S1_2['date'].unique())[-1]),
                 dcc.Graph(id='graphc1'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1446,7 +1576,7 @@ app.layout = html.Div([
             html.H1(children='Current Deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'c2', options = category5, value = np.sort(S2_2['date'].unique())[-1]),
+                dcc.Dropdown(id = 'c2', options = categoryc2, value = np.sort(S2_2['date'].unique())[-1]),
                 dcc.Graph(id='graphc2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1454,7 +1584,7 @@ app.layout = html.Div([
             html.H1(children='Angle permissible'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'a2', options = categorya2, value = a2_2['date2'].unique()[-2]),
+                dcc.Dropdown(id = 'a2', options = categorya2, value = a2_2['date2'].unique()[-1]),
                 dcc.Graph(id='grapha2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1462,13 +1592,13 @@ app.layout = html.Div([
             html.H1(children='X-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x2', options = category2, value = o2_2['date2'].unique()[-3]),
+                dcc.Dropdown(id = 'x2', options = category2, value = o2_2['date2'].unique()[-2]),
                 dcc.Graph(id='graphx2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x22', options = category2, value = o2_2['date2'].unique()[-2]),
+                dcc.Dropdown(id = 'x22', options = category2, value = o2_2['date2'].unique()[-1]),
                 dcc.Graph(id='graphx22')
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1477,13 +1607,13 @@ app.layout = html.Div([
             html.H1(children='Y-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'y2', options = category2, value = o2_2['date2'].unique()[-3]),
+                dcc.Dropdown(id = 'y2', options = category2, value = o2_2['date2'].unique()[-2]),
                 dcc.Graph(id='graphy2'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'y22', options = category2, value = o2_2['date2'].unique()[-2]),
+                dcc.Dropdown(id = 'y22', options = category2, value = o2_2['date2'].unique()[-1]),
                 dcc.Graph(id='graphy22')
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1512,12 +1642,12 @@ app.layout = html.Div([
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
     ]),
-    dcc.Tab(label='Station 3',style=tab_style, selected_style=tab_selected_style, children=[
+            dcc.Tab(label='Station 3',style=tab_style, selected_style=tab_selected_style, children=[
         html.Br(),
             html.H1(children='Current Deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'c3', options = category6, value = np.sort(S3_2['date'].unique())[-1]),
+                dcc.Dropdown(id = 'c3', options = categoryc3, value = np.sort(S3_2['date'].unique())[-1]),
                 dcc.Graph(id='graphc3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1533,13 +1663,13 @@ app.layout = html.Div([
             html.H1(children='X-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x3', options = category3, value = o3_2['date2'].unique()[-3]),
+                dcc.Dropdown(id = 'x3', options = category3, value = o3_2['date2'].unique()[-2]),
                 dcc.Graph(id='graphx3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'x33', options = category3, value = o3_2['date2'].unique()[-2]),
+                dcc.Dropdown(id = 'x33', options = category3, value = o3_2['date2'].unique()[-1]),
                 dcc.Graph(id='graphx33')
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1548,13 +1678,13 @@ app.layout = html.Div([
             html.H1(children='Y-offset deviation'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'y3', options = category3, value = o3_2['date2'].unique()[-3]),
+                dcc.Dropdown(id = 'y3', options = category3, value = o3_2['date2'].unique()[-2]),
                 dcc.Graph(id='graphy3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 'y33', options = category3, value = o3_2['date2'].unique()[-2]),
+                dcc.Dropdown(id = 'y33', options = category3, value = o3_2['date2'].unique()[-1]),
                 dcc.Graph(id='graphy33')
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
@@ -1578,11 +1708,83 @@ app.layout = html.Div([
             html.H1(children='Best-Z vs Slide thickness'),
             html.Div([
                 html.Label("Choose date"),
-                dcc.Dropdown(id = 's3', options = categorys3, value = np.sort(s3['date_x'].unique())[-2]),
+                dcc.Dropdown(id = 's3', options = categorys3, value = np.sort(s3['date_x'].unique())[-1]),
                 dcc.Graph(id='graphs3'),
                 ],
                  style = {'width': '50%', 'display': 'inline-block'}),
     ]),
+    dcc.Tab(label='Station 4',style=tab_style, selected_style=tab_selected_style, children=[
+        html.Br(),
+            html.H1(children='Current Deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'c4', options = categoryc4, value = np.sort(S4_2['date'].unique())[-1]),
+                dcc.Graph(id='graphc4'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        html.Br(),
+            html.H1(children='Angle permissible'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'a4', options = categorya4, value = a4_2['date2'].unique()[-1]),
+                dcc.Graph(id='grapha4'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        html.Div([
+            html.H1(children='X-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x4', options = category4, value = o4_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphx4'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'x44', options = category4, value = o4_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphx44')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
+        html.Div([
+            html.H1(children='Y-offset deviation'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y4', options = category4, value = o4_2['date2'].unique()[-2]),
+                dcc.Graph(id='graphy4'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 'y44', options = category4, value = o4_2['date2'].unique()[-1]),
+                dcc.Graph(id='graphy44')
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+        ]),
+        html.Div([
+            html.Div([
+                html.Br(),
+                html.H1(children='_Before Scan'),
+                dcc.Graph(figure=figbp4),], className='six columns'),
+            html.Div([
+                html.Br(),
+                html.H1(children='after Scan'),
+                dcc.Graph(figure=figp4),], className='six columns'),], className='row'),
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    figure=figbp44),], className='six columns'),
+            html.Div([
+                dcc.Graph(figure=figp44),], className='six columns'),], className='row'),      
+        html.Br(),
+            html.H1(children='Best-Z vs Slide thickness'),
+            html.Div([
+                html.Label("Choose date"),
+                dcc.Dropdown(id = 's4', options = categorys4, value = np.sort(s4['date_x'].unique())[-2]),
+                dcc.Graph(id='graphs4'),
+                ],
+                 style = {'width': '50%', 'display': 'inline-block'}),
+    ]),
+
 ]) 
 ])
 

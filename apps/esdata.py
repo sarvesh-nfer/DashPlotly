@@ -187,6 +187,7 @@ color_metric=[]
 process_time=[]
 capture_status=[]
 date=[]
+load=[]
 p=0
 for i in data:
     for j in data['validation_info']:
@@ -205,6 +206,7 @@ for i in data:
             process_time.append(k['process_time'])
             capture_status.append(k['capture_status'])
             date.append(data['date'][p])
+            #load.append(data['load_identifier'][p])
 
             parse_bb =pd.DataFrame(list(zip(date,slide_name,blob_index,x_position,y_position,stack_size,reference_z,best_z,z_difference,best_index,focus_metric,color_metric,process_time,capture_status))
                                ,columns =['date','slide_name','blob_index','x_position','y_position','stack_size','reference_z','best_z','z_difference','best_index','focus_metric','color_metric','process_time','capture_status'])
@@ -280,9 +282,9 @@ postf=postf.reset_index(drop=True)
 
 p1_3=post[post['_source.data.scanner_name']=='S1']
 p1_2=post[post['_source.data.scanner_name']=='H01CBA05P']
-p2_2=post[post['_source.data.scanner_name']=='H01CBA03P']
+p2_2=post[post['_source.data.scanner_name']=='H01CBA02P']
 p3_2=post[post['_source.data.scanner_name']=='H01CBA06P']
-p4_2=post[post['_source.data.scanner_name']=='H01CBA01P']
+p4_2=post[post['_source.data.scanner_name']=='H01CBA03P']
 
 #__________________________________________________________________________ after scan
 new1=p1_2.groupby('_source.data.time_stamp', as_index=False).max()
@@ -297,9 +299,9 @@ new3=p3_2.groupby('_source.data.time_stamp', as_index=False).max()
 new3=new3['_source.data.time_stamp'].iloc[-1]
 p3=p3_2[p3_2['_source.data.time_stamp']==new3]
 
-#new4=p4_2.groupby('_source.data.time_stamp', as_index=False).max()
-#new4=new4['_source.data.time_stamp'].iloc[-1]
-
+new4=p4_2.groupby('_source.data.time_stamp', as_index=False).max()
+new4=new4['_source.data.time_stamp'].iloc[-1]
+p4=p4_2[p4_2['_source.data.time_stamp']==new4]
 
 #new5=p1_3.groupby('_source.data.time_stamp', as_index=False).max()
 #new5=new5['_source.data.time_stamp'].iloc[-1]
@@ -318,7 +320,9 @@ new33=p3_2.groupby('_source.data.time_stamp', as_index=False).max()
 new33=new33['_source.data.time_stamp'].iloc[-2]
 p33=p3_2[p3_2['_source.data.time_stamp']==new33]
 
-
+new44=p4_2.groupby('_source.data.time_stamp', as_index=False).max()
+new44=new44['_source.data.time_stamp'].iloc[-2]
+p44=p4_2[p4_2['_source.data.time_stamp']==new44]
 
 
 
@@ -329,12 +333,13 @@ p33=p3_2[p3_2['_source.data.time_stamp']==new33]
 p1=p1.reset_index(drop=True)
 p2=p2.reset_index(drop=True)
 p3=p3.reset_index(drop=True)
-#p4_2=p4_2.reset_index(drop=True)
+p4_2=p4_2.reset_index(drop=True)
 #p1_3=p1_3.reset_index(drop=True)
 
 p11=p11.reset_index(drop=True)
 p22=p22.reset_index(drop=True)
 p33=p33.reset_index(drop=True)
+p44=p44.reset_index(drop=True)
 
 d=0
 for j in p1['_source.data.centering_info']:
@@ -346,7 +351,7 @@ for j in p1['_source.data.centering_info']:
         d=d+1
     else:
         break
-
+'''
 d=0
 for j in p11['_source.data.centering_info']:
     df22=pd.DataFrame.from_dict(j)
@@ -357,9 +362,9 @@ for j in p11['_source.data.centering_info']:
         d=d+1
     else:
         break
-
+'''
 df2.to_csv('/home/adminspin/Music/dash-report/apps/post2.csv',index=False)
-df22.to_csv('/home/adminspin/Music/dash-report/apps/post22.csv',index=False)
+#df22.to_csv('/home/adminspin/Music/dash-report/apps/post22.csv',index=False)
 
 d=0
 for j in p2['_source.data.centering_info']:
@@ -411,7 +416,32 @@ for j in p33['_source.data.centering_info']:
 
 df4.to_csv('/home/adminspin/Music/dash-report/apps/post4.csv',index=False)
 df44.to_csv('/home/adminspin/Music/dash-report/apps/post44.csv',index=False)
+'''
+d=0
+for j in p4['_source.data.centering_info']:
+    df5=pd.DataFrame.from_dict(j)
+    df5['_source.data.scanner_name']=p4['_source.data.scanner_name'][d]
+    df5['_source.data.time_stamp']=p4['_source.data.time_stamp'][d]
+    df5['centring_coordinate_y'] = df5['centring_coordinate_y'].values[::-1]
+    if d!=len(p4)-1:
+        d=d+1
+    else:
+        break
 
+d=0
+for j in p44['_source.data.centering_info']:
+    df55=pd.DataFrame.from_dict(j)
+    df55['_source.data.scanner_name']=p44['_source.data.scanner_name'][d]
+    df55['_source.data.time_stamp']=p44['_source.data.time_stamp'][d]
+    df55['centring_coordinate_y'] = df55['centring_coordinate_y'].values[::-1]
+    if d!=len(p44)-1:
+        d=d+1
+    else:
+        break
+
+df5.to_csv('/home/adminspin/Music/dash-report/apps/post5.csv',index=False)
+df55.to_csv('/home/adminspin/Music/dash-report/apps/post55.csv',index=False)
+'''
 print("_"*120)
 print("All csv saved")
 print("_"*120)
