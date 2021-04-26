@@ -118,7 +118,8 @@ def figure_x1(input_1):
     # filter the data
 
     x1 = o1_2[o1_2['date']==input_1]
-    x1=x1[x1['load_identifier']==np.sort(x1['load_identifier'])[-1]]
+    sar=np.sort(x1['load_identifier'])[-1]
+    x1=o1_2[o1_2['load_identifier']==sar]
     # Create a plotly figure
     figo1 = px.scatter(x1, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -149,7 +150,8 @@ def figure_x1(input_1):
 def figure_x11(input_1):
     # filter the data
     x11 = o1_2[o1_2['date']==input_1]
-    x11=x11[x11['load_identifier']==np.sort(x11['load_identifier'])[-1]]
+    sar=np.sort(x11['load_identifier'])[-1]
+    x11=o1_2[o1_2['load_identifier']==sar]
     # Create a plotly figure
     figo11 = px.scatter(x11, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -181,7 +183,8 @@ def figure_x2(input_1):
     # filter the data
 
     x2 = o2_2[o2_2['date']==input_1]
-    x2=x2[x2['load_identifier']==np.sort(x2['load_identifier'])[-1]]
+    sar=np.sort(x2['load_identifier'])[-1]
+    x2=o2_2[o2_2['load_identifier']==sar]
     # Create a plotly figure
     figo2 = px.scatter(x2, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -213,7 +216,8 @@ def figure_x22(input_1):
     # filter the data
 
     x22 = o2_2[o2_2['date']==input_1]
-    x22=x22[x22['load_identifier']==np.sort(x22['load_identifier'])[-1]]
+    sar=np.sort(x22['load_identifier'])[-1]
+    x22=o2_2[o2_2['load_identifier']==sar]
     # Create a plotly figure
     figo22 = px.scatter(x22, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -245,7 +249,8 @@ def figure_x3(input_1):
     # filter the data
 
     x3 = o3_2[o3_2['date']==input_1]
-    x3=x3[x3['load_identifier']==np.sort(x3['load_identifier'])[-1]]
+    sar=np.sort(x3['load_identifier'])[-1]
+    x3=o3_2[o3_2['load_identifier']==sar]
     # Create a plotly figure
     figo3 = px.scatter(x3, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -277,7 +282,8 @@ def figure_x33(input_1):
     # filter the data
 
     x33 = o3_2[o3_2['date']==input_1]
-    x33=x33[x33['load_identifier']==np.sort(x33['load_identifier'])[-1]]
+    sar=np.sort(x33['load_identifier'])[-1]
+    x33=o3_2[o3_2['load_identifier']==sar]
     # Create a plotly figure
     figo33 = px.scatter(x33, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -309,7 +315,8 @@ def figure_x4(input_1):
     # filter the data
 
     x4 = o4_2[o4_2['date']==input_1]
-    x4=x4[x4['load_identifier']==np.sort(x4['load_identifier'])[-1]]
+    sar=np.sort(x4['load_identifier'])[-1]
+    x3=o4_2[o4_2['load_identifier']==sar]
     # Create a plotly figure
     figo4 = px.scatter(x4, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -341,7 +348,8 @@ def figure_x44(input_1):
     # filter the data
 
     x44 = o4_2[o4_2['date']==input_1]
-    x44=x44[x44['load_identifier']==np.sort(x44['load_identifier'])[-1]]
+    sar=np.sort(x44['load_identifier'])[-1]
+    x44=o4_2[o4_2['load_identifier']==sar]
     # Create a plotly figure
     figo44 = px.scatter(x44, y="row_col", x="offset_pos_x_um",hover_data=["offset_pos_x_um", "row_col","slide_name"],
                      labels={
@@ -372,7 +380,8 @@ def figure_x44(input_1):
 def figure_y1(input_1):
     # filter the data
     y1 = o1_2[o1_2['date']==input_1]
-    y1=y1[y1['load_identifier']==np.sort(y1['load_identifier'])[-1]]
+    sar=np.sort(y1['load_identifier'])[-1]
+    y1=o1_2[o1_2['load_identifier']==sar]
     
     figy1 = px.scatter(y1, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -402,7 +411,8 @@ def figure_y1(input_1):
 def figure_y11(input_1):
     # filter the data
     y11 = o1_2[o1_2['date']==input_1]
-    y11=y11[y11['load_identifier']==np.sort(y11['load_identifier'])[-1]]
+    sar=np.sort(y11['load_identifier'])[-1]
+    y11=o1_2[o1_2['load_identifier']==sar]
     
     figy11 = px.scatter(y11, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -432,7 +442,8 @@ def figure_y11(input_1):
 def figure_y3(input_1):
     # filter the data
     y3 = o3_2[o3_2['date']==input_1]
-    y3=y3[y3['load_identifier']==np.sort(y3['load_identifier'])[-1]]
+    sar=np.sort(y3['load_identifier'])[-1]
+    y3=o3_2[o3_2['load_identifier']==sar]
     
     figy3 = px.scatter(y3, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -462,7 +473,8 @@ def figure_y3(input_1):
 def figure_y33(input_1):
     # filter the data
     y33 = o3_2[o3_2['date']==input_1]
-    y33=y33[y33['load_identifier']==np.sort(y33['load_identifier'])[-1]]
+    sar=np.sort(y33['load_identifier'])[-1]
+    y33=o3_2[o3_2['load_identifier']==sar]
     
     figy33 = px.scatter(y33, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -492,7 +504,8 @@ def figure_y33(input_1):
 def figure_y2(input_1):
     # filter the data
     y2 = o2_2[o2_2['date']==input_1]
-    y2=y2[y2['load_identifier']==np.sort(y2['load_identifier'])[-1]]
+    sar=np.sort(y2['load_identifier'])[-1]
+    y2=o2_2[o2_2['load_identifier']==sar]
     
     figy2 = px.scatter(y2, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -522,7 +535,8 @@ def figure_y2(input_1):
 def figure_y22(input_1):
     # filter the data
     y22 = o2_2[o2_2['date']==input_1]
-    y22=y22[y22['load_identifier']==np.sort(y22['load_identifier'])[-1]]
+    sar=np.sort(y22['load_identifier'])[-1]
+    y22=o2_2[o2_2['load_identifier']==sar]
     
     figy22 = px.scatter(y22, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -552,7 +566,8 @@ def figure_y22(input_1):
 def figure_y4(input_1):
     # filter the data
     y4 = o4_2[o4_2['date']==input_1]
-    y4=y4[y4['load_identifier']==np.sort(y4['load_identifier'])[-1]]
+    sar=np.sort(y4['load_identifier'])[-1]
+    y4=o4_2[o4_2['load_identifier']==sar]
     
     figy4 = px.scatter(y4, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -582,7 +597,8 @@ def figure_y4(input_1):
 def figure_y44(input_1):
     # filter the data
     y44 = o4_2[o4_2['date']==input_1]
-    y44=y44[y44['load_identifier']==np.sort(y44['load_identifier'])[-1]]
+    sar=np.sort(y44['load_identifier'])[-1]
+    y44=o4_2[o4_2['load_identifier']==sar]
     
     figy44 = px.scatter(y44, x="row_col", y="offset_pos_y_um",hover_data=["offset_pos_y_um", "row_col","slide_name"],
                 labels={
@@ -620,8 +636,8 @@ S1_3=current[current['scanner_name']=='S1']
               [Input('c1', 'value')])
 def figure_c1(input_1):
     c1=S1_2[S1_2['date']==input_1]
-    c1=c1[c1['load_identifier']==np.sort(c1['load_identifier'])[-1]]
-
+    sar=np.sort(c1['load_identifier'])[-1]
+    c1=S1_2[S1_2['load_identifier']==sar]
     figc1 = px.scatter(c1, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -652,7 +668,8 @@ def figure_c1(input_1):
               [Input('c2', 'value')])
 def figure_c2(input_1):
     c2=S2_2[S2_2['date']==input_1]
-    c2=c2[c2['load_identifier']==np.sort(c2['load_identifier'])[-1]]
+    sar=np.sort(c2['load_identifier'])[-1]
+    c2=S2_2[S2_2['load_identifier']==sar]
     figc2 = px.scatter(c2, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -683,7 +700,8 @@ def figure_c2(input_1):
               [Input('c3', 'value')])
 def figure_c3(input_1):
     c3=S3_2[S3_2['date']==input_1]
-    c3=c3[c3['load_identifier']==np.sort(c3['load_identifier'])[-1]]
+    sar=np.sort(c3['load_identifier'])[-1]
+    c3=S3_2[S3_2['load_identifier']==sar]
     figc3 = px.scatter(c3, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -713,7 +731,8 @@ def figure_c3(input_1):
               [Input('c4', 'value')])
 def figure_c4(input_1):
     c4=S4_2[S4_2['date']==input_1]
-    c4=c4[c4['load_identifier']==np.sort(c4['load_identifier'])[-1]]
+    sar=np.sort(c4['load_identifier'])[-1]
+    c4=S4_2[S4_2['load_identifier']==sar]
     figc4 = px.scatter(c4, x="row_col", y="first_initial_current",width=1400,height=800,
                   hover_name="slide_name", hover_data=["first_initial_current", "row_col","load_identifier","date"],
                  labels={"first_initial_current": "Current Reading (A)",
@@ -755,7 +774,8 @@ a1_3=angle[angle['scanner_name']=='S1']
               [Input('a1', 'value')])
 def figure_a1(input_1):
     a1=a1_2[a1_2['date']==input_1]
-    a1=a1[a1['load_identifier']==np.sort(a1['load_identifier'])[-1]]
+    sar=np.sort(a1['load_identifier'])[-1]
+    a1=a1_2[a1_2['load_identifier']==sar]
     # Create figure with secondary y-axis
     figa1 = make_subplots(specs=[[{"secondary_y": True}]])
     # Add traces
@@ -794,7 +814,8 @@ def figure_a1(input_1):
               [Input('a2', 'value')])
 def figure_a2(input_1):
     a2=a2_2[a2_2['date']==input_1]
-    a2=a2[a2['load_identifier']==np.sort(a2['load_identifier'])[-1]]
+    sar=np.sort(a2['load_identifier'])[-1]
+    a2=a2_2[a2_2['load_identifier']==sar]
     # Create figure with secondary y-axis
     figa2 = make_subplots(specs=[[{"secondary_y": True}]])
     # Add traces
@@ -833,7 +854,8 @@ def figure_a2(input_1):
               [Input('a3', 'value')])
 def figure_a3(input_1):
     a3=a3_2[a3_2['date']==input_1]
-    a3=a3[a3['load_identifier']==np.sort(a3['load_identifier'])[-1]]
+    sar=np.sort(a3['load_identifier'])[-1]
+    a3=a3_2[a3_2['load_identifier']==sar]
     # Create figure with secondary y-axis
     figa3 = make_subplots(specs=[[{"secondary_y": True}]])
     # Add traces
@@ -872,7 +894,8 @@ def figure_a3(input_1):
               [Input('a4', 'value')])
 def figure_a4(input_1):
     a4=a4_2[a4_2['date']==input_1]
-    a4=a4[a4['load_identifier']==np.sort(a4['load_identifier'])[-1]]
+    sar=np.sort(a4['load_identifier'])[-1]
+    a4=a4_2[a4_2['load_identifier']==sar]
     # Create figure with secondary y-axis
     figa4 = make_subplots(specs=[[{"secondary_y": True}]])
     # Add traces
@@ -919,7 +942,8 @@ m4=merged[merged['scanner_name']=='H01CBA03P']
               [Input('s1', 'value')])
 def figure_s1(input_1):
     s1=m1[m1['date_x']==input_1]
-    s1=s1[s1['load_identifier']==np.sort(s1['load_identifier'])[-1]]
+    sar=np.sort(s1['load_identifier'])[-1]
+    s1=m1[m1['load_identifier']==sar]
     # Create figure with secondary y-axis
     fig1 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -953,7 +977,8 @@ def figure_s1(input_1):
               [Input('s2', 'value')])
 def figure_s2(input_1):
     s2=m2[m2['date_x']==input_1]
-    s2=s2[s2['load_identifier']==np.sort(s2['load_identifier'])[-1]]
+    sar=np.sort(s2['load_identifier'])[-1]
+    s2=m2[m2['load_identifier']==sar]
     # Create figure with secondary y-axis
     fig2 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -987,7 +1012,8 @@ def figure_s2(input_1):
               [Input('s3', 'value')])
 def figure_s3(input_1):
     s3=m3[m3['date_x']==input_1]
-    s3=s3[s3['load_identifier']==np.sort(s3['load_identifier'])[-1]]
+    sar=np.sort(s3['load_identifier'])[-1]
+    s3=m3[m3['load_identifier']==sar]
     # Create figure with secondary y-axis
     fig3 = make_subplots(specs=[[{"secondary_y": True}]])
 
@@ -1020,7 +1046,8 @@ def figure_s3(input_1):
               [Input('s4', 'value')])
 def figure_s4(input_1):
     s4=m4[m4['date_x']==input_1]
-    s4=s4[s4['load_identifier']==np.sort(s4['load_identifier'])[-1]]
+    sar=np.sort(s4['load_identifier'])[-1]
+    s4=m4[m4['load_identifier']==sar]
     # Create figure with secondary y-axis
     fig4 = make_subplots(specs=[[{"secondary_y": True}]])
 
